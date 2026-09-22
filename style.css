@@ -262,6 +262,8 @@ footer .links { display: flex; gap: 20px; }
 footer .links a { font-size: 0.88rem; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
 footer .links a:hover { color: var(--accent); }
 footer .fine { margin-top: 26px; font-size: 0.78rem; color: var(--muted); opacity: 0.7; font-family: var(--font-mono); }
+footer .fine a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+footer .fine a:hover { color: var(--accent); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
