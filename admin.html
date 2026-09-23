@@ -151,7 +151,7 @@
       var badge = document.getElementById('unreadBadge')
       var { data: msgs, error } = await sb.from('contact_messages').select('*').order('created_at', { ascending: false })
       if (error) {
-        box.innerHTML = '<p class="sub">Couldn't load messages: ' + escapeHtml(error.message) + '</p>'
+        box.innerHTML = '<p class="sub">Could not load messages: ' + escapeHtml(error.message) + '</p>'
         return
       }
       var unread = msgs.filter(function (m) { return !m.is_read }).length
