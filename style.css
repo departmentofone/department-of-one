@@ -252,6 +252,15 @@ nav a.navlink:hover { color: var(--text); }
 }
 .more-soon .glyph svg { width: 15px; height: 15px; }
 
+/* Nav links jump to these - keep the heading clear of the 68px sticky header. */
+section[id], footer[id] { scroll-margin-top: 84px; }
+
+/* ---------- About ---------- */
+.about { padding: 0 0 96px; }
+.about-body { max-width: 62ch; }
+.about-body p { font-size: 1.05rem; line-height: 1.7; }
+.about-body p + p { margin-top: 16px; }
+
 /* ---------- Footer ---------- */
 footer { border-top: 1px solid var(--border); padding: 40px 0 56px; }
 footer .row {
