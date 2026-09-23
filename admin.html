@@ -31,14 +31,25 @@
       background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 0.95rem;
     }
     .login-card .error { color: #ef4444; font-size: 0.85rem; margin-top: 8px; }
-    .signout { font-size: 0.8rem; color: var(--muted); }
-    .inbox { margin-bottom: 48px; }
-    .inbox h1 { display: flex; align-items: center; gap: 10px; }
+    .signout { font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; gap: 6px; min-width: 0; }
+    .signout .who { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 22ch; }
+    @media (max-width: 520px) { .signout .who { display: none; } }
+    /* Collapsible inbox: a native <details>, so it works with keyboard and screen readers. */
+    .inbox { margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .inbox summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; padding: 6px 0 14px; }
+    .inbox summary::-webkit-details-marker { display: none; }
+    .inbox summary h1 { display: flex; align-items: center; gap: 10px; margin-bottom: 0; }
+    .inbox .chev { width: 22px; height: 22px; color: var(--muted); transition: transform 0.2s ease; flex-shrink: 0; }
+    .inbox[open] .chev { transform: rotate(180deg); }
+    .inbox summary:hover .chev { color: var(--accent); }
+    /* Even when open, a long inbox scrolls inside its own box instead of pushing the editor down. */
+    .msg-list { max-height: 60vh; overflow-y: auto; overflow-x: hidden; padding-right: 4px; margin-bottom: 16px; }
     .unread-badge { font-family: var(--font-mono); font-size: 0.75rem; background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 2px 9px; }
     .msg { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin-bottom: 12px; }
     .msg.unread { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
-    .msg-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-bottom: 4px; }
-    .msg-subject { font-weight: 700; }
+    /* Subject gets the width; the date wraps under it on narrow screens instead of squeezing it. */
+    .msg-head { display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 12px; row-gap: 2px; align-items: baseline; margin-bottom: 4px; }
+    .msg-subject { font-weight: 700; flex: 1 1 12rem; min-width: 0; overflow-wrap: anywhere; }
     .msg-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
     .msg-from { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
     /* Shows the sender's line breaks exactly as they typed them. */
@@ -69,11 +80,14 @@
   </div>
 
   <main id="editorView" class="admin-wrap" style="display:none">
-    <section class="inbox">
-      <h1>Messages <span id="unreadBadge" class="unread-badge" hidden></span></h1>
-      <p class="sub">From the contact form. Copies also go to your Gmail once it's connected.</p>
-      <div id="messages"></div>
-    </section>
+    <details class="inbox" id="inbox">
+      <summary>
+        <h1>Messages <span id="unreadBadge" class="unread-badge" hidden></span></h1>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <p class="sub">From the contact form. Copies also go to your Gmail.</p>
+      <div id="messages" class="msg-list"></div>
+    </details>
 
     <h1>Edit site text</h1>
     <p class="sub">Changes go live immediately - no redeploy needed. Reload the site to see them.</p>
@@ -146,6 +160,18 @@
       return div.innerHTML
     }
 
+    // Remembers whether the inbox was left open or closed. Starts closed, so the editor is
+    // always right there; the "new" badge stays visible on the collapsed header either way.
+    var inboxEl = document.getElementById('inbox')
+    try {
+      if (localStorage.getItem('inboxOpen') === '1') inboxEl.open = true
+    } catch (e) {}
+    inboxEl.addEventListener('toggle', function () {
+      try {
+        localStorage.setItem('inboxOpen', inboxEl.open ? '1' : '0')
+      } catch (e) {}
+    })
+
     async function loadInbox() {
       var box = document.getElementById('messages')
       var badge = document.getElementById('unreadBadge')
@@ -169,7 +195,7 @@
         // Everything the sender typed goes in via escapeHtml/textContent - never as raw HTML.
         el.innerHTML =
           '<div class="msg-head"><span class="msg-subject">' + escapeHtml(m.subject) + '</span>' +
-          '<span class="msg-date">' + new Date(m.created_at).toLocaleString() + '</span></div>' +
+          '<span class="msg-date">' + new Date(m.created_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) + '</span></div>' +
           '<div class="msg-from">' + escapeHtml(m.email) + '</div>' +
           '<div class="msg-body"></div>' +
           '<div class="msg-actions"><a href="' + replyHref + '">Reply</a>' +
@@ -193,7 +219,8 @@
       if (!(await isOwner())) return rejectAccount()
       loginView.style.display = 'none'
       editorView.style.display = 'block'
-      whoami.innerHTML = user.email + ' · <a href="#" id="signOutLink">sign out</a>'
+      whoami.innerHTML = '<span class="who"></span><span class="who">·</span><a href="#" id="signOutLink">sign out</a>'
+      whoami.querySelector('.who').textContent = user.email
       document.getElementById('signOutLink').onclick = async function (e) {
         e.preventDefault()
         await sb.auth.signOut({ scope: 'local' })
