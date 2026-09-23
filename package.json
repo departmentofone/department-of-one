@@ -1,0 +1,9 @@
+{
+  "name": "department-of-one",
+  "private": true,
+  "description": "Department of One site. No build step - static files plus one Vercel function (api/contact.js).",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}

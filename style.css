@@ -103,12 +103,21 @@ header {
   background: color-mix(in srgb, var(--bg) 78%, transparent);
   border-bottom: 1px solid var(--border);
 }
-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.wordmark { font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: -0.02em; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 68px; }
+.wordmark { font-family: var(--font-mono); font-size: 0.95rem; letter-spacing: -0.02em; white-space: nowrap; }
 .wordmark .dim { color: var(--muted); }
 nav { display: flex; align-items: center; gap: 28px; }
 nav a.navlink { font-size: 0.9rem; color: var(--muted); }
 nav a.navlink:hover { color: var(--text); }
+/* Contact is the one nav item kept on phones, styled as a small pill so it reads as a button. */
+nav a.navlink-cta {
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+nav a.navlink-cta:hover, nav a.navlink-cta[aria-current="page"] { border-color: var(--accent); color: var(--accent); }
 .theme-toggle {
   width: 38px; height: 38px;
   display: grid; place-items: center;
@@ -261,6 +270,51 @@ section[id], footer[id] { scroll-margin-top: 84px; }
 .about-body p { font-size: 1.05rem; line-height: 1.7; }
 .about-body p + p { margin-top: 16px; }
 
+/* ---------- Contact page ---------- */
+.contact { padding: 72px 24px 96px; max-width: 640px; }
+.contact h1 { font-size: clamp(2rem, 4.5vw, 2.8rem); margin-top: 10px; }
+.contact-intro { margin-top: 14px; font-size: 1.05rem; line-height: 1.65; }
+.contact-card {
+  margin-top: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+.field { display: block; margin-bottom: 20px; }
+.field-name { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 7px; }
+.field input, .field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem; /* 16px+ stops iOS zooming in on focus */
+  transition: border-color 0.15s ease;
+}
+.field textarea {
+  min-height: 180px;
+  resize: vertical;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: 0.7; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+.field [aria-invalid="true"] { border-color: #ef4444; }
+.field-hint { display: block; margin-top: 6px; font-size: 0.78rem; color: var(--muted); font-family: var(--font-mono); }
+.form-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.form-foot .btn[disabled] { opacity: 0.6; cursor: default; }
+.form-status { font-size: 0.9rem; }
+.form-status.err { color: #ef4444; }
+/* Honeypot: off-screen rather than display:none, which some bots know to skip. */
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.contact-card.sent h2 { font-size: 1.5rem; margin-bottom: 10px; }
+.contact-card.sent p { margin-bottom: 22px; line-height: 1.6; }
+.contact-card.sent strong { color: var(--text); }
+
 /* ---------- Footer ---------- */
 footer { border-top: 1px solid var(--border); padding: 40px 0 56px; }
 footer .row {
@@ -278,10 +332,19 @@ footer .fine { margin-top: 26px; font-size: 0.78rem; color: var(--muted); opacit
   .project { grid-template-columns: 1fr; }
   .project-shot { padding-top: 8px; }
   .project-shot img { max-height: 320px; }
-  nav .navlink { display: none; }
+  nav .navlink:not(.navlink-cta) { display: none; }
+  nav { gap: 12px; }
 }
 @media (max-width: 520px) {
+  .wordmark { font-size: 0.82rem; }
+  nav a.navlink-cta { padding: 6px 12px; font-size: 0.85rem; }
+  .contact { padding-top: 48px; }
+  .contact-card { padding: 20px; }
   .grid4 { grid-template-columns: 1fr; }
   .hero { padding: 64px 0 48px; }
   footer .row { flex-direction: column; align-items: flex-start; }
+}
+/* Smallest phones: drop the decorative "~/" so the wordmark doesn't crowd the Contact button. */
+@media (max-width: 340px) {
+  .wordmark .dim { display: none; }
 }

@@ -32,6 +32,21 @@
     }
     .login-card .error { color: #ef4444; font-size: 0.85rem; margin-top: 8px; }
     .signout { font-size: 0.8rem; color: var(--muted); }
+    .inbox { margin-bottom: 48px; }
+    .inbox h1 { display: flex; align-items: center; gap: 10px; }
+    .unread-badge { font-family: var(--font-mono); font-size: 0.75rem; background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 2px 9px; }
+    .msg { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin-bottom: 12px; }
+    .msg.unread { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+    .msg-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-bottom: 4px; }
+    .msg-subject { font-weight: 700; }
+    .msg-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+    .msg-from { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
+    /* Shows the sender's line breaks exactly as they typed them. */
+    .msg-body { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px; }
+    .msg-actions { display: flex; gap: 14px; font-size: 0.82rem; }
+    .msg-actions a, .msg-actions button { color: var(--muted); background: none; border: none; padding: 0; font: inherit; cursor: pointer; }
+    .msg-actions a:hover, .msg-actions button:hover { color: var(--accent); }
+    .msg-actions .danger:hover { color: #ef4444; }
   </style>
 </head>
 <body>
@@ -54,6 +69,12 @@
   </div>
 
   <main id="editorView" class="admin-wrap" style="display:none">
+    <section class="inbox">
+      <h1>Messages <span id="unreadBadge" class="unread-badge" hidden></span></h1>
+      <p class="sub">From the contact form. Copies also go to your Gmail once it's connected.</p>
+      <div id="messages"></div>
+    </section>
+
     <h1>Edit site text</h1>
     <p class="sub">Changes go live immediately - no redeploy needed. Reload the site to see them.</p>
     <div id="fields"></div>
@@ -84,6 +105,7 @@
       about_title: 'About — heading',
       about_body_1: 'About — first paragraph',
       about_body_2: 'About — second paragraph',
+      contact_intro: 'Contact page — intro line',
       footer_tagline: 'Footer tagline',
     }
     // Falls back to the raw key for anything added later that isn't in LABELS yet, so a new
@@ -117,6 +139,56 @@
       document.getElementById('loginError').textContent = "This account can't sign in here."
     }
 
+
+    function escapeHtml(text) {
+      var div = document.createElement('div')
+      div.textContent = text
+      return div.innerHTML
+    }
+
+    async function loadInbox() {
+      var box = document.getElementById('messages')
+      var badge = document.getElementById('unreadBadge')
+      var { data: msgs, error } = await sb.from('contact_messages').select('*').order('created_at', { ascending: false })
+      if (error) {
+        box.innerHTML = '<p class="sub">Couldn't load messages: ' + escapeHtml(error.message) + '</p>'
+        return
+      }
+      var unread = msgs.filter(function (m) { return !m.is_read }).length
+      badge.hidden = unread === 0
+      badge.textContent = unread + ' new'
+      if (msgs.length === 0) {
+        box.innerHTML = '<p class="sub">No messages yet.</p>'
+        return
+      }
+      box.innerHTML = ''
+      msgs.forEach(function (m) {
+        var el = document.createElement('div')
+        el.className = 'msg' + (m.is_read ? '' : ' unread')
+        var replyHref = 'mailto:' + encodeURIComponent(m.email) + '?subject=' + encodeURIComponent('Re: ' + m.subject)
+        // Everything the sender typed goes in via escapeHtml/textContent - never as raw HTML.
+        el.innerHTML =
+          '<div class="msg-head"><span class="msg-subject">' + escapeHtml(m.subject) + '</span>' +
+          '<span class="msg-date">' + new Date(m.created_at).toLocaleString() + '</span></div>' +
+          '<div class="msg-from">' + escapeHtml(m.email) + '</div>' +
+          '<div class="msg-body"></div>' +
+          '<div class="msg-actions"><a href="' + replyHref + '">Reply</a>' +
+          '<button type="button" data-act="read">' + (m.is_read ? 'Mark unread' : 'Mark read') + '</button>' +
+          '<button type="button" class="danger" data-act="delete">Delete</button></div>'
+        el.querySelector('.msg-body').textContent = m.message
+        el.querySelector('[data-act="read"]').onclick = async function () {
+          await sb.from('contact_messages').update({ is_read: !m.is_read }).eq('id', m.id)
+          loadInbox()
+        }
+        el.querySelector('[data-act="delete"]').onclick = async function () {
+          if (!confirm('Delete this message for good?')) return
+          await sb.from('contact_messages').delete().eq('id', m.id)
+          loadInbox()
+        }
+        box.appendChild(el)
+      })
+    }
+
     async function showEditor(user) {
       if (!(await isOwner())) return rejectAccount()
       loginView.style.display = 'none'
@@ -127,6 +199,8 @@
         await sb.auth.signOut({ scope: 'local' })
         location.reload()
       }
+
+      loadInbox()
 
       var { data: rows, error } = await sb.from('site_content').select('key,value').order('key')
       if (error) {
