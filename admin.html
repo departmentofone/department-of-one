@@ -100,13 +100,28 @@
       editorView.style.display = 'none'
     }
 
+    // Only the site owner gets past sign-in. Any other FitLog account is signed out immediately.
+    // scope 'local' is important: a normal signOut() is global and would also log that person
+    // out of FitLog on every device.
+    async function isOwner() {
+      var { data, error } = await sb.rpc('is_site_owner')
+      return !error && data === true
+    }
+
+    async function rejectAccount() {
+      await sb.auth.signOut({ scope: 'local' })
+      showLogin()
+      document.getElementById('loginError').textContent = "This account can't sign in here."
+    }
+
     async function showEditor(user) {
+      if (!(await isOwner())) return rejectAccount()
       loginView.style.display = 'none'
       editorView.style.display = 'block'
       whoami.innerHTML = user.email + ' · <a href="#" id="signOutLink">sign out</a>'
       document.getElementById('signOutLink').onclick = async function (e) {
         e.preventDefault()
-        await sb.auth.signOut()
+        await sb.auth.signOut({ scope: 'local' })
         location.reload()
       }
 
@@ -139,9 +154,9 @@
           var { error } = await sb.from('site_content').update({ value: textarea.value, updated_at: new Date().toISOString() }).eq('key', row.key)
           button.disabled = false
           if (error) {
-            stateEl.textContent = error.message.indexOf('policy') !== -1 || error.code === '42501'
-              ? "Not allowed - this isn't the site owner's account."
-              : 'Save failed: ' + error.message
+            // Show the database's own message: the old "not the owner" guess was wrong once
+            // already (it was a broken policy, not the wrong account).
+            stateEl.textContent = 'Save failed: ' + error.message
             stateEl.className = 'save-state err'
           } else {
             stateEl.textContent = 'Saved ✓'
