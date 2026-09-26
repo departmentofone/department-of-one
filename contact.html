@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Department of One</title>
-  <meta name="description" content="Get in touch with Department of One - questions, bug reports, feature ideas." />
-  <meta name="theme-color" content="#0b0f1e" />
+  <title>Contact - Department of One</title>
+  <meta name="description" content="Write to Department of One: bug reports, feature ideas, app requests, or just a hello." />
+  <meta name="theme-color" content="#eaede6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0d1017" media="(prefers-color-scheme: dark)" />
   <link rel="canonical" href="https://department-of-one.vercel.app/contact.html" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0f1e'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2334d399'/%3E%3C/svg%3E" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Public+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header>
+  <header class="site">
     <div class="wrap">
-      <a class="wordmark" href="/"><span class="dim">~/</span>department-of-one</a>
-      <nav>
+      <a class="wordmark" href="/" aria-label="Department of One, home">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.2 10.6 17.4 8.4V23.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="22.2" cy="22.4" r="1.9" fill="var(--accent)"/></svg>
+        <span>Department of One<span class="stop">.</span></span>
+      </a>
+      <nav class="primary" aria-label="Main">
         <a class="navlink" href="/#work">Work</a>
         <a class="navlink" href="/#principles">Principles</a>
         <a class="navlink" href="/#about">About</a>
@@ -32,56 +36,78 @@
     </div>
   </header>
 
-  <main class="contact wrap">
-    <div class="section-head">
-      <div class="kicker">Contact</div>
-      <h1>Get in touch</h1>
-      <p class="contact-intro" data-content-key="contact_intro">Questions, bug reports, feature ideas, or just saying hi — it all lands in the same inbox, and I read every message.</p>
+  <main id="main" class="contact wrap">
+    <div class="hero-meta mono rise">
+      <span>Contact</span>
+      <span class="hide-sm">Every message is read by the whole department</span>
+      <span class="live">Inbox open</span>
     </div>
 
-    <form id="contactForm" class="contact-card" novalidate>
-      <label class="field">
-        <span class="field-name">Subject</span>
-        <input id="subject" name="subject" type="text" maxlength="200" required autocomplete="off" placeholder="What's this about?" />
-      </label>
-
-      <label class="field">
-        <span class="field-name">Your email</span>
-        <input id="email" name="email" type="email" maxlength="320" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
-        <span class="field-hint">Only used to reply to you. Never shared.</span>
-      </label>
-
-      <label class="field">
-        <span class="field-name">Message</span>
-        <textarea id="message" name="message" rows="8" maxlength="5000" required placeholder="Write as much as you like — line breaks are kept."></textarea>
-        <span class="field-hint"><span id="charCount">0</span> / 5000</span>
-      </label>
-
-      <!-- Honeypot: hidden from people, often filled in by spam bots. Anything in it = silently dropped. -->
-      <label class="hp" aria-hidden="true">Website <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" /></label>
-
-      <div class="form-foot">
-        <button id="sendBtn" class="btn btn-primary" type="submit">Send message</button>
-        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+    <div class="contact-grid">
+      <div class="rise rise-2">
+        <h1>Write to the <em>department.</em></h1>
+        <p class="contact-intro" data-content-key="contact_intro">Bug reports, feature ideas, app requests, or just saying hi. It all lands in one inbox, and I read every message.</p>
+        <ul class="reasons">
+          <li><span class="mono">01</span><span>Something broken in FitLog</span></li>
+          <li><span class="mono">02</span><span>A feature you'd actually use</span></li>
+          <li><span class="mono">03</span><span>An app that deserves a free version</span></li>
+          <li><span class="mono">04</span><span>Anything else on your mind</span></li>
+        </ul>
+        <p class="direct">Prefer email? <a href="mailto:departmentofone.app@gmail.com">departmentofone.app@gmail.com</a></p>
       </div>
-    </form>
 
-    <div id="sentView" class="contact-card sent" hidden>
-      <h2>Message sent</h2>
-      <p>Thanks for writing in. If it needs a reply, I'll get back to you at <strong id="sentEmail"></strong>.</p>
-      <a class="btn btn-ghost" href="/contact.html">Send another</a>
+      <div class="rise rise-3">
+        <form id="contactForm" class="contact-card" novalidate>
+          <div class="form-head mono"><span>Form DO-1</span><span>Correspondence</span></div>
+          <label class="field">
+            <span class="field-name">Subject</span>
+            <input id="subject" name="subject" type="text" maxlength="200" required autocomplete="off" placeholder="What's this about?" />
+          </label>
+
+          <label class="field">
+            <span class="field-name">Your email</span>
+            <input id="email" name="email" type="email" maxlength="320" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
+            <span class="field-hint">Only used to reply to you. Never shared.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-name">Message</span>
+            <textarea id="message" name="message" rows="8" maxlength="5000" required placeholder="Write as much as you like. Line breaks are kept."></textarea>
+            <span class="field-hint"><span id="charCount">0</span> / 5000</span>
+          </label>
+
+          <!-- Honeypot: hidden from people, often filled in by spam bots. Anything in it = silently dropped. -->
+          <label class="hp" aria-hidden="true">Website <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+
+          <div class="form-foot">
+            <button id="sendBtn" class="btn btn-primary" type="submit">Send message</button>
+            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+
+        <div id="sentView" class="contact-card sent" hidden>
+          <div class="form-head mono"><span>Form DO-1</span><span>Received</span></div>
+          <h2>Message received.</h2>
+          <p>Thanks for writing in. If it needs a reply, I'll get back to you at <strong id="sentEmail"></strong>.</p>
+          <a class="btn btn-ghost" href="/contact.html">Send another</a>
+        </div>
+      </div>
     </div>
   </main>
 
-  <footer>
+  <footer class="site">
     <div class="wrap">
-      <div class="row">
-        <p class="tagline" data-content-key="footer_tagline">A one-person software studio. Small, free, and built to last.</p>
-        <div class="links">
+      <div class="footer-top">
+        <p class="tagline" data-content-key="footer_tagline">A one-person software studio. Small, free, and staying that way.</p>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="/">Home</a>
           <a href="https://github.com/departmentofone" target="_blank" rel="noopener">GitHub</a>
-        </div>
+        </nav>
       </div>
-      <div class="fine">no ads · no tracking · no investors</div>
+      <div class="footer-fine mono" style="border-top: 1px solid var(--rule); padding-top: 20px;">
+        <span>No ads · No tracking · No investors</span>
+        <span>Made by one person</span>
+      </div>
     </div>
   </footer>
 

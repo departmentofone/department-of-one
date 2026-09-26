@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Edit — Department of One</title>
+  <title>Edit - Department of One</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0f1e'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2334d399'/%3E%3C/svg%3E" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700&family=Public+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
     /* Admin-only additions - kept out of style.css since nothing else on the site needs them. */
@@ -61,12 +61,11 @@
   </style>
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span></div>
 
-  <header>
+  <header class="site">
     <div class="wrap">
-      <a class="wordmark" href="/"><span class="dim">~/</span>department-of-one</a>
-      <nav><span id="whoami" class="signout"></span></nav>
+      <a class="wordmark" href="/">Department of One<span class="stop">.</span></a>
+      <nav class="primary"><span id="whoami" class="signout"></span></nav>
     </div>
   </header>
 
@@ -101,26 +100,28 @@
     var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
     var LABELS = {
-      hero_eyebrow: 'Hero — small pill text',
-      hero_title_pre: 'Hero heading — before "exactly"',
-      hero_title_em: 'Hero heading — the italic word',
-      hero_title_post: 'Hero heading — after "exactly"',
-      hero_lede: 'Hero — subheading',
-      principle_1_title: 'Principle 1 — title',
-      principle_1_desc: 'Principle 1 — description',
-      principle_2_title: 'Principle 2 — title',
-      principle_2_desc: 'Principle 2 — description',
-      principle_3_title: 'Principle 3 — title',
-      principle_3_desc: 'Principle 3 — description',
-      principle_4_title: 'Principle 4 — title',
-      principle_4_desc: 'Principle 4 — description',
-      fitlog_desc: 'FitLog card — description',
+      hero_eyebrow: 'Hero - small pill text',
+      hero_title_pre: 'Hero heading - before "exactly"',
+      hero_title_em: 'Hero heading - the italic word',
+      hero_title_post: 'Hero heading - after "exactly"',
+      hero_lede: 'Hero - subheading',
+      principle_1_title: 'Principle 1 - title',
+      principle_1_desc: 'Principle 1 - description',
+      principle_2_title: 'Principle 2 - title',
+      principle_2_desc: 'Principle 2 - description',
+      principle_3_title: 'Principle 3 - title',
+      principle_3_desc: 'Principle 3 - description',
+      principle_4_title: 'Principle 4 - title',
+      principle_4_desc: 'Principle 4 - description',
+      fitlog_desc: 'FitLog card - description',
       more_soon_text: '"More soon" line',
-      about_title: 'About — heading',
-      about_body_1: 'About — first paragraph',
-      about_body_2: 'About — second paragraph',
-      contact_intro: 'Contact page — intro line',
+      about_title: 'About - heading',
+      about_body_1: 'About - first paragraph',
+      about_body_2: 'About - second paragraph',
+      contact_intro: 'Contact page - intro line',
       footer_tagline: 'Footer tagline',
+      request_title: 'Request band - heading',
+      request_body: 'Request band - text',
     }
     // Falls back to the raw key for anything added later that isn't in LABELS yet, so a new
     // field is still editable here immediately - just without a friendly name until this map
