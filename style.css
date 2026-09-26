@@ -1,7 +1,7 @@
 /* ==========================================================================
    Department of One - site styles
-   Direction: an official "department" run by one person. Paper and ink, one
-   carbon-blue stamp accent, an editorial serif for display, hairline rules instead of
+   Direction: one person doing every job. Paper and ink, one carbon-blue
+   accent, an editorial serif for display, hairline rules instead of
    boxes. admin.html reuses these tokens and .btn/.wrap/.wordmark, so keep the
    token names stable.
    ========================================================================== */
@@ -216,18 +216,7 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--accent); colo
 .textlink:hover { color: var(--accent); }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: clamp(40px, 7vw, 88px); padding-bottom: clamp(64px, 9vw, 120px); }
-.hero-meta {
-  display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--rule);
-  color: var(--muted);
-}
-.hero-meta .live { display: inline-flex; align-items: center; gap: 8px; color: var(--text); }
-.hero-meta .live::before {
-  content: ''; width: 7px; height: 7px; border-radius: 999px; background: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
-}
+.hero { padding-top: clamp(56px, 9vw, 128px); padding-bottom: clamp(64px, 9vw, 120px); }
 .hero h1 {
   grid-area: title;
   font-size: clamp(3.2rem, 7.6vw, 7.6rem);
@@ -240,15 +229,13 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--accent); colo
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
-  grid-template-areas: 'title directory' 'intro directory';
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+  grid-template-areas: 'title intro';
   column-gap: clamp(32px, 6vw, 96px);
   row-gap: clamp(28px, 4vw, 48px);
   align-items: end;
-  margin-top: clamp(36px, 6vw, 72px);
 }
 .hero-intro { grid-area: intro; }
-.directory { grid-area: directory; align-self: end; }
 .hero .lede {
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   line-height: 1.55;
@@ -257,50 +244,6 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--accent); colo
   text-wrap: pretty;
 }
 .hero .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 32px; }
-
-/* Staff directory: the joke that carries the brand. Dot leaders, all roads lead to one person. */
-.directory {
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 22px 24px 18px;
-  box-shadow: var(--shadow);
-}
-.directory-head {
-  display: flex; justify-content: space-between; align-items: baseline;
-  color: var(--muted);
-  padding-bottom: 12px; margin-bottom: 6px;
-  border-bottom: 1px solid var(--border);
-}
-.directory dl { margin: 0; }
-.directory .row {
-  display: flex; align-items: baseline; gap: 10px;
-  padding: 9px 0;
-  font-size: 0.95rem;
-}
-.directory dt { color: var(--muted); white-space: nowrap; }
-.directory .leader { flex: 1; border-bottom: 1px dotted color-mix(in srgb, var(--text) 35%, transparent); transform: translateY(-4px); min-width: 16px; }
-.directory dd { margin: 0; white-space: nowrap; font-weight: 500; }
-.directory dd.none { color: var(--faint); font-weight: 400; text-decoration: line-through; text-decoration-color: var(--accent); }
-.directory .total {
-  margin-top: 6px; padding-top: 12px;
-  border-top: 1px solid var(--rule);
-  font-weight: 600;
-}
-.directory .total dt { color: var(--text); }
-.directory .total dd { color: var(--accent); font-weight: 600; }
-
-.stamp {
-  position: absolute;
-  top: -48px; right: 22px;
-  width: 116px; height: 116px;
-  color: var(--accent);
-  transform: rotate(-14deg);
-  opacity: 0.92;
-  pointer-events: none;
-}
-.stamp text { font-family: var(--font-mono); font-size: 8.6px; letter-spacing: 0.31em; fill: currentColor; }
 
 /* ---------- Sections ---------- */
 section[id], footer[id] { scroll-margin-top: 84px; }
@@ -443,8 +386,6 @@ section[id], footer[id] { scroll-margin-top: 84px; }
   font-size: 1.08rem; line-height: 1.7;
   color: var(--muted);
 }
-.signoff { margin-top: 36px; display: flex; align-items: center; gap: 14px; color: var(--muted); }
-.signoff .line { width: 40px; height: 1px; background: var(--rule); }
 
 /* ---------- Request band ---------- */
 .request {
@@ -484,10 +425,6 @@ footer.site { padding: clamp(56px, 8vw, 112px) 0 36px; }
   border-top: 1px solid var(--rule);
   padding-top: 32px;
 }
-.footer-fine {
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px;
-  margin-top: 28px; color: var(--faint);
-}
 
 /* ---------- Contact page ---------- */
 .contact { padding-top: clamp(40px, 7vw, 88px); padding-bottom: clamp(56px, 7vw, 96px); }
@@ -515,7 +452,6 @@ footer.site { padding: clamp(56px, 8vw, 112px) 0 36px; }
   padding: clamp(22px, 3.4vw, 40px);
   box-shadow: var(--shadow);
 }
-.form-head { display: flex; justify-content: space-between; color: var(--muted); padding-bottom: 16px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
 .field { display: block; margin-bottom: 22px; }
 .field-name { display: block; font-size: 0.88rem; font-weight: 500; margin-bottom: 8px; }
 .field input, .field textarea {
@@ -553,10 +489,7 @@ footer.site { padding: clamp(56px, 8vw, 112px) 0 36px; }
   .rise { animation: rise 0.9s var(--ease) both; }
   .rise-2 { animation-delay: 0.08s; }
   .rise-3 { animation-delay: 0.16s; }
-  .rise-4 { animation-delay: 0.26s; }
-  .stamp { animation: stamp 0.5s 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-  @keyframes stamp { from { opacity: 0; transform: rotate(-14deg) scale(1.5); } to { opacity: 0.92; transform: rotate(-14deg) scale(1); } }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -567,9 +500,8 @@ footer.site { padding: clamp(56px, 8vw, 112px) 0 36px; }
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .contact-grid, .request { grid-template-columns: 1fr; }
-  .hero-grid { grid-template-columns: 1fr; grid-template-areas: 'title' 'intro' 'directory'; }
-  .directory { margin-top: 24px; }
-  .directory { max-width: 460px; }
+  .hero-grid { grid-template-columns: 1fr; grid-template-areas: 'title' 'intro'; }
+  .hero .lede { max-width: 46ch; }
   .project { grid-template-columns: 1fr; }
   .project-stage { order: -1; }
   .phone { width: min(230px, 62%); }
@@ -587,8 +519,6 @@ footer.site { padding: clamp(56px, 8vw, 112px) 0 36px; }
   .wordmark { font-size: 0.98rem; }
   nav.primary a.navlink-cta { padding: 8px 14px; font-size: 0.86rem; }
   .theme-toggle { width: 36px; height: 36px; }
-  .hero-meta .hide-sm { display: none; }
-  .stamp { width: 96px; height: 96px; top: -40px; right: 22px; }
   .rules li { grid-template-columns: 3.2rem minmax(0, 1fr); }
   .spec div { grid-template-columns: 7rem 1fr; }
   .next-up { grid-template-columns: 1fr; gap: 10px; }
