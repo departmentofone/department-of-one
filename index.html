@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Department of One - free apps made by one person</title>
   <meta name="description" content="Free apps made by one developer, with no ads and no premium tier. The first one is FitLog, a workout, meal and fasting tracker." />
-  <meta name="theme-color" content="#eaede6" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0d1017" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#e7e5df" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a1310" media="(prefers-color-scheme: dark)" />
   <link rel="canonical" href="https://department-of-one.vercel.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Department of One" />
@@ -19,11 +19,20 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/fitlog/1-train.webp" />
   <link rel="stylesheet" href="style.css" />
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+
+  <div class="ambience" aria-hidden="true">
+    <div class="stone"></div>
+    <div class="light light-a"></div>
+    <div class="light light-b"></div>
+    <div class="light light-c"></div>
+  </div>
 
   <header class="site">
     <div class="wrap">
@@ -36,8 +45,8 @@
         <a class="navlink" href="#requests">Requests</a>
         <a class="navlink navlink-cta" href="/contact.html">Contact</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" type="button">
-          <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-          <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
       </nav>
     </div>
@@ -45,37 +54,82 @@
 
   <main id="main">
     <section class="hero wrap" id="top">
-      <div class="hero-grid">
-        <h1 class="rise"><span data-content-key="hero_title_pre">Free apps, built by</span> <em data-content-key="hero_title_em">one</em> <span data-content-key="hero_title_post">person.</span></h1>
-
-        <div class="hero-intro rise rise-2">
-          <p class="lede" data-content-key="hero_lede">Department of One is me, a developer doing every job alone, from writing the code to answering the support inbox. Everything I make is free for everyone, with no paywall and no ads.</p>
-          <div class="ctas">
-            <a class="btn btn-primary" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener">Try FitLog <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="textlink" href="#requests">Request an app</a>
-          </div>
+      <div class="hero-copy">
+        <h1 class="headline">
+          <span class="hl" data-content-key="hero_title_pre">Free apps, built by</span>
+          <span class="hl hl-2"><em data-content-key="hero_title_em">one</em> <span data-content-key="hero_title_post">person.</span></span>
+        </h1>
+        <p class="lede enter enter-3" data-content-key="hero_lede">Department of One is me, a developer doing every job alone, from writing the code to answering the support inbox. Everything I make is free for everyone, with no paywall and no ads.</p>
+        <div class="ctas enter enter-4">
+          <a class="btn btn-brass" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="textlink" href="#requests">Request an app</a>
         </div>
       </div>
+
+      <figure class="showcase enter enter-2" id="showcase" aria-roledescription="carousel" aria-label="FitLog screens">
+        <div class="device">
+          <div class="screen" id="slides">
+            <img class="slide is-active" src="assets/fitlog/1-train.webp" width="720" height="1280" alt="FitLog's Train tab showing yesterday's workout: 20,500 kg of volume over 45 minutes, with leg press and hamstring curls logged" />
+            <img class="slide" src="assets/fitlog/2-week.webp" width="720" height="1280" loading="lazy" alt="The weekly summary: 3 workouts, 31,373 kg moved, average calories and protein, and training and diet streaks" />
+            <img class="slide" src="assets/fitlog/3-meals.webp" width="720" height="1280" loading="lazy" alt="The Eat tab with today's calories against a 2,075 kcal goal, macros, a water counter and a logged breakfast" />
+            <img class="slide" src="assets/fitlog/4-diet.webp" width="720" height="1280" loading="lazy" alt="The diet goal screen with calories left today and a micronutrients breakdown" />
+            <img class="slide" src="assets/fitlog/5-community.webp" width="720" height="1280" loading="lazy" alt="Community: shared diets and meal plans, with the official Mediterranean diet at the top" />
+            <img class="slide" src="assets/fitlog/6-fasting.webp" width="720" height="1280" loading="lazy" alt="Starting a fast, with 16:8, 18:6, 20:4 and one-meal-a-day windows or a custom length" />
+          </div>
+          <span class="glass" aria-hidden="true"></span>
+        </div>
+        <figcaption class="show-caption" aria-live="polite">
+          <span class="show-count"><span id="slideNo">1</span> of 6</span>
+          <span class="show-title" id="slideTitle">Yesterday's session, 20,500 kg in 45 minutes</span>
+        </figcaption>
+        <div class="show-controls">
+          <div class="ticks" role="group" aria-label="Choose a screen">
+            <button type="button" class="tick is-active" aria-label="Screen 1: a logged workout" aria-current="true"><i></i></button>
+            <button type="button" class="tick" aria-label="Screen 2: the week so far"><i></i></button>
+            <button type="button" class="tick" aria-label="Screen 3: meals"><i></i></button>
+            <button type="button" class="tick" aria-label="Screen 4: diet goal"><i></i></button>
+            <button type="button" class="tick" aria-label="Screen 5: community"><i></i></button>
+            <button type="button" class="tick" aria-label="Screen 6: fasting"><i></i></button>
+          </div>
+          <button type="button" class="pause" id="pauseBtn" aria-label="Pause slideshow">
+            <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9M10.5 3.5v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </figure>
     </section>
 
-    <section class="section" id="work">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="kicker mono"><span class="num">01</span><span>Work</span></div>
-          <h2 data-content-key="work_title">One app so far.</h2>
+    <section class="section work" id="work">
+      <div class="wrap work-grid">
+        <div class="keyboard reveal">
+          <div class="rail" aria-hidden="true"></div>
+          <a class="hook hook-link" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener" aria-label="Open FitLog, app number 001">
+            <svg class="fob fob-live" viewBox="0 0 120 230" aria-hidden="true">
+              <circle cx="60" cy="22" r="15" fill="none" stroke="var(--brass)" stroke-width="4"/>
+              <path d="M60 37v12" stroke="var(--brass)" stroke-width="4"/>
+              <path d="M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z" fill="var(--brass)"/>
+              <path d="M60 58c21 0 36 19 36 54v34c0 35-15 62-36 62s-36-27-36-62v-34c0-35 15-54 36-54z" fill="none" stroke="var(--brass-hi)" stroke-opacity=".55" stroke-width="1"/>
+              <text x="60" y="142" text-anchor="middle" class="fob-no">001</text>
+              <text x="60" y="170" text-anchor="middle" class="fob-name">FITLOG</text>
+            </svg>
+          </a>
+          <div class="hook" aria-hidden="true">
+            <svg class="fob fob-next" viewBox="0 0 120 230">
+              <circle cx="60" cy="22" r="15" fill="none" stroke="var(--rule)" stroke-width="3"/>
+              <path d="M60 37v12" stroke="var(--rule)" stroke-width="3"/>
+              <path d="M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z" fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 5"/>
+              <text x="60" y="142" text-anchor="middle" class="fob-no fob-no-next">002</text>
+            </svg>
+          </div>
         </div>
 
-        <article class="project">
-          <div class="project-stage">
-            <div class="phone">
-              <img src="assets/fitlog-screenshot.png" alt="FitLog on a phone, showing today's workout with total weight moved and a list of exercises" width="1080" height="1920" loading="lazy" />
-            </div>
-          </div>
-          <div class="project-copy">
+        <div class="work-body">
+          <h2 data-content-key="work_title">One app so far.</h2>
+          <article class="project">
             <div class="project-title">
               <img src="assets/fitlog-icon.png" alt="" width="56" height="56" />
               <h3>FitLog</h3>
-              <span class="status mono">Live</span>
+              <span class="status">Live</span>
             </div>
             <p class="desc" data-content-key="fitlog_desc">A free app that puts a workout log, a meal and macro tracker and a fasting timer in one place. I built it because the ones I tried were bloated, full of ads, or kept half their features behind a paywall.</p>
             <dl class="spec">
@@ -84,79 +138,63 @@
               <div><dt>Install</dt><dd data-content-key="fitlog_install">Runs in the browser, and you can add it to your home screen without going through an app store.</dd></div>
               <div><dt>Your data</dt><dd data-content-key="fitlog_data">Export all of it, or delete your account from Settings.</dd></div>
             </dl>
-            <div class="ctas">
-              <a class="btn btn-primary" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener">Open FitLog <span class="arrow" aria-hidden="true">→</span></a>
-            </div>
+            <a class="btn btn-brass" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </article>
+          <div class="next-up">
+            <span class="no">No. 002</span>
+            <p data-content-key="more_soon_text">The second app is already in progress.</p>
+            <a class="textlink" href="#requests">Have an idea for it?</a>
           </div>
-        </article>
-
-        <div class="next-up">
-          <span class="no mono">No. 002</span>
-          <p data-content-key="more_soon_text">The second app is already in progress.</p>
-          <a class="textlink" href="#requests">Have an idea for it?</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="free">
+    <section class="section deal" id="free">
       <div class="wrap">
-        <div class="section-head">
-          <div class="kicker mono"><span class="num">02</span><span>The deal</span></div>
-          <h2 data-content-key="deal_title">What free means here.</h2>
-        </div>
-        <ol class="rules">
-          <li>
-            <span class="rule-num" aria-hidden="true">i.</span>
-            <div class="rule-body">
+        <h2 data-content-key="deal_title">What free means here.</h2>
+        <div class="plaque reveal">
+          <ol class="rules">
+            <li>
+              <span class="rule-num" aria-hidden="true">i</span>
               <h3 data-content-key="principle_1_title">Every feature, for everyone</h3>
               <p data-content-key="principle_1_desc">There's no premium tier and nothing to subscribe to. When a feature ships, everybody gets it.</p>
-            </div>
-          </li>
-          <li>
-            <span class="rule-num" aria-hidden="true">ii.</span>
-            <div class="rule-body">
+            </li>
+            <li>
+              <span class="rule-num" aria-hidden="true">ii</span>
               <h3 data-content-key="principle_2_title">No ads, no ad trackers</h3>
               <p data-content-key="principle_2_desc">You won't see upsell pop-ups either, since there's nothing to upsell.</p>
-            </div>
-          </li>
-          <li>
-            <span class="rule-num" aria-hidden="true">iii.</span>
-            <div class="rule-body">
+            </li>
+            <li>
+              <span class="rule-num" aria-hidden="true">iii</span>
               <h3 data-content-key="principle_3_title">Your data stays yours</h3>
               <p data-content-key="principle_3_desc">Nothing gets sold, to advertisers or to anyone else. You can delete your account whenever you like.</p>
-            </div>
-          </li>
-          <li>
-            <span class="rule-num" aria-hidden="true">iv.</span>
-            <div class="rule-body">
+            </li>
+            <li>
+              <span class="rule-num" aria-hidden="true">iv</span>
               <h3 data-content-key="principle_4_title">You'll reach me</h3>
               <p data-content-key="principle_4_desc">There's no support team to get past. The person reading your bug report is the one who wrote the bug.</p>
-            </div>
-          </li>
-        </ol>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="about">
+    <section class="section about" id="about">
       <div class="wrap about-grid">
-        <div class="kicker mono"><span class="num">03</span><span>About</span></div>
+        <h2 data-content-key="about_title">Why it's free.</h2>
         <div class="about-body">
-          <h2 data-content-key="about_title">Why it's free.</h2>
           <p class="pull" data-content-key="about_body_1">I've always admired the people behind The Pirate Bay, less for the controversy than for the idea: a few people built something useful and gave it to everyone for free.</p>
           <p class="follow" data-content-key="about_body_2">For a long time I didn't know how I'd give something back in the same spirit. Building apps turned out to be my way. I make the ones I'd want to use and give them away, and since there are no investors, the only people I answer to are the ones using them.</p>
         </div>
       </div>
     </section>
 
-    <section class="wrap" id="requests" aria-labelledby="requestTitle">
-      <div class="request">
-        <div>
-          <div class="kicker mono">Requests</div>
-          <h2 id="requestTitle" data-content-key="request_title">Paying for an app you think should be free?</h2>
-        </div>
-        <div>
+    <section class="wrap requests" id="requests" aria-labelledby="requestTitle">
+      <div class="desk reveal">
+        <h2 id="requestTitle" data-content-key="request_title">Paying for an app you think should be free?</h2>
+        <div class="desk-side">
           <p data-content-key="request_body">Tell me which one and what you use it for. If it's something I can build, I might make a free version of it. Call it the Robin Hood approach, minus the tights.</p>
-          <a class="btn" href="/contact.html">Send a request <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-brass" href="/contact.html"><span>Send a request</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </section>
@@ -176,7 +214,8 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
   <script src="content.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

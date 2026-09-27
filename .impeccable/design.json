@@ -1,0 +1,814 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T08:35:26.564Z",
+  "title": "Design System: Department of One",
+  "extensions": {
+    "colorMeta": {
+      "travertine": {
+        "role": "neutral",
+        "displayName": "Travertine",
+        "canonical": "oklch(92.2% 0.008 91.5)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#262521",
+          "#43423e",
+          "#63615c",
+          "#84827d",
+          "#a7a5a0",
+          "#cbc9c4",
+          "#f0eeea"
+        ]
+      },
+      "travertine-deep": {
+        "role": "neutral",
+        "displayName": "Travertine Deep",
+        "canonical": "oklch(88.2% 0.011 89.7)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#272520",
+          "#44423c",
+          "#63615b",
+          "#85827b",
+          "#a7a59e",
+          "#cbc9c2",
+          "#f1eee8"
+        ]
+      },
+      "travertine-surface": {
+        "role": "neutral",
+        "displayName": "Travertine Surface",
+        "canonical": "oklch(95.5% 0.007 88.6)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#262522",
+          "#43423e",
+          "#63615d",
+          "#84827e",
+          "#a7a5a0",
+          "#cbc9c5",
+          "#f0eeea"
+        ]
+      },
+      "travertine-surface-2": {
+        "role": "neutral",
+        "displayName": "Travertine Surface 2",
+        "canonical": "oklch(92.5% 0.010 87.5)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#272521",
+          "#44423d",
+          "#63615b",
+          "#85827c",
+          "#a7a59f",
+          "#cbc9c3",
+          "#f1eee9"
+        ]
+      },
+      "day-ink": {
+        "role": "neutral",
+        "displayName": "Day Ink",
+        "canonical": "oklch(23.6% 0.017 170.4)",
+        "tonalRamp": [
+          "#060d0a",
+          "#1e2724",
+          "#3a4541",
+          "#586460",
+          "#798681",
+          "#9ca8a3",
+          "#c0ccc8",
+          "#e6f2ed"
+        ]
+      },
+      "day-ink-muted": {
+        "role": "neutral",
+        "displayName": "Day Ink Muted",
+        "canonical": "oklch(43.9% 0.015 164.2)",
+        "tonalRamp": [
+          "#070d0a",
+          "#202723",
+          "#3c4440",
+          "#5a645f",
+          "#7b8580",
+          "#9ea8a3",
+          "#c2ccc7",
+          "#e8f1ec"
+        ]
+      },
+      "day-ink-faint": {
+        "role": "neutral",
+        "displayName": "Day Ink Faint",
+        "canonical": "oklch(60.0% 0.010 150.6)",
+        "tonalRamp": [
+          "#090c0a",
+          "#222623",
+          "#3f4340",
+          "#5d635e",
+          "#7e847f",
+          "#a1a7a2",
+          "#c5cbc6",
+          "#ebf0ec"
+        ]
+      },
+      "day-border": {
+        "role": "neutral",
+        "displayName": "Day Border",
+        "canonical": "rgba(22, 33, 29, 0.11)",
+        "tonalRamp": [
+          "#060d0a",
+          "#1e2724",
+          "#3a4541",
+          "#586460",
+          "#798681",
+          "#9ca8a3",
+          "#c0ccc8",
+          "#e6f2ed"
+        ]
+      },
+      "day-rule": {
+        "role": "neutral",
+        "displayName": "Day Rule",
+        "canonical": "rgba(22, 33, 29, 0.26)",
+        "tonalRamp": [
+          "#060d0a",
+          "#1e2724",
+          "#3a4541",
+          "#586460",
+          "#798681",
+          "#9ca8a3",
+          "#c0ccc8",
+          "#e6f2ed"
+        ]
+      },
+      "day-brass": {
+        "role": "primary",
+        "displayName": "Brushed Brass (day)",
+        "canonical": "oklch(62.8% 0.097 78.6)",
+        "tonalRamp": [
+          "#1a0500",
+          "#391e00",
+          "#5a3b00",
+          "#7d5a1a",
+          "#a17b39",
+          "#c49e62",
+          "#e7c38b",
+          "#ffe9b5"
+        ]
+      },
+      "day-brass-hi": {
+        "role": "primary",
+        "displayName": "Brass Highlight (day)",
+        "canonical": "oklch(81.2% 0.082 82.3)",
+        "tonalRamp": [
+          "#170700",
+          "#342100",
+          "#553e0b",
+          "#775d29",
+          "#9b7e46",
+          "#bda16d",
+          "#e0c595",
+          "#ffebbe"
+        ]
+      },
+      "day-brass-lo": {
+        "role": "primary",
+        "displayName": "Brass Shadow (day)",
+        "canonical": "oklch(45.7% 0.075 76.0)",
+        "tonalRamp": [
+          "#180600",
+          "#352000",
+          "#563d15",
+          "#785c31",
+          "#9c7c4e",
+          "#bea074",
+          "#e2c49b",
+          "#ffeac3"
+        ]
+      },
+      "day-brass-ink": {
+        "role": "primary",
+        "displayName": "Brass Ink (day)",
+        "canonical": "oklch(20.0% 0.021 79.9)",
+        "tonalRamp": [
+          "#0f0a05",
+          "#29241c",
+          "#474137",
+          "#676055",
+          "#898175",
+          "#aba498",
+          "#cfc8bc",
+          "#f4eee2"
+        ]
+      },
+      "day-bronze-text": {
+        "role": "primary",
+        "displayName": "Bronze Text",
+        "canonical": "oklch(47.9% 0.084 72.8)",
+        "tonalRamp": [
+          "#1a0500",
+          "#381e00",
+          "#593b0c",
+          "#7c5a2a",
+          "#a17a47",
+          "#c39e6e",
+          "#e7c295",
+          "#ffe8be"
+        ]
+      },
+      "day-live": {
+        "role": "tertiary",
+        "displayName": "Live Green (day)",
+        "canonical": "oklch(58.1% 0.116 157.5)",
+        "tonalRamp": [
+          "#001400",
+          "#003111",
+          "#00512c",
+          "#147348",
+          "#399767",
+          "#66ba8a",
+          "#90ddb0",
+          "#bbffd7"
+        ]
+      },
+      "verde": {
+        "role": "neutral",
+        "displayName": "Verde",
+        "canonical": "oklch(17.7% 0.015 171.8)",
+        "tonalRamp": [
+          "#070d0b",
+          "#1f2724",
+          "#3b4441",
+          "#5a6460",
+          "#7a8581",
+          "#9da8a4",
+          "#c1ccc8",
+          "#e7f1ed"
+        ]
+      },
+      "verde-deep": {
+        "role": "neutral",
+        "displayName": "Verde Deep",
+        "canonical": "oklch(14.6% 0.011 174.0)",
+        "tonalRamp": [
+          "#080c0b",
+          "#212725",
+          "#3d4441",
+          "#5b6361",
+          "#7c8582",
+          "#9fa7a4",
+          "#c3cbc8",
+          "#e9f0ee"
+        ]
+      },
+      "verde-surface": {
+        "role": "neutral",
+        "displayName": "Verde Surface",
+        "canonical": "oklch(20.6% 0.018 169.9)",
+        "tonalRamp": [
+          "#060d0a",
+          "#1e2724",
+          "#3a4541",
+          "#586460",
+          "#788681",
+          "#9ba9a3",
+          "#c0cdc7",
+          "#e6f2ed"
+        ]
+      },
+      "verde-surface-2": {
+        "role": "neutral",
+        "displayName": "Verde Surface 2",
+        "canonical": "oklch(23.0% 0.021 168.6)",
+        "tonalRamp": [
+          "#050d0a",
+          "#1d2824",
+          "#394540",
+          "#57655f",
+          "#778780",
+          "#9aa9a3",
+          "#bfcdc7",
+          "#e5f2ec"
+        ]
+      },
+      "verde-slab": {
+        "role": "neutral",
+        "displayName": "Verde Slab",
+        "canonical": "oklch(18.1% 0.015 171.9)",
+        "tonalRamp": [
+          "#070d0b",
+          "#1f2724",
+          "#3b4441",
+          "#5a6460",
+          "#7a8581",
+          "#9da8a4",
+          "#c1ccc8",
+          "#e7f1ed"
+        ]
+      },
+      "night-ivory": {
+        "role": "neutral",
+        "displayName": "Night Ivory",
+        "canonical": "oklch(92.9% 0.016 86.4)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#28251e",
+          "#45423a",
+          "#656158",
+          "#868278",
+          "#a9a59b",
+          "#cdc9bf",
+          "#f2eee5"
+        ]
+      },
+      "night-ivory-muted": {
+        "role": "neutral",
+        "displayName": "Night Ivory Muted",
+        "canonical": "oklch(73.6% 0.017 114.5)",
+        "tonalRamp": [
+          "#0b0c06",
+          "#25261e",
+          "#42433a",
+          "#616258",
+          "#828478",
+          "#a4a69b",
+          "#c9cac0",
+          "#eef0e6"
+        ]
+      },
+      "night-ivory-faint": {
+        "role": "neutral",
+        "displayName": "Night Ivory Faint",
+        "canonical": "oklch(56.3% 0.015 145.4)",
+        "tonalRamp": [
+          "#080c08",
+          "#212721",
+          "#3e443e",
+          "#5c645c",
+          "#7d857d",
+          "#a0a8a0",
+          "#c4ccc4",
+          "#eaf1ea"
+        ]
+      },
+      "night-border": {
+        "role": "neutral",
+        "displayName": "Night Border",
+        "canonical": "rgba(236, 231, 220, 0.09)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#28251e",
+          "#45423a",
+          "#656158",
+          "#868278",
+          "#a9a59b",
+          "#cdc9bf",
+          "#f2eee5"
+        ]
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night Rule",
+        "canonical": "rgba(236, 231, 220, 0.2)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#28251e",
+          "#45423a",
+          "#656158",
+          "#868278",
+          "#a9a59b",
+          "#cdc9bf",
+          "#f2eee5"
+        ]
+      },
+      "night-brass": {
+        "role": "primary",
+        "displayName": "Brushed Brass (night)",
+        "canonical": "oklch(71.0% 0.094 77.7)",
+        "tonalRamp": [
+          "#1a0500",
+          "#381e00",
+          "#5a3b00",
+          "#7d5a1e",
+          "#a17b3c",
+          "#c39e65",
+          "#e7c38d",
+          "#ffe9b7"
+        ]
+      },
+      "night-brass-hi": {
+        "role": "primary",
+        "displayName": "Brass Highlight (night)",
+        "canonical": "oklch(87.9% 0.076 85.1)",
+        "tonalRamp": [
+          "#150800",
+          "#322200",
+          "#523f13",
+          "#745e2f",
+          "#977f4c",
+          "#b9a272",
+          "#ddc799",
+          "#ffecc2"
+        ]
+      },
+      "night-brass-lo": {
+        "role": "primary",
+        "displayName": "Brass Shadow (night)",
+        "canonical": "oklch(49.5% 0.078 74.5)",
+        "tonalRamp": [
+          "#180600",
+          "#361f00",
+          "#573c13",
+          "#7a5b2f",
+          "#9e7c4c",
+          "#c09f72",
+          "#e3c399",
+          "#ffe9c1"
+        ]
+      },
+      "night-brass-ink": {
+        "role": "primary",
+        "displayName": "Brass Ink (night)",
+        "canonical": "oklch(17.6% 0.013 77.7)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#28241f",
+          "#45413b",
+          "#656059",
+          "#87817a",
+          "#a9a49d",
+          "#cdc8c1",
+          "#f2eee7"
+        ]
+      },
+      "night-brass-text": {
+        "role": "primary",
+        "displayName": "Brass Text (night)",
+        "canonical": "oklch(80.0% 0.084 81.9)",
+        "tonalRamp": [
+          "#170700",
+          "#352100",
+          "#553d09",
+          "#775c28",
+          "#9b7d45",
+          "#bea16c",
+          "#e1c594",
+          "#ffebbd"
+        ]
+      },
+      "night-live": {
+        "role": "tertiary",
+        "displayName": "Live Green (night)",
+        "canonical": "oklch(77.5% 0.140 155.8)",
+        "tonalRamp": [
+          "#001500",
+          "#003308",
+          "#005323",
+          "#00763f",
+          "#1c9a5d",
+          "#56bd82",
+          "#84e1a8",
+          "#b0ffcf"
+        ]
+      },
+      "desk-ivory-muted": {
+        "role": "neutral",
+        "displayName": "Desk Ivory Muted",
+        "canonical": "oklch(79.0% 0.016 119.2)",
+        "tonalRamp": [
+          "#0b0c07",
+          "#24261f",
+          "#41433b",
+          "#606359",
+          "#81847a",
+          "#a4a69c",
+          "#c8cac1",
+          "#edf0e7"
+        ]
+      },
+      "clay-error": {
+        "role": "tertiary",
+        "displayName": "Clay",
+        "canonical": "oklch(56.1% 0.131 36.1)",
+        "tonalRamp": [
+          "#270000",
+          "#4c0400",
+          "#72250e",
+          "#9a432b",
+          "#c36248",
+          "#e6886e",
+          "#ffaf96",
+          "#ffd6be"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page H1 on the homepage and contact page; one italic word at 500 allowed."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section H2s and the desk headline."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "House-rule headings; the project name runs larger at opsz 72."
+      },
+      "pull": {
+        "displayName": "Pull",
+        "purpose": "Opening paragraph of About, in the display face."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Italic Roman numerals on the plaque, key numbers, No. 002."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Italic slideshow captions."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero paragraph in muted ink, max 42ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running copy; 16px under 520px."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Brass and ghost button labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase data labels only: spec terms, status pill, slide counter."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "The logo only, followed by the blinking brass cursor. The only use of JetBrains Mono."
+      }
+    },
+    "shadows": [
+      {
+        "name": "slab-day",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.75), 0 1px 1px rgba(22,33,29,0.05), 0 28px 56px -28px rgba(22,33,29,0.3)",
+        "purpose": "Cards, plaque and contact card by day."
+      },
+      {
+        "name": "slab-night",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.06), 0 1px 0 rgba(0,0,0,0.3), 0 30px 60px -30px rgba(0,0,0,0.8)",
+        "purpose": "Cards, plaque and contact card at night."
+      },
+      {
+        "name": "brass-lift",
+        "value": "inset 0 1px 0 color-mix(in srgb, var(--brass-hi) 80%, transparent), 0 12px 26px -14px rgba(10,8,4,0.45)",
+        "purpose": "Brass buttons at rest."
+      },
+      {
+        "name": "brass-lift-hover",
+        "value": "inset 0 1px 0 color-mix(in srgb, var(--brass-hi) 90%, transparent), 0 18px 32px -16px rgba(10,8,4,0.5)",
+        "purpose": "Brass buttons on hover."
+      },
+      {
+        "name": "device",
+        "value": "0 50px 80px -44px var(--device-shadow), 0 18px 30px -24px var(--device-shadow)",
+        "purpose": "Slideshow device frame."
+      },
+      {
+        "name": "desk",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.1), inset 0 0 0 1px rgba(236,231,220,0.06), 0 36px 60px -36px rgba(0,0,0,0.6)",
+        "purpose": "The Requests desk slab."
+      },
+      {
+        "name": "hanging-key",
+        "value": "drop-shadow(0 18px 18px rgba(0,0,0,0.28))",
+        "purpose": "Key fobs (filter)."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 4px color-mix(in srgb, var(--brass) 18%, transparent)",
+        "purpose": "Text field focus halo."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid var(--brass); outline-offset: 3px",
+        "purpose": "Global focus-visible ring."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-door",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All travel: entrances, button lift, arrows, underlines, crossfades."
+      },
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 0.8, 0.24, 1)",
+        "purpose": "Colour and border transitions, fob swing."
+      },
+      {
+        "name": "duration-colour",
+        "value": "0.3s",
+        "purpose": "Hover colour changes."
+      },
+      {
+        "name": "duration-lift",
+        "value": "0.5s",
+        "purpose": "Button lift, arrow slide, underline grow."
+      },
+      {
+        "name": "duration-reveal",
+        "value": "1.1s",
+        "purpose": "Scroll reveals rising 18px."
+      },
+      {
+        "name": "duration-settle",
+        "value": "1.5s to 1.6s",
+        "purpose": "Load entrances settling out of a 10px blur; slide crossfade."
+      },
+      {
+        "name": "slide-interval",
+        "value": "5200ms",
+        "purpose": "Slideshow dwell per screen; 7s scale settle from 1.04."
+      },
+      {
+        "name": "fob-swing",
+        "value": "2.2s",
+        "purpose": "Key fob swing to rest on hover or focus."
+      },
+      {
+        "name": "cursor-blink",
+        "value": "1.06s step opacity",
+        "purpose": "Wordmark cursor; runs under reduced motion too."
+      },
+      {
+        "name": "lamp-drift",
+        "value": "38s / 46s / 60s alternate",
+        "purpose": "Ambient lamp pools and light shaft; stopped under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1000px"
+      },
+      {
+        "name": "stack",
+        "value": "900px"
+      },
+      {
+        "name": "nav-compact",
+        "value": "760px"
+      },
+      {
+        "name": "small",
+        "value": "520px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Brass Button",
+      "kind": "button",
+      "refersTo": "button-brass",
+      "description": "The primary action: Open FitLog, Send a request. The only solid brass fill besides the cursor.",
+      "html": "<a class=\"ds-btn-brass\" href=\"#\"><span>Open FitLog</span><svg class=\"ds-arrow\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M4 10h11M11 5.5 15.5 10 11 14.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-btn-brass{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;border-radius:999px;font-family:var(--font-body);font-size:0.98rem;font-weight:600;letter-spacing:0.01em;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),background-color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),border-color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1);color:var(--brass-ink,#1b150b);background:var(--brass,#a8813f);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--brass-hi,#dcbd84) 80%,transparent),0 12px 26px -14px rgba(10,8,4,0.45);} .ds-btn-brass .ds-arrow{width:18px;height:18px;transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-brass:hover{background:color-mix(in srgb,var(--brass,#a8813f) 82%,var(--brass-hi,#dcbd84));transform:translateY(-1px);box-shadow:inset 0 1px 0 color-mix(in srgb,var(--brass-hi,#dcbd84) 90%,transparent),0 18px 32px -16px rgba(10,8,4,0.5);} .ds-btn-brass:hover .ds-arrow{transform:translateX(4px);} .ds-btn-brass:active{transform:translateY(1px) scale(0.99);} .ds-btn-brass:focus-visible{outline:2px solid var(--brass,#a8813f);outline-offset:3px;}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action on the contact page; border and text warm to brass on hover.",
+      "html": "<button class=\"ds-btn-ghost\" type=\"button\">Send another</button>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;border-radius:999px;font-family:var(--font-body);font-size:0.98rem;font-weight:600;letter-spacing:0.01em;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),background-color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),border-color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1);background:transparent;border-color:var(--rule,rgba(22,33,29,0.26));color:var(--text,#16211d);} .ds-btn-ghost:hover{border-color:var(--brass,#a8813f);color:var(--accent,#7a5520);} .ds-btn-ghost:focus-visible{outline:2px solid var(--brass,#a8813f);outline-offset:3px;}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "textlink",
+      "description": "Inline secondary action with an underline that wipes away on hover.",
+      "html": "<a class=\"ds-textlink\" href=\"#\">Request an app</a>",
+      "css": ".ds-textlink{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:500;color:var(--text,#16211d);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:3px;transition:color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);} .ds-textlink:hover{color:var(--accent,#7a5520);background-size:0 1px;background-position:100% 100%;} .ds-textlink:focus-visible{outline:2px solid var(--brass,#a8813f);outline-offset:3px;border-radius:6px;}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-cta",
+      "description": "Wordmark with blinking brass cursor, muted links with centre-grown underline, and the brass-edged Contact pill.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-wordmark\" href=\"#\">department of one<span class=\"ds-cursor\"></span></a><div class=\"ds-links\"><a class=\"ds-navlink\" href=\"#\">Work</a><a class=\"ds-navlink\" href=\"#\">About</a><a class=\"ds-navlink ds-navcta\" href=\"#\">Contact</a></div></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px;} .ds-wordmark{display:inline-flex;align-items:baseline;font-family:var(--font-mono);font-weight:600;font-size:1.06rem;letter-spacing:-0.02em;line-height:1;white-space:nowrap;color:var(--text,#16211d);text-decoration:none;} .ds-cursor{display:inline-block;width:0.56em;height:0.73em;margin-left:0.14em;background:var(--brass,#a8813f);animation:ds-blink 1.06s infinite;} @keyframes ds-blink{0%,46%{opacity:1}54%,96%{opacity:0}100%{opacity:1}} .ds-links{display:flex;align-items:center;gap:4px;} .ds-navlink{position:relative;font-family:var(--font-body);font-size:0.93rem;font-weight:500;color:var(--muted,#4b5550);padding:10px 14px;text-decoration:none;transition:color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1);} .ds-navlink:not(.ds-navcta)::after{content:'';position:absolute;left:14px;right:14px;bottom:5px;height:1px;background:currentColor;transform:scaleX(0);transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);} .ds-navlink:hover{color:var(--text,#16211d);} .ds-navlink:not(.ds-navcta):hover::after{transform:scaleX(1);} .ds-navcta{color:var(--text,#16211d);margin-left:10px;padding:9px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--brass,#a8813f) 60%,transparent);} .ds-navcta:hover{background:var(--brass,#a8813f);border-color:var(--brass,#a8813f);color:var(--brass-ink,#1b150b);} .ds-navlink:focus-visible,.ds-wordmark:focus-visible{outline:2px solid var(--brass,#a8813f);outline-offset:3px;border-radius:6px;}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Achromatic field on the page ground; focus brings the brass edge and halo.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-name\">Which app?</span><input class=\"ds-input\" placeholder=\"The one you pay for\" /><span class=\"ds-field-hint\">A name or a link is enough.</span></label>",
+      "css": ".ds-field{display:block;font-family:var(--font-body);} .ds-field-name{display:block;font-size:0.9rem;font-weight:600;margin-bottom:8px;color:var(--text,#16211d);} .ds-input{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--border,rgba(22,33,29,0.11));background:var(--bg,#e7e5df);color:var(--text,#16211d);font:inherit;font-size:1rem;transition:border-color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),box-shadow 0.3s cubic-bezier(0.22, 0.8, 0.24, 1);} .ds-input::placeholder{color:var(--muted,#4b5550);opacity:1;} .ds-input:focus{outline:none;border-color:var(--brass,#a8813f);box-shadow:0 0 0 4px color-mix(in srgb,var(--brass,#a8813f) 18%,transparent);} .ds-input[aria-invalid='true']{border-color:#b4543a;} .ds-field-hint{display:block;margin-top:7px;font-size:0.82rem;color:var(--muted,#4b5550);}"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "status-pill",
+      "description": "Tracked label pill with the live-green dot; the only place green appears.",
+      "html": "<span class=\"ds-status\">Live</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-body);font-size:0.74rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted,#4b5550);padding:7px 13px;border-radius:999px;border:1px solid var(--border,rgba(22,33,29,0.11));} .ds-status::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--live,#2f8f5f);}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "A lit stone slab: surface fill, corner lamp pool, inner top highlight and long soft shadow.",
+      "html": "<article class=\"ds-card\"><h3 class=\"ds-card-title\">FitLog</h3><p class=\"ds-card-desc\">A workout log, a meal and macro tracker and a fasting timer in one place.</p><dl class=\"ds-spec\"><div><dt>Offline</dt><dd>Log a workout with no signal.</dd></div></dl></article>",
+      "css": ".ds-card{background:radial-gradient(120% 90% at 0% 0%,var(--panel-light,rgba(255,255,255,0.8)),transparent 60%),var(--surface,#f2f0eb);border:1px solid var(--border,rgba(22,33,29,0.11));border-radius:24px;padding:clamp(28px,4vw,56px);box-shadow:inset 0 1px 0 var(--panel-hi,rgba(255,255,255,0.75)),var(--shadow,0 1px 1px rgba(22,33,29,0.05),0 28px 56px -28px rgba(22,33,29,0.3));color:var(--text,#16211d);font-family:var(--font-body);} .ds-card-title{margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(2.3rem,3.6vw,3rem);line-height:1;letter-spacing:-0.02em;} .ds-card-desc{margin:26px 0 0;font-size:1.1rem;line-height:1.65;color:var(--muted,#4b5550);max-width:52ch;} .ds-spec{margin:34px 0 0;border-top:1px solid var(--rule,rgba(22,33,29,0.26));} .ds-spec div{display:grid;grid-template-columns:10rem 1fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--border,rgba(22,33,29,0.11));} .ds-spec dt{font-size:0.74rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted,#4b5550);padding-top:3px;} .ds-spec dd{margin:0;}"
+    },
+    {
+      "name": "House Rules Plaque",
+      "kind": "card",
+      "refersTo": "plaque",
+      "description": "The one near-square frame, with an inset inner hairline and italic Roman numerals.",
+      "html": "<div class=\"ds-plaque\"><ol class=\"ds-rules\"><li><span class=\"ds-num\">i</span><h3>Every feature, for everyone</h3><p>When a feature ships, everybody gets it.</p></li></ol></div>",
+      "css": ".ds-plaque{position:relative;padding:clamp(30px,5vw,76px);border:1px solid var(--rule,rgba(22,33,29,0.26));border-radius:4px;background:radial-gradient(90% 120% at 10% 0%,var(--panel-light,rgba(255,255,255,0.8)),transparent 65%),color-mix(in srgb,var(--surface,#f2f0eb) 70%,transparent);box-shadow:inset 0 1px 0 var(--panel-hi,rgba(255,255,255,0.75)),var(--shadow,0 28px 56px -28px rgba(22,33,29,0.3));color:var(--text,#16211d);} .ds-plaque::before{content:'';position:absolute;inset:9px;pointer-events:none;border:1px solid var(--border,rgba(22,33,29,0.11));border-radius:2px;} .ds-rules{list-style:none;margin:0;padding:0;} .ds-rules li{display:grid;grid-template-columns:3.4rem minmax(0,1fr);column-gap:12px;row-gap:12px;} .ds-num{grid-row:span 2;font-family:var(--font-display);font-style:italic;font-size:2.3rem;line-height:0.95;color:var(--faint,#7c827d);transition:color 0.5s cubic-bezier(0.22, 0.8, 0.24, 1);} .ds-rules li:hover .ds-num{color:var(--text,#16211d);} .ds-rules h3{margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(1.55rem,2.3vw,1.95rem);line-height:1.08;letter-spacing:-0.02em;} .ds-rules p{margin:0;font-family:var(--font-body);color:var(--muted,#4b5550);font-size:1.02rem;line-height:1.62;max-width:42ch;}"
+    },
+    {
+      "name": "Brass Key Fob",
+      "kind": "custom",
+      "refersTo": "key-board",
+      "description": "Signature: a live app hangs as a solid brass oval fob with an italic Bodoni number; it swings to rest on hover.",
+      "html": "<a class=\"ds-hook\" href=\"#\" aria-label=\"Open FitLog, app number 001\"><svg class=\"ds-fob\" viewBox=\"0 0 120 230\" aria-hidden=\"true\"><circle cx=\"60\" cy=\"22\" r=\"15\" fill=\"none\" stroke=\"var(--brass,#a8813f)\" stroke-width=\"4\"/><path d=\"M60 37v12\" stroke=\"var(--brass,#a8813f)\" stroke-width=\"4\"/><path d=\"M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z\" fill=\"var(--brass,#a8813f)\"/><path d=\"M60 58c21 0 36 19 36 54v34c0 35-15 62-36 62s-36-27-36-62v-34c0-35 15-54 36-54z\" fill=\"none\" stroke=\"var(--brass-hi,#dcbd84)\" stroke-opacity=\".55\" stroke-width=\"1\"/><text x=\"60\" y=\"142\" text-anchor=\"middle\" class=\"ds-fob-no\">001</text><text x=\"60\" y=\"170\" text-anchor=\"middle\" class=\"ds-fob-name\">FITLOG</text></svg></a>",
+      "css": ".ds-hook{display:inline-block;border-radius:40px;} .ds-fob{display:block;width:100px;height:auto;overflow:visible;transform-origin:50% 9.6%;filter:drop-shadow(0 18px 18px rgba(0,0,0,0.28));} .ds-fob-no{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:38px;fill:rgba(38,26,8,0.78);} .ds-fob-name{font-family:var(--font-body);font-weight:600;font-size:9.5px;letter-spacing:0.34em;fill:rgba(38,26,8,0.7);} .ds-hook:hover .ds-fob,.ds-hook:focus-visible .ds-fob{animation:ds-swing 2.2s cubic-bezier(0.22, 0.8, 0.24, 1) both;} .ds-hook:focus-visible{outline:2px solid var(--brass,#a8813f);outline-offset:3px;} @keyframes ds-swing{0%{transform:rotate(0)}14%{transform:rotate(7deg)}32%{transform:rotate(-5deg)}50%{transform:rotate(3deg)}68%{transform:rotate(-1.6deg)}84%{transform:rotate(0.6deg)}100%{transform:rotate(0)}}"
+    },
+    {
+      "name": "Requests Desk",
+      "kind": "card",
+      "refersTo": "desk",
+      "description": "A verde marble slab in both lights, lamp in the corner, night brass button.",
+      "html": "<div class=\"ds-desk\"><h2>Paying for an app you think should be free?</h2><div><p>Tell me which one and what you use it for.</p><a class=\"ds-desk-btn\" href=\"#\">Send a request</a></div></div>",
+      "css": ".ds-desk{display:grid;gap:28px;padding:clamp(48px,8vw,112px) clamp(26px,6vw,92px);border-radius:32px;color:#ece7dc;background:radial-gradient(ellipse 70% 90% at 12% -20%,rgba(236,176,104,0.22),transparent 60%),linear-gradient(180deg,rgba(5,11,9,0.05),rgba(5,11,9,0.45)),#0b1411;box-shadow:inset 0 1px 0 rgba(255,255,255,0.1),inset 0 0 0 1px rgba(236,231,220,0.06),0 36px 60px -36px rgba(0,0,0,0.6);} .ds-desk h2{margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,5vw,4.5rem);line-height:1;letter-spacing:-0.03em;max-width:13ch;} .ds-desk p{margin:0;color:#b9bcb1;font-family:var(--font-body);font-size:1.1rem;line-height:1.62;max-width:38ch;} .ds-desk-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;border-radius:999px;font-family:var(--font-body);font-size:0.98rem;font-weight:600;letter-spacing:0.01em;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),background-color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1),border-color 0.3s cubic-bezier(0.22, 0.8, 0.24, 1);margin-top:30px;color:#14100a;background:#c29a5b;box-shadow:inset 0 1px 0 color-mix(in srgb,#eed49e 80%,transparent),0 12px 26px -14px rgba(10,8,4,0.45);} .ds-desk-btn:hover{background:color-mix(in srgb,#c29a5b 82%,#eed49e);transform:translateY(-1px);} .ds-desk-btn:focus-visible{outline:2px solid #c29a5b;outline-offset:3px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Front Desk",
+    "overview": "The studio is the front desk of a small, very well kept hotel with one person behind it. Every app is a numbered brass key on a board, requests are left at the desk, and the house rules hang on a framed plaque. The same set of materials is shown under two lights. At night the room is verde marble (ambientCG Marble009, CC0) lit by warm lamps. By day it is honed travertine (ambientCG Travertine009, CC0) in cool daylight, with brass darkened toward bronze so it still reads on pale stone. The page follows the operating system's colour scheme and a manual toggle can override it.\n\nNothing is a flat fill. A fixed layer of stone texture sits behind everything, masked to stay quiet behind the reading column and fuller toward the right edge. Two slow lamp pools and one faint shaft of light drift over it, a vignette darkens the corners, and a fine noise grain in soft-light blend covers the whole viewport. Panels carry a top inner highlight and a pool of light in one corner. Density is low: large Bodoni headlines, generous section spacing, and long measure limits on body copy.\n\nMotion is damped and weighted, like a heavy door on a closer. Blocks settle out of a soft blur, slides crossfade over 1.6 seconds, a key fob swings to rest on hover, and nothing snaps. Colour lives at the edges and in the light; reading surfaces and text fields stay achromatic.",
+    "keyCharacteristics": [
+      "Two lights on one set of materials: verde marble at night, travertine by day.",
+      "Brass is the only accent, and a solid brass fill always marks something you can act on.",
+      "Bodoni Moda for display, Hanken Grotesk for reading, JetBrains Mono only in the wordmark.",
+      "Stone grain, lamp falloff and a noise layer on every surface.",
+      "Door-closer easing on everything that moves."
+    ],
+    "rules": [
+      {
+        "name": "The Brass Means Act Rule",
+        "body": "A solid brass fill marks a control: buttons, the Contact pill on hover, the live key fob, focus rings. The blinking cursor is the one decorative brass fill. Brass at hairline weight (section joints at 45% strength, the device frame edge, the key rail, the dash beside each contact reason) is structure in the world and may appear anywhere.",
+        "section": "colors"
+      },
+      {
+        "name": "The Achromatic Reading Rule",
+        "body": "Body copy, panels and text fields stay in stone and ink. Warmth arrives through lamplight gradients, brass edges and focus states, never through tinted text blocks.",
+        "section": "colors"
+      },
+      {
+        "name": "The Desk Is Always Night Rule",
+        "body": "The Requests desk is a verde marble slab in both themes and pins the night brass values locally, so it reads as one piece of furniture under daylight too.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Is the Logo Rule",
+        "body": "JetBrains Mono appears only in the wordmark, in the header and the oversized footer version. Labels, dates and counters use tracked Hanken Grotesk.",
+        "section": "typography"
+      },
+      {
+        "name": "The Blinking Cursor Rule",
+        "body": "The wordmark ends in a solid brass block (0.56em by 0.73em, 0.14em after the text) that blinks on a 1.06s cycle as a pure opacity step. It keeps blinking under reduced motion, since it is the logo and the owner's own Windows setup reports reduced motion.",
+        "section": "typography"
+      },
+      {
+        "name": "The Never Flat Rule",
+        "body": "Every panel has stone, grain or a lamp gradient behind it and an inner top highlight on it. A plain fill with no light on it is a bug.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Heavy Door Rule",
+        "body": "Movement uses `cubic-bezier(0.16, 1, 0.3, 1)` for travel and `cubic-bezier(0.22, 0.8, 0.24, 1)` for colour, with durations from 0.3s for colour up to 1.1s to 1.6s for entrances and crossfades. Nothing bounces or snaps. Under reduced motion nothing travels, drifts or swings; fades, the slide crossfade and the cursor blink stay.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep both lights in step: any new surface needs a day travertine value and a night verde value, set through the shared custom properties.",
+      "**Do** use a solid brass fill only for things a visitor can press, plus the wordmark cursor.",
+      "**Do** give every panel an inner top highlight and a light gradient or stone behind it.",
+      "**Do** move things on `cubic-bezier(0.16, 1, 0.3, 1)` with entrances of 1.1s to 1.6s that settle out of a soft blur.",
+      "**Do** keep the wordmark cursor blinking in every motion setting.",
+      "**Do** use italic Bodoni for numbers that name things (key numbers, rule numerals, \"No. 002\").",
+      "**Do** use real app screens in the device frame, with captions that describe what is on screen."
+    ],
+    "donts": [
+      "**Don't** use JetBrains Mono anywhere except the wordmark.",
+      "**Don't** fill decorative shapes with brass or tint body text with it.",
+      "**Don't** ship a flat colour field with no grain, stone or light on it.",
+      "**Don't** add a second accent hue; green is limited to the live dot and clay to errors.",
+      "**Don't** use springy, bouncing or snapping motion.",
+      "**Don't** add bureaucracy props (stamps, forms, office signage) around the name."
+    ]
+  }
+}

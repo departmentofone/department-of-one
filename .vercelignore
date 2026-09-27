@@ -1,0 +1,7 @@
+# Design and process notes stay in the repo but are never served.
+.impeccable
+.claude
+PRODUCT.md
+DESIGN.md
+assets/**/*.webp.json
+assets/**/*.png.json
