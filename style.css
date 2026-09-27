@@ -497,7 +497,8 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
   border-radius: 20px; overflow: hidden;
   background: var(--bg-deep);
   box-shadow: 0 0 0 1px var(--card-edge), 0 42px 70px -44px var(--device-shadow), 0 16px 28px -22px var(--device-shadow);
-  transition: transform 0.8s var(--ease-door), opacity 0.8s var(--ease-door);
+  /* a slow ease-in-out glide, so a slide never jumps off the mark */
+  transition: transform 1.1s cubic-bezier(0.65, 0, 0.35, 1), opacity 1.1s cubic-bezier(0.65, 0, 0.35, 1);
   will-change: transform;
 }
 /* Neighbours sink back into the room: the page colour washes over them. */
@@ -505,7 +506,7 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background: var(--bg);
   opacity: var(--dim, 0);
-  transition: opacity 0.8s var(--ease-door);
+  transition: opacity 1.1s cubic-bezier(0.65, 0, 0.35, 1);
 }
 .stack.is-dragging .card, .stack.is-dragging .card::after { transition: none; }
 .shot { width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
@@ -865,7 +866,6 @@ html.lenis, html.lenis body { height: auto; }
   .light { animation: none !important; }
   .hook-link:hover .fob, .hook-link:focus-visible .fob { animation: none; }
   .ambience .sun { animation: none; }
-  .card, .card::after { transition-duration: 0.3s; }
   .reveal.is-pending { transform: none; }
   .js .headline .hl, .js .enter, .js .showcase.enter { animation-name: fade-in; }
   .btn:hover, .btn-brass:hover, .btn-primary:hover, .theme-toggle:hover { transform: none; }
