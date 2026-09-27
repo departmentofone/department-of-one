@@ -266,26 +266,26 @@
     }
 
     // ---- autoplay: only when motion is allowed, never after the visitor takes over
-    let autoplay = !reduceMotion
+    let autoplay = true
+    let lastTouch = 0
     let hovered = false
     let onscreen = true
     let timer = null
     function tick() {
-      if (autoplay && !hovered && onscreen && !document.hidden) go(index + 1)
+      // turns every 5 s; waits 8 s after the visitor last handled it
+      if (autoplay && !hovered && onscreen && !document.hidden && performance.now() - lastTouch > 8000) go(index + 1)
     }
     function setAutoplay(on) {
       autoplay = on
       pauseBtn.setAttribute('aria-pressed', String(!on))
       pauseBtn.setAttribute('aria-label', on ? 'Pause slideshow' : 'Play slideshow')
     }
-    if (!reduceMotion) {
-      pauseBtn.hidden = false
-      setAutoplay(true)
-      timer = setInterval(tick, 5600)
-      pauseBtn.addEventListener('click', () => setAutoplay(!autoplay))
-    }
+    pauseBtn.hidden = false
+    setAutoplay(true)
+    timer = setInterval(tick, 5000)
+    pauseBtn.addEventListener('click', () => setAutoplay(!autoplay))
     function takeOver() {
-      if (autoplay) setAutoplay(false)
+      lastTouch = performance.now()
       hint.classList.add('is-gone')
     }
     show.addEventListener('pointerenter', () => { hovered = true })
