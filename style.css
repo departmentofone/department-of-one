@@ -497,8 +497,8 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
   border-radius: 20px; overflow: hidden;
   background: var(--bg-deep);
   box-shadow: 0 0 0 1px var(--card-edge), 0 42px 70px -44px var(--device-shadow), 0 16px 28px -22px var(--device-shadow);
-  /* a slow ease-in-out glide, so a slide never jumps off the mark */
-  transition: transform 1.1s cubic-bezier(0.65, 0, 0.35, 1), opacity 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+  /* a slow ease-in-out glide; the stacking order swaps halfway, where the cards cross */
+  transition: transform 1.1s cubic-bezier(0.65, 0, 0.35, 1), opacity 1.1s cubic-bezier(0.65, 0, 0.35, 1), z-index 0s linear 0.55s;
   will-change: transform;
 }
 /* Neighbours sink back into the room: the page colour washes over them. */
