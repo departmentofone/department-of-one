@@ -752,6 +752,7 @@ section[id], footer[id] { scroll-margin-top: 104px; }
   text-wrap: pretty;
 }
 .about-body .follow { margin-top: 36px; max-width: 56ch; font-size: 1.1rem; line-height: 1.72; color: var(--muted); }
+.about-body .support-link { margin-top: 18px; }
 
 /* ---------- Requests: the desk, a verde marble slab in both lights ---------- */
 .requests { padding-block: 0 clamp(96px, 11vw, 150px); }
