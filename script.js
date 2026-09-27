@@ -345,8 +345,6 @@
     let wheelAcc = 0, wheelLock = false, wheelIdle = null
     stack.addEventListener('wheel', (e) => {
       const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY
-      // At the first or last screen, let the wheel scroll the page again instead of wrapping.
-      if ((d > 0 && index === n - 1) || (d < 0 && index === 0)) return
       e.preventDefault()
       wheelAcc += d
       clearTimeout(wheelIdle)

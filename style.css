@@ -513,7 +513,7 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
 .shot-day { display: var(--day-shot); }
 .show-caption {
   display: grid; justify-items: center; gap: 6px;
-  margin-top: 38px; text-align: center;
+  margin-top: 16px; text-align: center;
 }
 .show-count {
   font-size: 0.74rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
