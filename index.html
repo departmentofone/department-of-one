@@ -18,7 +18,7 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/stone/marble-day.webp" media="(prefers-color-scheme: light)" />
   <link rel="stylesheet" href="style.css" />
   <script>document.documentElement.classList.add('js')</script>
@@ -37,7 +37,8 @@
   <header class="site">
     <div class="wrap">
       <a class="wordmark" href="#top" aria-label="Department of One, home">
-        <span class="wm-text">department of one</span><span class="cursor" aria-hidden="true"></span>
+        <span class="wm-line"><span class="wm-text">department of one</span><span class="cursor" aria-hidden="true"></span></span>
+        <span class="wm-comment" aria-hidden="true">// ... for now</span>
       </a>
       <nav class="primary" aria-label="Main">
         <a class="navlink" href="#work">Work</a>
@@ -65,7 +66,7 @@
         </h1>
         <p class="lede enter enter-3" data-content-key="hero_lede">Department of One is me, a developer doing every job alone, from writing the code to answering the support inbox. Everything I make is free for everyone, with no paywall and no ads.</p>
         <div class="ctas enter enter-4">
-          <a class="btn btn-brass" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-primary" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a class="textlink" href="#requests">Request an app</a>
         </div>
       </div>
@@ -127,11 +128,24 @@
           <div class="rail" aria-hidden="true"></div>
           <a class="hook hook-link" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener" aria-label="Open FitLog, app number 001">
             <svg class="fob fob-live" viewBox="0 0 120 230" aria-hidden="true">
-              <defs><pattern id="brushed" patternUnits="userSpaceOnUse" width="120" height="230"><image href="assets/brass/brushed.webp" width="120" height="230" preserveAspectRatio="none"/></pattern></defs>
-              <circle cx="60" cy="22" r="15" fill="none" stroke="url(#brushed)" stroke-width="4"/>
-              <path d="M60 37v12" stroke="url(#brushed)" stroke-width="4"/>
-              <path d="M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z" fill="url(#brushed)"/>
-              <text x="60" y="142" text-anchor="middle" class="fob-no">001</text>
+              <defs>
+                <radialGradient id="jadeFill" cx="0.34" cy="0.3" r="0.95">
+                  <stop offset="0" class="jade-stop-hi" />
+                  <stop offset="0.48" class="jade-stop-mid" />
+                  <stop offset="1" class="jade-stop-lo" />
+                </radialGradient>
+                <linearGradient id="jadeGloss" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#fff" stop-opacity="0.32" />
+                  <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <circle class="fob-ring" cx="60" cy="22" r="15" fill="none" stroke-width="4"/>
+              <path class="fob-ring" d="M60 37v12" stroke-width="4"/>
+              <path d="M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z" fill="url(#jadeFill)"/>
+              <path class="fob-edge" d="M60 51.5c25 0 42.5 21.5 42.5 60.5v34c0 39-17.5 68.5-42.5 68.5S17.5 185 17.5 146v-34c0-39 17.5-60.5 42.5-60.5z" fill="none" stroke-width="1.2"/>
+              <ellipse cx="46" cy="84" rx="17" ry="26" fill="url(#jadeGloss)" transform="rotate(-18 46 84)"/>
+              <circle cx="60" cy="70" r="5.5" class="fob-hole"/>
+              <text x="60" y="144" text-anchor="middle" class="fob-no">001</text>
               <text x="60" y="170" text-anchor="middle" class="fob-name">FITLOG</text>
             </svg>
           </a>
@@ -140,7 +154,7 @@
               <circle cx="60" cy="22" r="15" fill="none" stroke="var(--rule)" stroke-width="3"/>
               <path d="M60 37v12" stroke="var(--rule)" stroke-width="3"/>
               <path d="M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z" fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 5"/>
-              <text x="60" y="142" text-anchor="middle" class="fob-no fob-no-next">002</text>
+              <text x="60" y="144" text-anchor="middle" class="fob-no fob-no-next">002</text>
             </svg>
           </div>
         </div>
@@ -160,7 +174,7 @@
               <div><dt>Install</dt><dd data-content-key="fitlog_install">Runs in the browser, and you can add it to your home screen without going through an app store.</dd></div>
               <div><dt>Your data</dt><dd data-content-key="fitlog_data">Export all of it, or delete your account from Settings.</dd></div>
             </dl>
-            <a class="btn btn-brass" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-primary" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </article>
           <div class="next-up">
             <span class="no">No. 002</span>
@@ -177,22 +191,22 @@
         <div class="plaque reveal">
           <ol class="rules">
             <li>
-              <span class="rule-num" aria-hidden="true">i</span>
+              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M216,72H180.92c.39-.33.79-.65,1.17-1A29.53,29.53,0,0,0,192,49.57,32.62,32.62,0,0,0,158.44,16,29.53,29.53,0,0,0,137,25.91a54.94,54.94,0,0,0-9,14.48,54.94,54.94,0,0,0-9-14.48A29.53,29.53,0,0,0,97.56,16,32.62,32.62,0,0,0,64,49.57,29.53,29.53,0,0,0,73.91,71c.38.33.78.65,1.17,1H40A16,16,0,0,0,24,88v32a16,16,0,0,0,16,16v64a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V136a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72ZM149,36.51a13.69,13.69,0,0,1,10-4.5h.49A16.62,16.62,0,0,1,176,49.08a13.69,13.69,0,0,1-4.5,10c-9.49,8.4-25.24,11.36-35,12.4C137.7,60.89,141,45.5,149,36.51Zm-64.09.36A16.63,16.63,0,0,1,96.59,32h.49a13.69,13.69,0,0,1,10,4.5c8.39,9.48,11.35,25.2,12.39,34.92-9.72-1-25.44-4-34.92-12.39a13.69,13.69,0,0,1-4.5-10A16.6,16.6,0,0,1,84.87,36.87ZM40,88h80v32H40Zm16,48h64v64H56Zm144,64H136V136h64Zm16-80H136V88h80v32Z"/></svg></span>
               <h3 data-content-key="principle_1_title">Every feature, for everyone</h3>
               <p data-content-key="principle_1_desc">There's no premium tier and nothing to subscribe to. When a feature ships, everybody gets it.</p>
             </li>
             <li>
-              <span class="rule-num" aria-hidden="true">ii</span>
+              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M53.92,34.62A8,8,0,1,0,42.08,45.38L61.32,66.55C25,88.84,9.38,123.2,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208a127.11,127.11,0,0,0,52.07-10.83l22,24.21a8,8,0,1,0,11.84-10.76Zm47.33,75.84,41.67,45.85a32,32,0,0,1-41.67-45.85ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.16,133.16,0,0,1,25,128c4.69-8.79,19.66-33.39,47.35-49.38l18,19.75a48,48,0,0,0,63.66,70l14.73,16.2A112,112,0,0,1,128,192Zm6-95.43a8,8,0,0,1,3-15.72,48.16,48.16,0,0,1,38.77,42.64,8,8,0,0,1-7.22,8.71,6.39,6.39,0,0,1-.75,0,8,8,0,0,1-8-7.26A32.09,32.09,0,0,0,134,96.57Zm113.28,34.69c-.42.94-10.55,23.37-33.36,43.8a8,8,0,1,1-10.67-11.92A132.77,132.77,0,0,0,231.05,128a133.15,133.15,0,0,0-23.12-30.77C185.67,75.19,158.78,64,128,64a118.37,118.37,0,0,0-19.36,1.57A8,8,0,1,1,106,49.79,134,134,0,0,1,128,48c34.88,0,66.57,13.26,91.66,38.35,18.83,18.83,27.3,37.62,27.65,38.41A8,8,0,0,1,247.31,131.26Z"/></svg></span>
               <h3 data-content-key="principle_2_title">No ads, no ad trackers</h3>
               <p data-content-key="principle_2_desc">You won't see upsell pop-ups either, since there's nothing to upsell.</p>
             </li>
             <li>
-              <span class="rule-num" aria-hidden="true">iii</span>
+              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M128,112a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Zm80-72H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></svg></span>
               <h3 data-content-key="principle_3_title">Your data stays yours</h3>
               <p data-content-key="principle_3_desc">Nothing gets sold, to advertisers or to anyone else. You can delete your account whenever you like.</p>
             </li>
             <li>
-              <span class="rule-num" aria-hidden="true">iv</span>
+              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128ZM84,116a12,12,0,1,0,12,12A12,12,0,0,0,84,116Zm88,0a12,12,0,1,0,12,12A12,12,0,0,0,172,116Zm60,12A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></svg></span>
               <h3 data-content-key="principle_4_title">You'll reach me</h3>
               <p data-content-key="principle_4_desc">There's no support team to get past. The person reading your bug report is the one who wrote the bug.</p>
             </li>
@@ -216,7 +230,7 @@
         <h2 id="requestTitle" data-content-key="request_title">Paying for an app you think should be free?</h2>
         <div class="desk-side">
           <p data-content-key="request_body">Tell me which one and what you use it for. If it's something I can build, I might make a free version of it. Call it the Robin Hood approach, minus the tights.</p>
-          <a class="btn btn-brass" href="/contact.html"><span>Send a request</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-primary" href="/contact.html"><span>Send a request</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </div>
     </section>

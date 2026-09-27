@@ -18,13 +18,17 @@
   --faint: #8f8676;
   --border: rgba(60, 45, 25, 0.1);
   --rule: rgba(60, 45, 25, 0.24);
-  --accent: #7a5520;          /* bronze as text on cream stone */
-  --accent-2: #7a5520;
+  --accent: #1f6b49;          /* deep jade as text on cream stone */
+  --accent-2: #1f6b49;
   --accent-ink: #faf6ef;
-  --brass: #b08a4a;
-  --brass-hi: #e6c992;
-  --brass-lo: #7a5a26;
-  --brass-ink: #1b150b;
+  --jade: #3d9a6f;
+  --jade-hi: #a8e3c3;
+  --jade-lo: #2a6e4f;
+  --jade-ink: #04110b;
+  --jade-glow: rgba(61, 154, 111, 0.35);
+  --jade-fill: radial-gradient(120% 160% at 30% 0%, #b5ead0 0%, #5dbb8f 42%, #2f8a60 100%);
+  --steel: linear-gradient(180deg, #a39d92, #6f695f);
+  --steel-solid: #857f74;
   --invert-bg: #14271f;
   --invert-text: #ecdcb8;
   --invert-muted: #b3b6ab;
@@ -51,30 +55,28 @@
   --day-shot: block;
   --panel-hi: rgba(255, 255, 255, 0.7);
   --panel-light: rgba(255, 244, 222, 0.35);
-  --plaque-edge: rgba(160, 118, 52, 0.85);
+  --plaque-edge: rgba(42, 110, 79, 0.45);
   --plaque-inner: rgba(0, 0, 0, 0);
   --plaque-bg: rgba(250, 246, 239, 0.55);
-  --desk-ring: 0 0 0 1px rgba(176, 138, 74, 0.7);
+  --desk-ring: 0 0 0 1px rgba(42, 110, 79, 0.55);
   --header-bg: rgba(241, 235, 225, 0.82);
   --cta-bg: url('assets/leather/verde.webp') center / 128px 128px, #14271f;
   --cta-solid: #14271f;
   --cta-ink: #ecdcb8;
-  --cta-edge: #b8914f;
-  --display-opsz: 72;
-  --display-wght: 470;
-  --display-track: -0.025em;
-  --kern-F: -0.06em;
-  --kern-W: -0.09em;
-  --kern-t: -0.1em;
+  --cta-edge: #3d9a6f;
+  --display-wght: 560;
+  --display-track: -0.045em;
 
   --radius-lg: 24px;
   --radius-md: 14px;
   --radius-sm: 8px;
   --shadow: 0 1px 1px rgba(60, 45, 25, 0.05), 0 30px 60px -34px rgba(90, 64, 30, 0.28);
 
-  --font-display: 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
-  --font-body: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  /* Geist and Geist Mono: one family, the same one the logo is drawn in. Solid strokes at every
+     size, so headings hold up on small, low-DPI phone screens where a hairline serif broke apart. */
+  --font-display: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
 
   --gutter: clamp(20px, 4vw, 56px);
   --ease: cubic-bezier(0.22, 0.8, 0.24, 1);
@@ -94,13 +96,17 @@
     --faint: #707870;
     --border: rgba(236, 231, 220, 0.09);
     --rule: rgba(236, 231, 220, 0.2);
-    --accent: #d9b97f;
-    --accent-2: #d9b97f;
-    --accent-ink: #14100a;
-    --brass: #c29a5b;
-    --brass-hi: #eed49e;
-    --brass-lo: #7c5b2b;
-    --brass-ink: #14100a;
+    --accent: #9fe0bf;
+    --accent-2: #9fe0bf;
+    --accent-ink: #06140e;
+    --jade: #7fd3a6;
+    --jade-hi: #c6f2d8;
+    --jade-lo: #3a9469;
+    --jade-ink: #06140e;
+    --jade-glow: rgba(110, 210, 160, 0.4);
+    --jade-fill: radial-gradient(120% 160% at 30% 0%, #c6f2d8 0%, #7fd3a6 40%, #3f9e73 100%);
+    --steel: linear-gradient(180deg, #d6d9d1, #8b918a);
+    --steel-solid: #a4a9a1;
     --invert-bg: #ece7dc;
     --invert-text: #0f1a16;
     --invert-muted: #4b5550;
@@ -131,16 +137,10 @@
     --desk-ring: 0 0 0 1px rgba(236, 231, 220, 0.06);
     --header-bg: rgba(10, 19, 16, 0.66);
     --shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
-    --cta-bg: url('assets/brass/brushed.webp') center / 100% 100%, #c29a5b;
-    --cta-solid: #c29a5b;
-    --cta-ink: #14100a;
+    --cta-bg: var(--jade-fill);
+    --cta-solid: #7fd3a6;
+    --cta-ink: #06140e;
     --cta-edge: rgba(0, 0, 0, 0);
-    --display-opsz: 96;
-    --display-wght: 400;
-    --display-track: -0.03em;
-    --kern-F: -0.05em;
-    --kern-W: -0.08em;
-    --kern-t: -0.09em;
     color-scheme: dark;
   }
 }
@@ -154,13 +154,17 @@
   --faint: #707870;
   --border: rgba(236, 231, 220, 0.09);
   --rule: rgba(236, 231, 220, 0.2);
-  --accent: #d9b97f;
-  --accent-2: #d9b97f;
-  --accent-ink: #14100a;
-  --brass: #c29a5b;
-  --brass-hi: #eed49e;
-  --brass-lo: #7c5b2b;
-  --brass-ink: #14100a;
+  --accent: #9fe0bf;
+  --accent-2: #9fe0bf;
+  --accent-ink: #06140e;
+  --jade: #7fd3a6;
+  --jade-hi: #c6f2d8;
+  --jade-lo: #3a9469;
+  --jade-ink: #06140e;
+  --jade-glow: rgba(110, 210, 160, 0.4);
+  --jade-fill: radial-gradient(120% 160% at 30% 0%, #c6f2d8 0%, #7fd3a6 40%, #3f9e73 100%);
+  --steel: linear-gradient(180deg, #d6d9d1, #8b918a);
+  --steel-solid: #a4a9a1;
   --invert-bg: #ece7dc;
   --invert-text: #0f1a16;
   --invert-muted: #4b5550;
@@ -191,16 +195,10 @@
   --desk-ring: 0 0 0 1px rgba(236, 231, 220, 0.06);
   --header-bg: rgba(10, 19, 16, 0.66);
   --shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 30px 60px -30px rgba(0, 0, 0, 0.8);
-  --cta-bg: url('assets/brass/brushed.webp') center / 100% 100%, #c29a5b;
-  --cta-solid: #c29a5b;
-  --cta-ink: #14100a;
+  --cta-bg: var(--jade-fill);
+  --cta-solid: #7fd3a6;
+  --cta-ink: #06140e;
   --cta-edge: rgba(0, 0, 0, 0);
-  --display-opsz: 96;
-  --display-wght: 400;
-  --display-track: -0.03em;
-  --kern-F: -0.05em;
-  --kern-W: -0.08em;
-  --kern-t: -0.09em;
   color-scheme: dark;
 }
 
@@ -218,7 +216,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
-  caret-color: var(--brass);
+  caret-color: var(--jade);
   transition: background-color 0.6s var(--ease), color 0.6s var(--ease);
 }
 /* Fine grain over everything, so no surface is ever a flat fill. */
@@ -230,12 +228,12 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1; margin: 0; letter-spacing: -0.025em; text-wrap: balance; }
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
-::selection { background: var(--brass); color: var(--brass-ink); }
-:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 6px; }
+::selection { background: var(--jade); color: var(--jade-ink); }
+:focus-visible { outline: 2px solid var(--jade); outline-offset: 3px; border-radius: 6px; }
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--faint); border-radius: 10px; border: 3px solid var(--bg); }
@@ -317,17 +315,28 @@ header.site.is-scrolled {
   -webkit-backdrop-filter: blur(16px) saturate(1.3);
   border-bottom-color: var(--border);
 }
-header.site .wrap { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px; }
+header.site .wrap { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 88px; }
 
+/* The logo as drawn: Geist Mono, lowercase, cursor after the name, and the code comment under it. */
 .wordmark {
-  display: inline-flex; align-items: baseline;
+  display: inline-grid; justify-items: start; row-gap: 7px;
   font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 1.06rem;
-  letter-spacing: -0.02em;
   line-height: 1;
   white-space: nowrap;
 }
+.wm-line {
+  display: inline-flex; align-items: baseline;
+  font-weight: 500;
+  font-size: 1.55rem;
+  letter-spacing: -0.03em;
+}
+.wm-comment {
+  font-size: 0.86rem; font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--faint);
+  transition: color 0.3s var(--ease);
+}
+.wordmark:hover .wm-comment { color: var(--muted); }
 /* The logo: the name as a line of code with the cursor still blinking. Proportions match the
    drawn mark: cursor 0.56em wide, cap-height tall, set just after the text. The blink is a pure
    opacity change, so it stays on under reduced motion too (it is the logo, not decoration). */
@@ -336,7 +345,7 @@ header.site .wrap { position: relative; display: flex; align-items: center; just
   width: 0.56em;
   height: 0.73em;
   margin-left: 0.14em;
-  background: var(--brass);
+  background: var(--jade);
   animation: cursor-blink 1.06s infinite;
 }
 @keyframes cursor-blink {
@@ -364,7 +373,7 @@ nav.primary a.navlink-cta {
   color: var(--text);
   margin-left: 10px; padding: 9px 18px;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--brass) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--jade) 60%, transparent);
   transition: color 0.3s var(--ease), background-color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 nav.primary a.navlink-cta:hover,
@@ -399,24 +408,31 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
 .btn:hover .arrow { transform: translateX(4px); }
 .btn:active { transform: translateY(1px) scale(0.99); }
 
-/* The main action. Night: brushed brass. Day: deep verde leather with a brass edge. */
-.btn-brass, .btn-primary {
+/* The main action. Night: a lit jade pill. Day: deep verde leather with a jade edge. */
+.btn-primary {
   color: var(--cta-ink);
   background: var(--cta-bg);
   border-color: var(--cta-edge);
+  /* Lit from above, shaded underneath, with a little of its own colour spilling onto the stone. */
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 12px 26px -14px rgba(10, 8, 4, 0.45);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -3px 8px rgba(0, 40, 24, 0.3),
+    0 1px 0 rgba(0, 0, 0, 0.35),
+    0 14px 28px -14px rgba(0, 0, 0, 0.6),
+    0 0 32px -12px var(--jade-glow);
 }
-.btn-brass:hover, .btn-primary:hover {
-  filter: brightness(1.07);
+.btn-primary:hover {
+  filter: brightness(1.05) saturate(1.05);
   transform: translateY(-1px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
-    0 18px 32px -16px rgba(10, 8, 4, 0.5);
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 8px rgba(0, 40, 24, 0.3),
+    0 1px 0 rgba(0, 0, 0, 0.35),
+    0 20px 34px -16px rgba(0, 0, 0, 0.65),
+    0 0 44px -10px var(--jade-glow);
 }
 .btn-ghost { background: transparent; border-color: var(--rule); color: var(--text); }
-.btn-ghost:hover { border-color: var(--brass); color: var(--accent); }
+.btn-ghost:hover { border-color: var(--jade); color: var(--accent); }
 
 .textlink {
   display: inline-flex; align-items: center; gap: 8px;
@@ -437,23 +453,29 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
   gap: clamp(40px, 6vw, 104px);
   padding-block: clamp(24px, 4vw, 72px) clamp(88px, 10vw, 150px);
 }
-/* A soft lamp that follows the pointer across the hero. */
+/* A soft lamp over the hero. It rests on the carousel and follows the pointer (script.js).
+   --mx/--my are percentages of the hero; this box overhangs it by 20% a side and 10% top and
+   bottom, so they are mapped into its own coordinates here. */
 .hero::before {
   content: ''; position: absolute; z-index: -1; pointer-events: none;
   inset: -10% -20%;
-  background: radial-gradient(420px circle at var(--mx, 70%) var(--my, 40%), var(--halo), transparent 70%);
+  background: radial-gradient(420px circle at calc(20% / 1.4 + var(--mx, 72%) / 1.4) calc(10% / 1.2 + var(--my, 45%) / 1.2), var(--halo), transparent 70%);
   opacity: 0.9;
 }
 .headline {
   font-size: min(clamp(3.1rem, 6.7vw, 6rem), max(3.1rem, 11.5vh));
-  font-variation-settings: 'opsz' var(--display-opsz);
+ 
   font-weight: var(--display-wght);
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: var(--display-track);
   max-width: 11.5ch;
 }
 .headline .hl { display: block; }
-.headline em { font-style: italic; font-weight: calc(var(--display-wght) + 90); letter-spacing: -0.02em; padding-right: 0.03em; }
+.headline em, .contact h1 em {
+  font-family: var(--font-mono); font-style: normal; font-weight: 500;
+  letter-spacing: -0.05em;
+  color: var(--accent);
+}
 .hero .lede {
   margin-top: clamp(28px, 3vw, 40px);
   font-size: clamp(1.1rem, 1.35vw, 1.28rem);
@@ -470,9 +492,11 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
   position: relative; margin: 0; width: 100%; max-width: 640px; justify-self: center;
   --card-w: min(clamp(200px, 18.5vw, 272px), max(190px, calc((100vh - 330px) * 0.5625)));
 }
-.showcase::before {
+/* The wide, low glow sits on the screens themselves, not on the whole figure (whose caption and
+   controls would pull it down). */
+.stack::before {
   content: ''; position: absolute; z-index: -1; pointer-events: none;
-  left: -22%; right: -22%; top: -16%; bottom: 4%;
+  inset: -24% -40%;
   background: radial-gradient(closest-side, var(--stack-glow), transparent);
 }
 .stack {
@@ -547,7 +571,7 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
 .dot { width: 22px; height: 36px; padding: 0; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
 .dot i { display: block; width: 6px; height: 6px; border-radius: 999px; background: var(--rule); transition: background-color 0.3s var(--ease); }
 .dot:hover i { background: var(--faint); }
-.dot[aria-current='true'] i { width: 18px; background: var(--brass); }
+.dot[aria-current='true'] i { width: 18px; background: var(--jade); }
 .show-hint {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   margin-top: 6px; font-size: 0.84rem; color: var(--muted);
@@ -558,23 +582,19 @@ nav.primary a.navlink-cta[aria-current='page'] { background: var(--cta-solid); b
 .hint-touch { display: none; }
 @media (hover: none) { .hint-fine { display: none; } .hint-touch { display: inline; } }
 
-.k-F { margin-right: var(--kern-F, 0); }
-.k-W { margin-right: var(--kern-W, 0); }
-.k-t { margin-right: var(--kern-t, 0); }
-
 /* ---------- Sections ---------- */
-section[id], footer[id] { scroll-margin-top: 92px; }
+section[id], footer[id] { scroll-margin-top: 104px; }
 .section { position: relative; padding-block: clamp(96px, 12vw, 168px); }
 /* A hairline that fades out at both ends, like a joint between two slabs. */
 .section::before {
   content: ''; position: absolute; top: 0; left: var(--gutter); right: var(--gutter);
   max-width: calc(1280px - 2 * var(--gutter)); margin-inline: auto;
   height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--brass) 45%, transparent) 20%, color-mix(in srgb, var(--brass) 45%, transparent) 80%, transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--jade) 45%, transparent) 20%, color-mix(in srgb, var(--jade) 45%, transparent) 80%, transparent);
 }
 .section h2 {
   font-size: clamp(2.5rem, 5vw, 4.4rem);
-  font-variation-settings: 'opsz' var(--display-opsz);
+ 
   font-weight: var(--display-wght);
   line-height: 1;
   letter-spacing: var(--display-track);
@@ -595,22 +615,29 @@ section[id], footer[id] { scroll-margin-top: 92px; }
 }
 .keyboard .rail {
   position: absolute; top: 0; left: 4%; right: 4%; height: 3px; border-radius: 2px;
-  background: var(--brass);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--brass-hi) 70%, transparent), 0 6px 12px -8px rgba(0, 0, 0, 0.4);
+  background: var(--steel);
+  box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.4);
 }
 .hook { position: relative; padding-top: 6px; }
 .hook::before {
   content: ''; position: absolute; left: 50%; top: -5px; width: 5px; height: 20px; margin-left: -2.5px; border-radius: 3px;
-  background: var(--brass-lo);
+  background: var(--steel);
 }
 .fob {
   display: block; width: clamp(84px, 8vw, 116px); height: auto; overflow: visible;
   transform-origin: 50% 9.6%;
   filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.28));
 }
-.fob-no { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 38px; fill: rgba(38, 26, 8, 0.78); }
-.fob-name { font-family: var(--font-body); font-weight: 600; font-size: 9.5px; letter-spacing: 0.34em; fill: rgba(38, 26, 8, 0.7); }
-.fob-no-next { fill: var(--faint); font-weight: 400; }
+/* The live key: a jade tag on a steel ring. */
+.jade-stop-hi { stop-color: var(--jade-hi); }
+.jade-stop-mid { stop-color: var(--jade); }
+.jade-stop-lo { stop-color: var(--jade-lo); }
+.fob-ring { stroke: var(--steel-solid); }
+.fob-edge { stroke: rgba(255, 255, 255, 0.35); }
+.fob-hole { fill: color-mix(in srgb, var(--jade-ink) 55%, transparent); }
+.fob-no { font-family: var(--font-mono); font-weight: 500; font-size: 31px; letter-spacing: -0.04em; fill: var(--jade-ink); }
+.fob-name { font-family: var(--font-body); font-weight: 600; font-size: 9px; letter-spacing: 0.32em; fill: color-mix(in srgb, var(--jade-ink) 72%, transparent); }
+.fob-no-next { fill: var(--faint); }
 .fob-next { filter: none; opacity: 0.8; }
 .hook-link { display: block; border-radius: 40px; }
 .hook-link:hover .fob, .hook-link:focus-visible .fob { animation: swing 2.2s var(--ease) both; }
@@ -635,7 +662,7 @@ section[id], footer[id] { scroll-margin-top: 92px; }
 }
 .project-title { display: flex; align-items: center; gap: 18px; }
 .project-title img { width: 56px; height: 56px; border-radius: 15px; box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.55); }
-.project-title h3 { font-size: clamp(2.3rem, 3.6vw, 3rem); font-variation-settings: 'opsz' 72; font-weight: var(--display-wght); letter-spacing: -0.035em; }
+.project-title h3 { font-size: clamp(2.1rem, 3.3vw, 2.75rem); font-weight: var(--display-wght); letter-spacing: -0.04em; }
 .project-title .status {
   margin-left: auto;
   display: inline-flex; align-items: center; gap: 9px;
@@ -665,7 +692,7 @@ section[id], footer[id] { scroll-margin-top: 92px; }
   border: 1px dashed var(--rule);
   border-radius: var(--radius-lg);
 }
-.next-up .no { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--muted); }
+.next-up .no { font-family: var(--font-mono); font-size: 1rem; font-weight: 500; letter-spacing: -0.02em; color: var(--muted); }
 .next-up p { color: var(--muted); }
 
 /* ---------- The deal: a framed house-rules plaque ---------- */
@@ -687,16 +714,24 @@ section[id], footer[id] { scroll-margin-top: 92px; }
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(36px, 5vw, 64px) clamp(40px, 6vw, 96px);
 }
-.rules li { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); column-gap: 12px; row-gap: 12px; align-content: start; }
-.rules .rule-num {
+/* Each rule is marked by a small lit stone tile with a jade line icon (Phosphor, MIT). */
+.rules li { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 20px; row-gap: 10px; align-content: start; }
+.rules .rule-mark {
   grid-row: span 2;
-  font-family: var(--font-display);
-  font-size: 2.1rem; line-height: 0.95; font-variation-settings: 'opsz' 48;
-  color: var(--faint);
-  transition: color 0.5s var(--ease);
+  width: 52px; height: 52px; margin-top: -8px;
+  display: grid; place-items: center;
+  border-radius: 16px;
+  color: var(--jade);
+  background:
+    radial-gradient(120% 120% at 25% 0%, color-mix(in srgb, var(--jade) 22%, transparent), transparent 65%),
+    var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 var(--panel-hi), 0 10px 20px -12px rgba(0, 0, 0, 0.55);
+  transition: transform 0.6s var(--ease-door), box-shadow 0.6s var(--ease-door);
 }
-.rules li:hover .rule-num { color: var(--text); }
-.rules h3 { font-size: clamp(1.55rem, 2.3vw, 1.95rem); line-height: 1.08; font-variation-settings: 'opsz' 48; }
+.rules .rule-mark svg { width: 24px; height: 24px; fill: currentColor; }
+.rules li:hover .rule-mark { transform: translateY(-2px); box-shadow: inset 0 1px 0 var(--panel-hi), 0 14px 24px -12px rgba(0, 0, 0, 0.6), 0 0 26px -10px var(--jade-glow); }
+.rules h3 { font-size: clamp(1.4rem, 2vw, 1.7rem); line-height: 1.12; font-weight: 550; letter-spacing: -0.03em; }
 .rules p { color: var(--muted); font-size: 1.02rem; line-height: 1.62; max-width: 42ch; }
 
 /* ---------- About ---------- */
@@ -709,10 +744,11 @@ section[id], footer[id] { scroll-margin-top: 92px; }
 .about-grid h2 { position: sticky; top: 130px; }
 .about-body .pull {
   font-family: var(--font-display);
-  font-variation-settings: 'opsz' 60;
-  font-size: clamp(1.65rem, 2.9vw, 2.45rem);
-  line-height: 1.3;
-  letter-spacing: -0.012em;
+ 
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  font-weight: 450;
+  line-height: 1.32;
+  letter-spacing: -0.028em;
   text-wrap: pretty;
 }
 .about-body .follow { margin-top: 36px; max-width: 56ch; font-size: 1.1rem; line-height: 1.72; color: var(--muted); }
@@ -720,8 +756,9 @@ section[id], footer[id] { scroll-margin-top: 92px; }
 /* ---------- Requests: the desk, a verde marble slab in both lights ---------- */
 .requests { padding-block: 0 clamp(96px, 11vw, 150px); }
 .desk {
-  --brass: #c29a5b; --brass-hi: #eed49e; --brass-lo: #7c5b2b; --brass-ink: #14100a;
-  --cta-bg: url('assets/brass/brushed.webp') center / 100% 100%, #c29a5b; --cta-ink: #14100a; --cta-edge: rgba(0, 0, 0, 0);
+  --jade: #7fd3a6; --jade-hi: #c6f2d8; --jade-lo: #3a9469; --jade-ink: #06140e; --jade-glow: rgba(110, 210, 160, 0.4);
+  --jade-fill: radial-gradient(120% 160% at 30% 0%, #c6f2d8 0%, #7fd3a6 40%, #3f9e73 100%);
+  --cta-bg: var(--jade-fill); --cta-ink: #06140e; --cta-edge: rgba(0, 0, 0, 0);
   position: relative; overflow: hidden; isolation: isolate;
   display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
   gap: 36px clamp(40px, 6vw, 96px); align-items: end;
@@ -739,10 +776,10 @@ section[id], footer[id] { scroll-margin-top: 92px; }
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.05) 48%, transparent 60%);
 }
-.desk h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; max-width: 13ch; font-variation-settings: 'opsz' 96; }
+.desk h2 { font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: var(--display-wght); line-height: 1.02; letter-spacing: var(--display-track); max-width: 13ch; }
 .desk p { color: #b9bcb1; font-size: 1.1rem; line-height: 1.62; max-width: 38ch; }
 .desk .btn { margin-top: 30px; }
-.desk ::selection { background: #c29a5b; color: #14100a; }
+.desk ::selection { background: #7fd3a6; color: #06140e; }
 
 /* ---------- Footer ---------- */
 footer.site { padding-block: clamp(40px, 6vw, 72px) 40px; }
@@ -757,10 +794,10 @@ footer.site { padding-block: clamp(40px, 6vw, 72px) 40px; }
 .footer-word {
   display: flex; align-items: baseline;
   font-family: var(--font-mono);
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(1.6rem, 8.5vw, 7.4rem);
   line-height: 1;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.05em;
   white-space: nowrap;
   padding-top: 40px;
   border-top: 1px solid var(--rule);
@@ -775,12 +812,11 @@ footer.site { padding-block: clamp(40px, 6vw, 72px) 40px; }
   align-items: start;
   margin-top: clamp(28px, 5vw, 56px);
 }
-.contact h1 { font-size: clamp(3.1rem, 7.5vw, 6rem); line-height: 0.96; letter-spacing: var(--display-track); font-variation-settings: 'opsz' var(--display-opsz); font-weight: var(--display-wght); }
-.contact h1 em { font-style: italic; font-weight: calc(var(--display-wght) + 90); }
+.contact h1 { font-size: clamp(3.1rem, 7.5vw, 6rem); line-height: 0.96; letter-spacing: var(--display-track); font-weight: var(--display-wght); }
 .contact-intro { margin-top: 26px; font-size: 1.14rem; line-height: 1.6; color: var(--muted); max-width: 38ch; }
 .reasons { list-style: none; margin: 34px 0 0; padding: 0; border-top: 1px solid var(--rule); max-width: 440px; }
 .reasons li { display: flex; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 0.99rem; }
-.reasons .mark { flex: none; width: 14px; height: 1px; margin-top: 0.8em; background: var(--brass); }
+.reasons .mark { flex: none; width: 14px; height: 1px; margin-top: 0.8em; background: var(--jade); }
 .direct { margin-top: 28px; color: var(--muted); font-size: 0.96rem; }
 .direct a { color: var(--text); border-bottom: 1px solid var(--rule); transition: color 0.3s var(--ease), border-color 0.3s var(--ease); }
 .direct a:hover { border-color: var(--accent); color: var(--accent); }
@@ -809,8 +845,8 @@ footer.site { padding-block: clamp(40px, 6vw, 72px) 40px; }
 .field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: 1; }
 .field input:focus, .field textarea:focus {
   outline: none;
-  border-color: var(--brass);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brass) 18%, transparent);
+  border-color: var(--jade);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--jade) 18%, transparent);
 }
 .field [aria-invalid='true'] { border-color: #b4543a; }
 .field-hint { display: block; margin-top: 7px; font-size: 0.82rem; color: var(--muted); }
@@ -865,10 +901,11 @@ html.lenis, html.lenis body { height: auto; }
   html { scroll-behavior: auto; }
   .light { animation: none !important; }
   .hook-link:hover .fob, .hook-link:focus-visible .fob { animation: none; }
+  .rules li:hover .rule-mark { transform: none; }
   .ambience .sun { animation: none; }
   .reveal.is-pending { transform: none; }
   .js .headline .hl, .js .enter, .js .showcase.enter { animation-name: fade-in; }
-  .btn:hover, .btn-brass:hover, .btn-primary:hover, .theme-toggle:hover { transform: none; }
+  .btn:hover, .btn-primary:hover, .theme-toggle:hover { transform: none; }
   .btn:hover .arrow { transform: none; }
 }
 @keyframes fade-in { from { opacity: 0; filter: blur(8px); } to { opacity: 1; filter: none; } }
@@ -911,15 +948,18 @@ html.lenis, html.lenis body { height: auto; }
 }
 @media (max-width: 520px) {
   body { font-size: 16px; }
-  header.site .wrap { height: 64px; }
-  .wordmark { font-size: 0.94rem; }
+  header.site .wrap { height: 72px; }
+  .wordmark { row-gap: 5px; }
+  .wm-line { font-size: 1.12rem; }
+  .wm-comment { font-size: 0.72rem; }
   nav.primary a.navlink-cta { padding: 8px 14px; font-size: 0.88rem; margin-left: 0; }
   .theme-toggle { width: 38px; height: 38px; }
   .spec div { grid-template-columns: 1fr; gap: 4px; }
   .next-up { grid-template-columns: 1fr; gap: 10px; }
   .next-up .textlink { justify-self: start; }
   .project-title { flex-wrap: wrap; }
-  .rules li { grid-template-columns: 2.6rem minmax(0, 1fr); }
-  .rules .rule-num { font-size: 1.9rem; }
+  .rules li { grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; }
+  .rules .rule-mark { width: 44px; height: 44px; border-radius: 14px; margin-top: -6px; }
+  .rules .rule-mark svg { width: 21px; height: 21px; }
   .desk { border-radius: 24px; }
 }

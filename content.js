@@ -20,7 +20,7 @@
           el.textContent = row.value
         })
       })
-      // script.js re-applies display kerning to headings once the live copy is in
+      // Lets script.js know the live copy is in, in case anything needs to re-measure.
       document.dispatchEvent(new Event('site-content-ready'))
     })
     .catch(function (err) {

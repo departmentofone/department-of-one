@@ -116,60 +116,46 @@
   })()
 
   // ---------- Hero lamp follows the pointer, with some weight ----------
+  // --mx/--my are percentages of the hero box. The lamp rests on the centre of the carousel and,
+  // with a fine pointer and motion allowed, drifts after the pointer and back again on leave.
   const hero = document.querySelector('.hero')
-  if (hero && finePointer && !reduceMotion) {
-    let tx = 70, ty = 40, x = tx, y = ty, running = false
+  const stack = document.getElementById('stack')
+  if (hero && stack) {
+    let rx = 70, ry = 40, tx = rx, ty = ry, x = rx, y = ry, running = false
+    const put = () => {
+      hero.style.setProperty('--mx', x.toFixed(2) + '%')
+      hero.style.setProperty('--my', y.toFixed(2) + '%')
+    }
+    const rest = () => {
+      const h = hero.getBoundingClientRect(), c = stack.getBoundingClientRect()
+      if (!h.width || !h.height) return
+      rx = ((c.left + c.width / 2 - h.left) / h.width) * 100
+      ry = ((c.top + c.height / 2 - h.top) / h.height) * 100
+    }
     const step = () => {
       x += (tx - x) * 0.06
       y += (ty - y) * 0.06
-      hero.style.setProperty('--mx', x.toFixed(2) + '%')
-      hero.style.setProperty('--my', y.toFixed(2) + '%')
+      put()
       if (Math.abs(tx - x) > 0.05 || Math.abs(ty - y) > 0.05) requestAnimationFrame(step)
       else running = false
     }
-    hero.addEventListener('pointermove', (e) => {
-      const r = hero.getBoundingClientRect()
-      tx = ((e.clientX - r.left) / r.width) * 100
-      ty = ((e.clientY - r.top) / r.height) * 100
-      if (!running) { running = true; requestAnimationFrame(step) }
-    })
-  }
-
-  // ---------- Display kerning ----------
-  // Bodoni Moda has no kerning for F-r, W-h and t-L, which opens holes in the big headings
-  // ("F ree", "W hy"). Wrap those capitals so CSS can pull the next letter in. Runs again when
-  // the live copy from content.js lands, since that replaces the heading text.
-  ;(function kerning() {
-    const PAIRS = /([FW])(?=[rh])|(t)(?=L)/g
-    function kern() {
-      document.querySelectorAll('.headline .hl, .section h2, .desk h2, .project-title h3, .contact h1').forEach((el) => {
-        el.querySelectorAll('.k').forEach((k) => k.replaceWith(k.textContent))
-        el.normalize()
-        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
-        const nodes = []
-        while (walker.nextNode()) nodes.push(walker.currentNode)
-        nodes.forEach((node) => {
-          if (!PAIRS.test(node.nodeValue)) return
-          PAIRS.lastIndex = 0
-          const frag = document.createDocumentFragment()
-          let last = 0
-          node.nodeValue.replace(PAIRS, (m, cap, t, i) => {
-            frag.append(node.nodeValue.slice(last, i))
-            const span = document.createElement('span')
-            span.className = 'k k-' + m
-            span.textContent = m
-            frag.append(span)
-            last = i + 1
-            return m
-          })
-          frag.append(node.nodeValue.slice(last))
-          node.replaceWith(frag)
-        })
+    const glide = () => { if (!running) { running = true; requestAnimationFrame(step) } }
+    const settle = () => { rest(); tx = x = rx; ty = y = ry; put() }
+    settle()
+    window.addEventListener('resize', settle)
+    window.addEventListener('load', settle)
+    // The carousel rises into place on load; measure again once it has landed.
+    document.getElementById('showcase')?.addEventListener('animationend', settle)
+    if (finePointer && !reduceMotion) {
+      hero.addEventListener('pointermove', (e) => {
+        const r = hero.getBoundingClientRect()
+        tx = ((e.clientX - r.left) / r.width) * 100
+        ty = ((e.clientY - r.top) / r.height) * 100
+        glide()
       })
+      hero.addEventListener('pointerleave', () => { rest(); tx = rx; ty = ry; glide() })
     }
-    kern()
-    document.addEventListener('site-content-ready', kern)
-  })()
+  }
 
   // ---------- Mobile menu ----------
   ;(function menu() {
