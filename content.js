@@ -20,6 +20,8 @@
           el.textContent = row.value
         })
       })
+      // script.js re-applies display kerning to headings once the live copy is in
+      document.dispatchEvent(new Event('site-content-ready'))
     })
     .catch(function (err) {
       console.warn('Live content unavailable, showing built-in text.', err)
