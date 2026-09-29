@@ -76,6 +76,8 @@
           <!-- Honeypot: hidden from people, often filled in by spam bots. Anything in it = silently dropped. -->
           <label class="hp" aria-hidden="true">Website <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" /></label>
 
+          <!-- Cloudflare Turnstile bot check; usually invisible. api/contact.js verifies the token. -->
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAFJNfo4pofObKvVn" data-action="contact" data-appearance="interaction-only" data-size="flexible" data-theme="auto"></div>
           <div class="form-foot">
             <button id="sendBtn" class="btn btn-primary" type="submit">Send message</button>
             <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
@@ -106,6 +108,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous" defer></script>
   <script src="content.js"></script>
   <script src="script.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="contact.js"></script>
 </body>
 </html>

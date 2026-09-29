@@ -7,6 +7,11 @@
 //   GMAIL_USER          departmentofone.app@gmail.com
 //   GMAIL_APP_PASSWORD  a Gmail "app password" (16 characters), NOT the account password
 //   CONTACT_TO          optional; where to send copies, defaults to GMAIL_USER
+//   TURNSTILE_SECRET_KEY  Cloudflare Turnstile secret. When set, every message needs a valid bot
+//                         check token (the site form and FitLog's feedback form both send one).
+//   SUPABASE_SERVICE_ROLE_KEY  When set, messages are stored with it (server-only), so the
+//                         public "anyone can send a message" insert policy can be dropped and the
+//                         only way in is through this endpoint and its checks.
 // Without the Gmail ones, messages are still stored - only the email copy is skipped.
 //
 // The FitLog app posts here too (its Send feedback form), from another origin - hence the CORS
@@ -59,12 +64,32 @@ function toRow(msg) {
   return { subject, email: msg.email, message }
 }
 
+// Cloudflare Turnstile: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+// Skipped until TURNSTILE_SECRET_KEY is set, so deploying this before the key exists breaks nothing.
+async function passesBotCheck(token, ip) {
+  const secret = process.env.TURNSTILE_SECRET_KEY
+  if (!secret) return true
+  if (typeof token !== 'string' || !token || token.length > 2048) return false
+  const form = new URLSearchParams({ secret, response: token })
+  if (ip) form.set('remoteip', ip)
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: form })
+    const data = await res.json()
+    return data.success === true
+  } catch (err) {
+    console.error('Turnstile verification failed', err)
+    return false
+  }
+}
+
 async function store(msg) {
+  // Server-only key when available (see the env notes above); the publishable key otherwise.
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || SUPABASE_ANON_KEY
   const res = await fetch(`${SUPABASE_URL}/rest/v1/contact_messages`, {
     method: 'POST',
     headers: {
-      apikey: SUPABASE_ANON_KEY,
-      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      apikey: key,
+      Authorization: `Bearer ${key}`,
       'Content-Type': 'application/json',
       Prefer: 'return=minimal',
     },
@@ -115,6 +140,11 @@ module.exports = async function handler(req, res) {
 
   const msg = validate(body)
   if (msg.error) return res.status(400).json({ error: msg.error })
+
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined
+  if (!(await passesBotCheck(body.turnstileToken, ip))) {
+    return res.status(400).json({ error: "The bot check didn't go through. Wait a moment and try again." })
+  }
 
   // Either copy is enough: stored-but-not-emailed still shows in the admin inbox, and
   // emailed-but-not-stored still reached the owner. Only both failing is an error.

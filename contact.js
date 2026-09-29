@@ -53,6 +53,15 @@
     document.getElementById('sentView').hidden = false
   }
 
+  // The token Cloudflare Turnstile put in the form. Each works once: reset after every send.
+  function turnstileToken() {
+    var field = form.querySelector('[name="cf-turnstile-response"]')
+    return field ? field.value : ''
+  }
+  function resetTurnstile() {
+    if (window.turnstile) window.turnstile.reset()
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault()
     var s = subject.value.trim()
@@ -75,9 +84,10 @@
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject: s, email: em, message: m, website: honeypot.value }),
+      body: JSON.stringify({ subject: s, email: em, message: m, website: honeypot.value, turnstileToken: turnstileToken() }),
     })
       .then(function (res) {
+        resetTurnstile()
         if (res.ok) return showSent(em)
         return res.json().then(
           function (data) { throw new Error(data && data.error) },
