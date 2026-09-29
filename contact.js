@@ -58,6 +58,18 @@
     var field = form.querySelector('[name="cf-turnstile-response"]')
     return field ? field.value : ''
   }
+  // In Managed mode Cloudflare may want a tick on "Verify you are human" before it gives a token.
+  var needsTick = false
+  window.turnstileNeedsTick = function () { needsTick = true }
+  window.turnstileSolved = function () { needsTick = false }
+  // Autofill can submit before the check has finished: wait for it (up to 8 seconds).
+  function waitForToken(done) {
+    var start = Date.now()
+    ;(function poll() {
+      if (turnstileToken() || needsTick || Date.now() - start > 8000) return done(turnstileToken())
+      setTimeout(poll, 150)
+    })()
+  }
   function resetTurnstile() {
     if (window.turnstile) window.turnstile.reset()
   }
@@ -81,24 +93,31 @@
     statusEl.textContent = ''
     statusEl.className = 'form-status'
 
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject: s, email: em, message: m, website: honeypot.value, turnstileToken: turnstileToken() }),
-    })
-      .then(function (res) {
-        resetTurnstile()
-        if (res.ok) return showSent(em)
-        return res.json().then(
-          function (data) { throw new Error(data && data.error) },
-          function () { throw new Error('') },
-        )
-      })
-      .catch(function (err) {
-        // Everything typed stays in the form, so nothing is lost by retrying.
+    waitForToken(function (token) {
+      if (!token && needsTick) {
         sendBtn.disabled = false
         sendBtn.textContent = 'Send message'
-        fail(null, (err && err.message) || "Couldn't send - check your connection and try again. Your message is still here.")
+        return fail(null, 'Tick "Verify you are human" above, then send again.')
+      }
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject: s, email: em, message: m, website: honeypot.value, turnstileToken: token }),
       })
+        .then(function (res) {
+          resetTurnstile()
+          if (res.ok) return showSent(em)
+          return res.json().then(
+            function (data) { throw new Error(data && data.error) },
+            function () { throw new Error('') },
+          )
+        })
+        .catch(function (err) {
+          // Everything typed stays in the form, so nothing is lost by retrying.
+          sendBtn.disabled = false
+          sendBtn.textContent = 'Send message'
+          fail(null, (err && err.message) || "Couldn't send - check your connection and try again. Your message is still here.")
+        })
+    })
   })
 })()

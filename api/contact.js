@@ -143,7 +143,7 @@ module.exports = async function handler(req, res) {
 
   const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined
   if (!(await passesBotCheck(body.turnstileToken, ip))) {
-    return res.status(400).json({ error: "The bot check didn't go through. Wait a moment and try again." })
+    return res.status(400).json({ error: `The bot check didn't go through. If you see "Verify you are human", tick it and send again.` })
   }
 
   // Either copy is enough: stored-but-not-emailed still shows in the admin inbox, and
