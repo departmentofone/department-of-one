@@ -7,9 +7,9 @@ related_targets: []
 
 # Surface brief: homepage (index.html)
 
-Mode: Persuade. Audience: visitors deciding whether to trust one developer and open FitLog; secondary, people who want a free version of a paid app.
-Action: Open FitLog (primary); send a request (secondary, section must stay).
-Constraints: keep the mono typing wordmark with a visibly blinking jade cursor and the "// ... for now" comment line under it in every motion setting; keep Requests; keep data-content-key hooks; copy may be rewritten under the human-writing rules; no invented proof. Owner's machine: Windows Chrome, 125% scaling, reduced motion on; his screenshot is the acceptance test.
+Mode: Persuade. Audience: visitors deciding whether to trust one developer and open FitLog; secondary, people with an idea for an app.
+Action: Open FitLog (primary); send an app idea (secondary, section must stay).
+Constraints: keep the mono typing wordmark with a visibly blinking jade cursor and the "// ... for now" comment line under it in every motion setting; keep the Ideas section (id `requests`); no pricing promises (no free-forever or no-premium claims); keep data-content-key hooks; copy may be rewritten under the human-writing rules; no invented proof. Owner's machine: Windows Chrome, 125% scaling, reduced motion on; his screenshot is the acceptance test.
 
 ## Direction contract
 

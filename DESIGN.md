@@ -1,6 +1,6 @@
 ---
 name: Department of One
-description: Free apps made by one person, kept at a small hotel's front desk under two lights.
+description: Apps made by one person, kept at a small hotel's front desk under two lights.
 colors:
   travertine: "#e7e5df"
   travertine-deep: "#dbd8d0"
@@ -184,7 +184,7 @@ components:
 
 **Creative North Star: "The Front Desk"**
 
-The studio is the front desk of a small, very well kept hotel with one person behind it. Every app is a numbered jade key tag on a steel rail, requests are left at the desk, and the house rules hang on a framed plaque. The same set of materials is shown under two lights. At night the room is verde marble (ambientCG Marble009, CC0) lit by warm lamps. By day it is honed travertine (ambientCG Travertine009, CC0) in cool daylight, with jade deepened so it still reads on pale stone. The page follows the operating system's colour scheme and a manual toggle can override it.
+The studio is the front desk of a small, very well kept hotel with one person behind it. Every app is a numbered jade key tag on a steel rail, ideas are left at the desk, and the house rules hang on a framed plaque. The same set of materials is shown under two lights. At night the room is verde marble (ambientCG Marble009, CC0) lit by warm lamps. By day it is honed travertine (ambientCG Travertine009, CC0) in cool daylight, with jade deepened so it still reads on pale stone. The page follows the operating system's colour scheme and a manual toggle can override it.
 
 Nothing is a flat fill. A fixed layer of stone texture sits behind everything, masked as a lamp falloff: fullest in a pool behind the slideshow, dimming toward the edges of the viewport. Two slow lamp pools and one faint shaft of light drift over it, a vignette darkens the corners, and a fine noise grain in soft-light blend covers the whole viewport. Panels carry a top inner highlight and a pool of light in one corner. Density is low: large, tightly tracked Geist headlines, generous section spacing, and long measure limits on body copy.
 
@@ -286,7 +286,7 @@ Rounded, soft-cornered furniture with thin lines. Actions and chips are full pil
 ### Buttons
 Solid pills, lit from above.
 - **Shape:** full pill (999px), minimum height 52px, 28px side padding, 12px gap to a trailing arrow.
-- **Primary:** lit jade pill, jade-ink text, Geist 600 at 0.98rem. By day it is deep verde leather with a jade edge. Used for "Open FitLog" and "Send a request".
+- **Primary:** lit jade pill, jade-ink text, Geist 600 at 0.98rem. By day it is deep verde leather with a jade edge. Used for "Open FitLog" and "Send an idea".
 - **Hover / Focus:** the pill brightens slightly, rises 1px, its glow widens and the arrow slides 4px right, all on the door easing over 0.5s. Press nudges down 1px and scales to 0.99. Focus is a 2px jade outline at 3px offset.
 - **Ghost:** transparent with a rule-colour border; on hover the border and text turn jade.
 - **Text link:** body text with a 1px underline that wipes away to the right on hover while the text turns bronze.
