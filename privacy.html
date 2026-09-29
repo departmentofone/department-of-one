@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Privacy - Department of One</title>
+  <meta name="description" content="What the Department of One website collects, and what happens to a message sent through its contact form." />
+  <meta name="theme-color" content="#0a1310" media="(prefers-color-scheme: dark)" />
+  <link rel="canonical" href="https://department-of-one.vercel.app/privacy.html" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="ambience" aria-hidden="true">
+    <div class="stone"></div>
+    <div class="sun"></div>
+    <div class="light light-a"></div>
+    <div class="light light-b"></div>
+    <div class="light light-c"></div>
+  </div>
+
+  <header class="site">
+    <div class="wrap">
+      <a class="wordmark" href="/" aria-label="Department of One, home">
+        <span class="wm-line"><span class="wm-text">department of one</span><span class="cursor" aria-hidden="true"></span></span>
+        <span class="wm-comment" aria-hidden="true">// ... for now</span>
+      </a>
+      <nav class="primary" aria-label="Main">
+        <a class="navlink" href="/#work">Work</a>
+        <a class="navlink" href="/#about">About</a>
+        <a class="navlink" href="/#requests">Ideas</a>
+        <a class="navlink navlink-cta" href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="legal wrap">
+    <h1>Privacy</h1>
+    <p class="legal-meta">Last updated: 29 September 2026</p>
+
+    <p>
+      This page covers the Department of One website, department-of-one.vercel.app. It's run by Milan Solarov, an
+      independent developer based in Serbia. FitLog, the app, has its own
+      <a href="https://fitlog-two-gamma.vercel.app/privacy">privacy policy</a>.
+    </p>
+
+    <h2>What the site collects</h2>
+    <p>
+      Nothing about you, unless you send a message through the contact form. There are no ads, no analytics and no
+      tracking cookies. If you switch between light and dark mode, your browser remembers that choice on your device,
+      and it never reaches us.
+    </p>
+
+    <h2>The contact form</h2>
+    <p>
+      When you send a message, we receive the subject, your email address and the message itself. It's stored in our
+      database so I can read and answer it, and a copy is emailed to my inbox. We use it only to reply to you, and I
+      delete it when you ask.
+    </p>
+    <p>
+      Before a message is accepted, Cloudflare Turnstile checks that it comes from a person and not a bot. The check
+      runs in the background and uses your IP address, browser details such as the User-Agent, connection details and
+      which site the check runs on. Cloudflare's use of this data is covered by its
+      <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Turnstile Privacy Addendum</a>.
+    </p>
+
+    <h2>Services involved</h2>
+    <ul>
+      <li><a href="https://vercel.com/legal/privacy-policy">Vercel</a> hosts the site and handles each request, which includes your IP address.</li>
+      <li><a href="https://supabase.com/privacy">Supabase</a> stores contact messages and the site's text.</li>
+      <li><a href="https://policies.google.com/privacy">Google (Gmail)</a> delivers the email copy of your message.</li>
+      <li><a href="https://www.cloudflare.com/turnstile-privacy-policy/">Cloudflare Turnstile</a> runs the bot check on the contact form.</li>
+      <li><a href="https://policies.google.com/privacy">Google Fonts</a> and <a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net">jsDelivr</a> deliver the site's fonts and one script, which means they see your IP address and browser details.</li>
+    </ul>
+    <p>
+      Some of these providers process data outside Serbia and the European Economic Area, including in the United
+      States, and rely on recognized safeguards such as the European Commission's Standard Contractual Clauses.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      You can ask to see, correct or delete anything you've sent, by writing to
+      <a href="mailto:departmentofone.app@gmail.com">departmentofone.app@gmail.com</a>. You can also complain to the
+      Commissioner for Information of Public Importance and Personal Data Protection in Serbia
+      (<a href="https://www.poverenik.rs">poverenik.rs</a>), or to the data protection authority where you live.
+    </p>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="footer-top">
+        <p class="tagline" data-content-key="footer_tagline">Made by one person, who also wrote this footer.</p>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/contact.html">Contact</a>
+          <a href="https://github.com/departmentofone" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous" defer></script>
+  <script src="content.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

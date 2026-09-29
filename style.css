@@ -964,3 +964,17 @@ html.lenis, html.lenis body { height: auto; }
   .rules .rule-mark svg { width: 21px; height: 21px; }
   .desk { border-radius: 24px; }
 }
+
+/* ---------- Privacy page: plain readable text ---------- */
+.legal { padding-block: clamp(40px, 7vw, 96px) clamp(64px, 8vw, 110px); max-width: 72ch; }
+.legal h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1; letter-spacing: var(--display-track); font-weight: var(--display-wght); }
+.legal-meta { margin-top: 14px; color: var(--muted); font-size: 0.9rem; }
+.legal h2 { margin-top: 44px; margin-bottom: 12px; font-size: 1.35rem; font-weight: 550; letter-spacing: -0.02em; }
+.legal p, .legal li { color: var(--muted); font-size: 1.02rem; line-height: 1.7; }
+.legal p + p { margin-top: 14px; }
+.legal > p:first-of-type { margin-top: 28px; }
+.legal ul { margin-top: 12px; padding-left: 1.2em; list-style: disc; }
+.legal li + li { margin-top: 8px; }
+.legal ul + p { margin-top: 16px; }
+.legal a { color: var(--text); border-bottom: 1px solid var(--rule); transition: color 0.3s var(--ease), border-color 0.3s var(--ease); }
+.legal a:hover { border-color: var(--accent); color: var(--accent); }
