@@ -25,8 +25,14 @@ const SUPABASE_ANON_KEY = 'sb_publishable_JmN9P2H6oPKxcNh-jRPeEQ_aPc0NgLS'
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/
 
 // Origins allowed to call this from a browser besides this site itself: FitLog in production, its
-// preview deployments, and local development.
-const FITLOG_ORIGINS = new Set(['https://fitlog-two-gamma.vercel.app', 'http://localhost:5173'])
+// preview deployments, local development, and the FitLog app, whose pages come from its own local
+// origin (https://localhost on Android, capacitor://localhost on iOS).
+const FITLOG_ORIGINS = new Set([
+  'https://fitlog-two-gamma.vercel.app',
+  'http://localhost:5173',
+  'https://localhost',
+  'capacitor://localhost',
+])
 const FITLOG_PREVIEW_RE = /^https:\/\/fitlog-[a-z0-9-]+-fit-log\.vercel\.app$/
 const SOURCES = { fitlog: 'FitLog' }
 
