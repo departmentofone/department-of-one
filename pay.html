@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Your quote - Department of One</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#070d0b" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="pay-page">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="ambience" aria-hidden="true">
+    <div class="stone"></div>
+    <div class="grid"></div>
+    <div class="light light-a"></div>
+    <div class="light light-b"></div>
+    <div class="light light-c"></div>
+  </div>
+
+  <header class="site">
+    <div class="wrap">
+      <a class="wordmark" href="/" aria-label="Department of One, home">
+        <span class="wm-line"><span class="wm-text">department of one</span><span class="cursor" aria-hidden="true"></span></span>
+        <span class="wm-comment" aria-hidden="true">// ... for now</span>
+      </a>
+      <span class="private-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Private quote</span>
+    </div>
+  </header>
+
+  <main id="main" class="wrap quote-wrap">
+    <!-- Filled in by pay.js. Until then (or without JavaScript) this explains itself. -->
+    <section class="quote panel" id="quote" aria-live="polite">
+      <div class="quote-state" id="quoteLoading">
+        <p class="idx"><span>&#8226;</span> Loading your quote</p>
+        <noscript><p class="quote-note">This page needs JavaScript to show your quote. You can also ask me for it by email at <a href="mailto:departmentofone.app@gmail.com">departmentofone.app@gmail.com</a>.</p></noscript>
+      </div>
+
+      <div class="quote-state" id="quoteMissing" hidden>
+        <p class="idx"><span>404</span> Quote</p>
+        <h1>This link doesn't open a quote.</h1>
+        <p class="quote-note">It may have been mistyped, or the quote was withdrawn. Write to me and I'll send the right link.</p>
+        <a class="btn btn-ghost" href="mailto:departmentofone.app@gmail.com"><span>departmentofone.app@gmail.com</span></a>
+      </div>
+
+      <div class="quote-state" id="quoteBody" hidden>
+        <div class="quote-top">
+          <p class="idx"><span id="qNo">Q-0000</span> Quote</p>
+          <span class="quote-status" id="qStatus">Awaiting payment</span>
+        </div>
+        <h1 id="qTitle"></h1>
+        <p class="quote-for">Prepared for <strong id="qClient"></strong></p>
+        <dl class="quote-dates">
+          <div><dt>Issued</dt><dd id="qIssued"></dd></div>
+          <div id="qValidRow"><dt>Valid until</dt><dd id="qValid"></dd></div>
+        </dl>
+
+        <div class="quote-scope" id="qScopeWrap">
+          <h2>What's included</h2>
+          <p id="qScope"></p>
+        </div>
+
+        <table class="quote-items">
+          <caption class="label">Breakdown</caption>
+          <tbody id="qItems"></tbody>
+          <tfoot>
+            <tr><th scope="row">Total</th><td id="qTotal"></td></tr>
+          </tfoot>
+        </table>
+
+        <div class="quote-pay" id="qPay"></div>
+
+        <p class="quote-fine">Anyone with this link can see this page, so keep it to yourself. Questions about the quote? Reply to my email or write to <a href="mailto:departmentofone.app@gmail.com">departmentofone.app@gmail.com</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site pay-foot">
+    <div class="wrap">
+      <div class="footer-top">
+        <p class="tagline">Made by one person, who also wrote this footer.</p>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="/">departmentofone.net</a>
+          <a href="/privacy">Privacy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/pay.js" defer></script>
+</body>
+</html>

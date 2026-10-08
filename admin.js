@@ -121,6 +121,7 @@ async function showEditor(user) {
   }
 
   loadInbox()
+  loadQuotes()
 
   var { data: rows, error } = await sb.from('site_content').select('key,value').order('key')
   if (error) {
@@ -177,6 +178,148 @@ document.getElementById('signInBtn').onclick = async function () {
   }
   showEditor(data.user)
 }
+
+// ---------- Quotes (supabase/quotes.sql) ----------
+// Each quote is a private page at /pay/<token>. Visitors can only reach one through its token, via
+// the get_quote() function; this list reads the table directly, which only the owner may do.
+var SITE = 'https://www.departmentofone.net'
+
+function quoteLink(q) {
+  return SITE + '/pay/' + q.token
+}
+
+function quoteTotal(q) {
+  var total = (q.items || []).reduce(function (sum, it) { return sum + (Number(it.amount) || 0) }, 0)
+  try {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: q.currency }).format(total)
+  } catch (e) {
+    return total.toFixed(2) + ' ' + q.currency
+  }
+}
+
+// "Design and build | 900" -> { label: 'Design and build', amount: 900 }. Returns null on a bad line.
+function parseItems(text) {
+  var items = []
+  var lines = text.split('\n').map(function (l) { return l.trim() }).filter(Boolean)
+  for (var i = 0; i < lines.length; i++) {
+    var parts = lines[i].split('|')
+    var amount = Number(String(parts[parts.length - 1]).replace(/[^0-9.\-]/g, ''))
+    var label = parts.slice(0, -1).join('|').trim()
+    if (parts.length < 2 || !label || !isFinite(amount)) return null
+    items.push({ label: label.slice(0, 200), amount: Math.round(amount * 100) / 100 })
+  }
+  return items.length ? items : null
+}
+
+async function copyText(text, button) {
+  try {
+    await navigator.clipboard.writeText(text)
+    var old = button.textContent
+    button.textContent = 'Copied'
+    setTimeout(function () { button.textContent = old }, 1500)
+  } catch (e) {
+    window.prompt('Copy the link:', text)
+  }
+}
+
+async function loadQuotes() {
+  var box = document.getElementById('quoteList')
+  var { data: quotes, error } = await sb.from('quotes').select('*').order('created_at', { ascending: false })
+  if (error) {
+    box.innerHTML = '<p class="sub">Could not load quotes: ' + escapeHtml(error.message) + '. Has supabase/quotes.sql been run?</p>'
+    return
+  }
+  if (!quotes.length) {
+    box.innerHTML = '<p class="sub">No quotes yet.</p>'
+    return
+  }
+  box.innerHTML = ''
+  quotes.forEach(function (q) {
+    var el = document.createElement('div')
+    el.className = 'q-item'
+    el.innerHTML =
+      '<div class="q-head"><span class="q-title"></span><span class="q-status ' + q.status + '">' + q.status + '</span></div>' +
+      '<div class="q-meta"></div>' +
+      '<div class="msg-actions" style="margin-top:10px">' +
+      '<button type="button" data-act="copy">Copy link</button>' +
+      '<a target="_blank" rel="noopener">Open</a>' +
+      '<button type="button" data-act="payurl">' + (q.pay_url ? 'Change payment link' : 'Add payment link') + '</button>' +
+      (q.status === 'open' ? '<button type="button" data-act="paid">Mark paid</button><button type="button" class="danger" data-act="void">Withdraw</button>' : '<button type="button" data-act="reopen">Reopen</button>') +
+      '</div>'
+    el.querySelector('.q-title').textContent = 'Q-' + String(q.quote_no).padStart(4, '0') + ' · ' + q.title
+    el.querySelector('.q-meta').textContent = q.client_name + ' · ' + quoteTotal(q) + (q.valid_until ? ' · valid until ' + q.valid_until : '') + (q.pay_url ? '' : ' · no payment link yet')
+    el.querySelector('a').href = quoteLink(q)
+    el.querySelector('[data-act="copy"]').onclick = function () { copyText(quoteLink(q), this) }
+    el.querySelector('[data-act="payurl"]').onclick = async function () {
+      var url = window.prompt('Payment link for this quote (https://...). Leave empty to remove it.', q.pay_url || '')
+      if (url === null) return
+      url = url.trim()
+      if (url && !/^https:\/\//.test(url)) return alert('The link has to start with https://')
+      var { error } = await sb.from('quotes').update({ pay_url: url || null, updated_at: new Date().toISOString() }).eq('id', q.id)
+      if (error) alert(error.message)
+      loadQuotes()
+    }
+    function setStatus(status) {
+      return async function () {
+        if (status === 'void' && !confirm('Withdraw this quote? Its link will stop working.')) return
+        var patch = { status: status, updated_at: new Date().toISOString(), paid_at: status === 'paid' ? new Date().toISOString() : null }
+        var { error } = await sb.from('quotes').update(patch).eq('id', q.id)
+        if (error) alert(error.message)
+        loadQuotes()
+      }
+    }
+    var paid = el.querySelector('[data-act="paid"]')
+    if (paid) paid.onclick = setStatus('paid')
+    var voidBtn = el.querySelector('[data-act="void"]')
+    if (voidBtn) voidBtn.onclick = setStatus('void')
+    var reopen = el.querySelector('[data-act="reopen"]')
+    if (reopen) reopen.onclick = setStatus('open')
+    box.appendChild(el)
+  })
+}
+
+document.getElementById('quoteForm').addEventListener('submit', async function (e) {
+  e.preventDefault()
+  var state = document.getElementById('qfState')
+  var made = document.getElementById('qfMade')
+  var val = function (id) { return document.getElementById(id).value.trim() }
+  state.className = 'save-state err'
+  made.hidden = true
+  var items = parseItems(document.getElementById('qfItems').value)
+  var currency = val('qfCurrency').toUpperCase()
+  var payUrl = val('qfPayUrl')
+  if (!val('qfClient')) return (state.textContent = 'Add the client name.')
+  if (!val('qfTitle')) return (state.textContent = 'Add a project title.')
+  if (!items) return (state.textContent = 'Line items need "label | amount" on each line.')
+  if (!/^[A-Z]{3}$/.test(currency)) return (state.textContent = 'Currency is a 3-letter code, like USD or EUR.')
+  if (payUrl && !/^https:\/\//.test(payUrl)) return (state.textContent = 'The payment link has to start with https://')
+
+  state.className = 'save-state'
+  state.textContent = 'Creating…'
+  var { data, error } = await sb.from('quotes').insert({
+    client_name: val('qfClient'),
+    client_email: val('qfEmail') || null,
+    title: val('qfTitle'),
+    scope: val('qfScope') || null,
+    items: items,
+    currency: currency,
+    valid_until: val('qfValid') || null,
+    pay_url: payUrl || null,
+    pay_note: val('qfPayNote') || null,
+  }).select().single()
+  if (error) {
+    state.className = 'save-state err'
+    state.textContent = 'Could not create it: ' + error.message
+    return
+  }
+  state.className = 'save-state ok'
+  state.textContent = 'Created ✓'
+  made.hidden = false
+  made.textContent = 'Link: ' + quoteLink(data)
+  this.reset()
+  document.getElementById('qfCurrency').value = currency
+  loadQuotes()
+})
 
 sb.auth.getSession().then(function (res) {
   var session = res.data.session

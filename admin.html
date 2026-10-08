@@ -58,6 +58,21 @@
     .msg-actions a, .msg-actions button { color: var(--muted); background: none; border: none; padding: 0; font: inherit; cursor: pointer; }
     .msg-actions a:hover, .msg-actions button:hover { color: var(--accent); }
     .msg-actions .danger:hover { color: #ef4444; }
+    /* Quotes: create a private /pay/<token> page and copy its link. */
+    .quote-form { display: grid; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin-bottom: 18px; }
+    .quote-form label { display: grid; gap: 5px; font-size: 0.82rem; color: var(--muted); }
+    .quote-form input, .quote-form textarea { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 0.95rem; }
+    .quote-form textarea { resize: vertical; min-height: 70px; }
+    .quote-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .quote-form .hint { font-size: 0.75rem; color: var(--faint, var(--muted)); }
+    .quote-made { font-size: 0.85rem; color: var(--accent); overflow-wrap: anywhere; }
+    .q-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 10px; }
+    .q-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; align-items: baseline; }
+    .q-title { font-weight: 700; overflow-wrap: anywhere; }
+    .q-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+    .q-status { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .q-status.open { color: var(--accent); } .q-status.paid { color: #5fd08f; } .q-status.void { color: var(--muted); }
+    @media (max-width: 520px) { .quote-form .row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -86,6 +101,32 @@
       </summary>
       <p class="sub">From the contact form. Copies also go to your Gmail.</p>
       <div id="messages" class="msg-list"></div>
+    </details>
+
+    <details class="inbox" id="quotesBox">
+      <summary>
+        <h1>Quotes</h1>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </summary>
+      <p class="sub">Each quote gets a private page at departmentofone.net/pay/&lt;code&gt;. Only people you send the link to can open it.</p>
+      <form id="quoteForm" class="quote-form" novalidate>
+        <div class="row">
+          <label>Client name<input id="qfClient" maxlength="120" required /></label>
+          <label>Client email (only for you)<input id="qfEmail" type="email" maxlength="320" /></label>
+        </div>
+        <label>Project title<input id="qfTitle" maxlength="160" required placeholder="Booking website for Studio Vela" /></label>
+        <label>What's included<textarea id="qfScope" maxlength="4000" placeholder="6 pages, booking, payments, copy help. Line breaks are kept."></textarea></label>
+        <label>Line items<textarea id="qfItems" required placeholder="Design and build | 900&#10;Booking system | 250"></textarea><span class="hint">One per line: label | amount</span></label>
+        <div class="row">
+          <label>Currency<input id="qfCurrency" value="USD" maxlength="3" /></label>
+          <label>Valid until<input id="qfValid" type="date" /></label>
+        </div>
+        <label>Payment link (optional, https)<input id="qfPayUrl" type="url" placeholder="https://..." /><span class="hint">The provider's checkout or invoice link for this amount. You can add it later.</span></label>
+        <label>Note under the pay button (optional)<input id="qfPayNote" maxlength="200" placeholder="Card, Apple Pay or Google Pay" /></label>
+        <div class="field-row"><button class="btn btn-primary" style="padding:8px 16px; font-size:0.85rem" type="submit">Create quote</button><span id="qfState" class="save-state"></span></div>
+        <p id="qfMade" class="quote-made" hidden></p>
+      </form>
+      <div id="quoteList" class="msg-list"></div>
     </details>
 
     <h1>Edit site text</h1>
