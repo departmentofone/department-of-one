@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/contact.html",
+      "destination": "/#inquiry",
+      "permanent": false
+    },
+    {
+      "source": "/contact",
+      "destination": "/#inquiry",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -1,57 +1,11 @@
-// Site behaviour: theme toggle, smooth scrolling, scroll reveals, the FitLog carousel, the hero
-// lamp. Everything degrades to a complete static page: no element depends
-// on this file to become visible.
+// Site behaviour: smooth scrolling, scroll reveals, the hero console, pointer effects, the process
+// line, the FitLog carousel and the mobile menu. Everything degrades to a complete static page: no
+// element depends on this file to become visible.
 ;(function () {
   const root = document.documentElement
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
-
-  // ---------- Theme: system → light → dark → system, persisted per browser ----------
-  // Mirrors the token structure in style.css: no attribute = system, data-theme="light"/"dark" = forced.
-  ;(function theme() {
-    const toggle = document.getElementById('themeToggle')
-    const sun = document.getElementById('iconSun')
-    const moon = document.getElementById('iconMoon')
-    if (!toggle) return
-    const KEY = 'theme'
-
-    function showIcon() {
-      const forced = root.getAttribute('data-theme')
-      const isDark = forced === 'dark' || (forced !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      sun.style.display = isDark ? 'none' : 'block'
-      moon.style.display = isDark ? 'block' : 'none'
-    }
-
-    function apply(mode) {
-      if (mode === 'light' || mode === 'dark') root.setAttribute('data-theme', mode)
-      else root.removeAttribute('data-theme')
-      showIcon()
-    }
-
-    let stored = null
-    try {
-      stored = localStorage.getItem(KEY)
-    } catch {
-      // Private browsing / blocked storage: falls back to system each load, still works fine.
-    }
-    // With no saved choice, leave the root alone: a host page (or the OS) may already have set it.
-    if (stored) apply(stored)
-    else showIcon()
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', showIcon)
-
-    toggle.addEventListener('click', () => {
-      const current = stored ?? 'system'
-      const next = current === 'system' ? 'light' : current === 'light' ? 'dark' : 'system'
-      stored = next === 'system' ? null : next
-      try {
-        if (stored) localStorage.setItem(KEY, stored)
-        else localStorage.removeItem(KEY)
-      } catch {
-        // Nothing to persist to: the toggle still works for the rest of this visit.
-      }
-      apply(stored)
-    })
-  })()
+  const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v))
 
   // ---------- Smooth, weighted scrolling (Lenis), skipped under reduced motion ----------
   if (!reduceMotion && window.Lenis) {
@@ -70,11 +24,7 @@
   // ---------- Header gains its frosted band once the page moves ----------
   const header = document.querySelector('header.site')
   if (header) {
-    const onScroll = () => {
-      header.classList.toggle('is-scrolled', window.scrollY > 12)
-      // the window light belongs to the hero; let it fade as the hero leaves
-      root.style.setProperty('--sun-fade', Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.9)).toFixed(3))
-    }
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
   }
@@ -95,13 +45,19 @@
 
     const fold = window.innerHeight * 0.92
     const pending = els.filter((el) => el.getBoundingClientRect().top > fold)
+    // Everything else is already on screen: drop the stagger so hover effects never wait on it.
+    els.filter((el) => !pending.includes(el)).forEach((el) => el.style.setProperty('--d', '0s'))
     pending.forEach((el) => el.classList.add('is-pending'))
 
+    const show = (el) => {
+      el.classList.remove('is-pending')
+      setTimeout(() => el.style.setProperty('--d', '0s'), 1400)
+    }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return
-          entry.target.classList.remove('is-pending')
+          show(entry.target)
           io.unobserve(entry.target)
         })
       },
@@ -110,51 +66,35 @@
     pending.forEach((el) => io.observe(el))
     // Anything still held back after a jump (anchor link, restored scroll) shows up anyway.
     window.addEventListener('load', () => setTimeout(() => pending.forEach((el) => {
-      const r = el.getBoundingClientRect()
-      if (r.bottom < 0) el.classList.remove('is-pending')
+      if (el.getBoundingClientRect().bottom < 0) show(el)
     }), 300))
   })()
 
-  // ---------- Hero lamp follows the pointer, with some weight ----------
-  // --mx/--my are percentages of the hero box. The lamp rests on the centre of the carousel and,
-  // with a fine pointer and motion allowed, drifts after the pointer and back again on leave.
-  const hero = document.querySelector('.hero')
-  const stack = document.getElementById('stack')
-  if (hero && stack) {
-    let rx = 70, ry = 40, tx = rx, ty = ry, x = rx, y = ry, running = false
-    const put = () => {
-      hero.style.setProperty('--mx', x.toFixed(2) + '%')
-      hero.style.setProperty('--my', y.toFixed(2) + '%')
-    }
-    const rest = () => {
-      const h = hero.getBoundingClientRect(), c = stack.getBoundingClientRect()
-      if (!h.width || !h.height) return
-      rx = ((c.left + c.width / 2 - h.left) / h.width) * 100
-      ry = ((c.top + c.height / 2 - h.top) / h.height) * 100
-    }
-    const step = () => {
-      x += (tx - x) * 0.06
-      y += (ty - y) * 0.06
-      put()
-      if (Math.abs(tx - x) > 0.05 || Math.abs(ty - y) > 0.05) requestAnimationFrame(step)
-      else running = false
-    }
-    const glide = () => { if (!running) { running = true; requestAnimationFrame(step) } }
-    const settle = () => { rest(); tx = x = rx; ty = y = ry; put() }
-    settle()
-    window.addEventListener('resize', settle)
-    window.addEventListener('load', settle)
-    // The carousel rises into place on load; measure again once it has landed.
-    document.getElementById('showcase')?.addEventListener('animationend', settle)
-    if (finePointer && !reduceMotion) {
-      hero.addEventListener('pointermove', (e) => {
-        const r = hero.getBoundingClientRect()
-        tx = ((e.clientX - r.left) / r.width) * 100
-        ty = ((e.clientY - r.top) / r.height) * 100
-        glide()
+  // ---------- Panels: a spotlight follows the pointer ----------
+  if (finePointer) {
+    document.querySelectorAll('[data-spot]').forEach((el) => {
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect()
+        el.style.setProperty('--mx', e.clientX - r.left + 'px')
+        el.style.setProperty('--my', e.clientY - r.top + 'px')
       })
-      hero.addEventListener('pointerleave', () => { rest(); tx = rx; ty = ry; glide() })
-    }
+    })
+  }
+
+  // ---------- Device stages: layers drift a little with the pointer, by depth ----------
+  document.querySelectorAll('[data-depth]').forEach((el) => el.style.setProperty('--d', el.dataset.depth))
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('[data-stage], #scenes').forEach((stage) => {
+      stage.addEventListener('pointermove', (e) => {
+        const r = stage.getBoundingClientRect()
+        stage.style.setProperty('--px', (((e.clientX - r.left) / r.width - 0.5) * -2).toFixed(3))
+        stage.style.setProperty('--py', (((e.clientY - r.top) / r.height - 0.5) * -2).toFixed(3))
+      })
+      stage.addEventListener('pointerleave', () => {
+        stage.style.setProperty('--px', '0')
+        stage.style.setProperty('--py', '0')
+      })
+    })
   }
 
   // ---------- Mobile menu ----------
@@ -171,6 +111,132 @@
     panel.addEventListener('click', (e) => { if (e.target.closest('a')) set(false) })
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { set(false); btn.focus() } })
     document.addEventListener('click', (e) => { if (!panel.hidden && !panel.contains(e.target) && !btn.contains(e.target)) set(false) })
+  })()
+
+  // ---------- Nav shows which section is in view ----------
+  ;(function spy() {
+    if (!('IntersectionObserver' in window)) return
+    const links = new Map()
+    document.querySelectorAll('nav.primary a.navlink:not(.navlink-cta)').forEach((a) => links.set(a.getAttribute('href').slice(1), a))
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const a = links.get(entry.target.id)
+          if (!a) return
+          if (entry.isIntersecting) {
+            links.forEach((l) => l.removeAttribute('aria-current'))
+            a.setAttribute('aria-current', 'true')
+          } else if (a.getAttribute('aria-current')) {
+            a.removeAttribute('aria-current')
+          }
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    links.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s) })
+  })()
+
+  // ---------- Process: the line fills as the steps scroll past ----------
+  ;(function process() {
+    const steps = document.getElementById('steps')
+    if (!steps) return
+    let queued = false
+    const update = () => {
+      queued = false
+      const r = steps.getBoundingClientRect()
+      steps.style.setProperty('--p', clamp((window.innerHeight * 0.62 - r.top) / r.height, 0, 1).toFixed(3))
+    }
+    update()
+    window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update) } }, { passive: true })
+    window.addEventListener('resize', update)
+  })()
+
+  // ---------- Hero console: a command is typed, the thing it makes appears ----------
+  ;(function consoleDemo() {
+    const box = document.getElementById('console')
+    if (!box) return
+    const typed = document.getElementById('typed')
+    const result = document.getElementById('result')
+    const scenes = Array.from(box.querySelectorAll('.scene'))
+    const tabs = Array.from(box.querySelectorAll('[role="tab"]'))
+    const data = [
+      { cmd: 'new website --for "a sauna club"', res: '7 pages, online booking, Lighthouse 99' },
+      { cmd: 'new app --for "a hair salon"', res: 'iPhone and Android from one codebase' },
+      { cmd: 'new bot --for "a community"', res: 'Discord and Telegram, 30 tests' },
+    ]
+    let cur = 0
+    let auto = !reduceMotion
+    let timer = null
+    let onscreen = true
+    // The rotation would talk over a screen reader, so it only announces once the visitor picks a tab.
+    result.setAttribute('aria-live', 'off')
+
+    const resultHtml = (d) => '<span class="ok">&#10003;</span> ' + d.res
+    const clear = () => { clearTimeout(timer); timer = null }
+
+    function select(i) {
+      cur = i
+      scenes.forEach((s, k) => s.classList.toggle('is-on', k === i))
+      tabs.forEach((t, k) => {
+        t.setAttribute('aria-selected', String(k === i))
+        t.tabIndex = k === i ? 0 : -1
+      })
+    }
+
+    function typeIn(i, animate) {
+      clear()
+      select(i)
+      const d = data[i]
+      if (!animate || reduceMotion) {
+        typed.textContent = d.cmd
+        result.innerHTML = resultHtml(d)
+        result.classList.remove('is-off')
+        return
+      }
+      result.classList.add('is-off')
+      typed.textContent = ''
+      let n = 0
+      const step = () => {
+        n++
+        typed.textContent = d.cmd.slice(0, n)
+        if (n < d.cmd.length) {
+          timer = setTimeout(step, 26 + Math.random() * 34)
+        } else {
+          result.innerHTML = resultHtml(d)
+          result.classList.remove('is-off')
+          queueNext()
+        }
+      }
+      timer = setTimeout(step, 220)
+    }
+
+    function queueNext() {
+      if (!auto) return
+      timer = setTimeout(function next() {
+        if (!onscreen || document.hidden) { timer = setTimeout(next, 800); return }
+        typeIn((cur + 1) % data.length, true)
+      }, 4600)
+    }
+
+    function pick(i, focus) {
+      auto = false
+      result.setAttribute('aria-live', 'polite')
+      typeIn(i, true)
+      if (focus) tabs[i].focus()
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => pick(i, false))
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); pick((i + 1) % tabs.length, true) }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); pick((i + tabs.length - 1) % tabs.length, true) }
+        if (e.key === 'Home') { e.preventDefault(); pick(0, true) }
+        if (e.key === 'End') { e.preventDefault(); pick(tabs.length - 1, true) }
+      })
+    })
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => { onscreen = entries[0].isIntersecting }).observe(box)
+    }
+    queueNext()
   })()
 
   // ---------- FitLog carousel ----------
@@ -248,15 +314,14 @@
         titleOn = 1 - titleOn
       }
       // warm the next screens so a drag never lands on an empty card
-      ;[1, -1, 2].forEach((k) => cards[(index + k + n) % n].querySelectorAll('img').forEach((img) => { img.loading = 'eager' }))
+      ;[0, 1, -1, 2].forEach((k) => cards[(index + k + n) % n].querySelectorAll('img').forEach((img) => { img.loading = 'eager' }))
     }
 
     // ---- autoplay: only when motion is allowed, never after the visitor takes over
-    let autoplay = true
+    let autoplay = !reduceMotion
     let lastTouch = 0
     let hovered = false
-    let onscreen = true
-    let timer = null
+    let onscreen = false
     function tick() {
       // turns every 5 s; waits 8 s after the visitor last handled it
       if (autoplay && !hovered && onscreen && !document.hidden && performance.now() - lastTouch > 8000) go(index + 1)
@@ -266,9 +331,9 @@
       pauseBtn.setAttribute('aria-pressed', String(!on))
       pauseBtn.setAttribute('aria-label', on ? 'Pause slideshow' : 'Play slideshow')
     }
-    pauseBtn.hidden = false
-    setAutoplay(true)
-    timer = setInterval(tick, 5000)
+    pauseBtn.hidden = reduceMotion
+    setAutoplay(autoplay)
+    setInterval(tick, 5000)
     pauseBtn.addEventListener('click', () => setAutoplay(!autoplay))
     function takeOver() {
       lastTouch = performance.now()
@@ -281,13 +346,13 @@
     }
 
     // ---- drag (mouse and touch share pointer events)
-    let startX = 0, startT = 0, dx = 0, dragging = false, pointerId = null, lastX = 0, lastT = 0, vel = 0
+    let startX = 0, dx = 0, dragging = false, pointerId = null, lastX = 0, lastT = 0, vel = 0
     const cardWidth = () => cards[0].offsetWidth || 260
     stack.addEventListener('pointerdown', (e) => {
       if (e.button !== 0) return
       pointerId = e.pointerId
       startX = lastX = e.clientX
-      startT = lastT = performance.now()
+      lastT = performance.now()
       dx = 0; vel = 0; dragging = false
     })
     stack.addEventListener('pointermove', (e) => {
@@ -303,8 +368,7 @@
       const now = performance.now()
       vel = (e.clientX - lastX) / Math.max(now - lastT, 1)
       lastX = e.clientX; lastT = now
-      const pos = index - dx / (cardWidth() * SPREAD)
-      layout(pos)
+      layout(index - dx / (cardWidth() * SPREAD))
     })
     function endDrag(e) {
       if (e.pointerId !== pointerId) return

@@ -1,48 +1,31 @@
 ---
 name: Department of One
-description: Apps made by one person, kept at a small hotel's front desk under two lights.
+description: Websites, apps and bots by one developer, in a dark console room on verde marble.
 colors:
-  travertine: "#e7e5df"
-  travertine-deep: "#dbd8d0"
-  travertine-surface: "#f2f0eb"
-  travertine-surface-2: "#e9e6df"
-  day-ink: "#16211d"
-  day-ink-muted: "#4b5550"
-  day-ink-faint: "#7c827d"
-  day-border: "rgba(22, 33, 29, 0.11)"
-  day-rule: "rgba(22, 33, 29, 0.26)"
-  day-jade: "#3d9a6f"
-  day-jade-hi: "#a8e3c3"
-  day-jade-lo: "#2a6e4f"
-  day-jade-ink: "#04110b"
-  day-jade-text: "#1f6b49"
-  day-live: "#2f8f5f"
-  verde: "#0a1310"
-  verde-deep: "#060c0a"
-  verde-surface: "#0f1a16"
-  verde-surface-2: "#13201b"
-  verde-slab: "#0b1411"
-  night-ivory: "#ece7dc"
-  night-ivory-muted: "#a9ab9f"
-  night-ivory-faint: "#707870"
-  night-border: "rgba(236, 231, 220, 0.09)"
-  night-rule: "rgba(236, 231, 220, 0.2)"
-  night-jade: "#7fd3a6"
-  night-jade-hi: "#c6f2d8"
-  night-jade-lo: "#3a9469"
-  night-jade-ink: "#06140e"
-  night-jade-text: "#9fe0bf"
-  night-steel: "#a4a9a1"
-  night-live: "#5fd08f"
-  desk-ivory-muted: "#b9bcb1"
-  clay-error: "#b4543a"
+  verde: "#070d0b"
+  verde-deep: "#040807"
+  verde-surface: "#0d1713"
+  verde-surface-2: "#121f1a"
+  ivory: "#ece7dc"
+  ivory-muted: "#a9ab9f"
+  ivory-faint: "#6f776f"
+  border: "rgba(236, 231, 220, 0.09)"
+  border-hi: "rgba(236, 231, 220, 0.18)"
+  rule: "rgba(236, 231, 220, 0.2)"
+  jade: "#7fd3a6"
+  jade-hi: "#c6f2d8"
+  jade-lo: "#3a9469"
+  jade-ink: "#06140e"
+  jade-text: "#9fe0bf"
+  live: "#5fd08f"
+  clay-error: "#e0765a"
 typography:
   display:
     fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
-    fontSize: "clamp(3.1rem, 6.7vw, 6rem)"
+    fontSize: "clamp(2.8rem, 4.9vw, 5rem)"
     fontWeight: 560
-    lineHeight: 1
-    letterSpacing: "-0.045em"
+    lineHeight: 0.98
+    letterSpacing: "-0.048em"
   headline:
     fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "clamp(2.5rem, 5vw, 4.4rem)"
@@ -51,291 +34,171 @@ typography:
     letterSpacing: "-0.045em"
   title:
     fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
-    fontSize: "clamp(1.4rem, 2vw, 1.7rem)"
-    fontWeight: 550
-    lineHeight: 1.12
-    letterSpacing: "-0.03em"
-  pull:
-    fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
-    fontSize: "clamp(1.5rem, 2.6vw, 2.2rem)"
-    fontWeight: 450
-    lineHeight: 1.32
-    letterSpacing: "-0.028em"
-  numeral:
-    fontFamily: "'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace"
-    fontSize: "1rem"
-    fontWeight: 500
-    letterSpacing: "-0.02em"
-  lede:
-    fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
-    fontSize: "clamp(1.1rem, 1.35vw, 1.28rem)"
-    fontWeight: 400
-    lineHeight: 1.6
+    fontSize: "clamp(1.9rem, 3.1vw, 2.9rem)"
+    fontWeight: 560
+    lineHeight: 1.03
+    letterSpacing: "-0.04em"
   body:
     fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "17px"
     fontWeight: 400
     lineHeight: 1.6
-  button:
-    fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
-    fontSize: "0.98rem"
-    fontWeight: 600
-    letterSpacing: "0.01em"
   label:
-    fontFamily: "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
-    fontSize: "0.74rem"
-    fontWeight: 500
-    letterSpacing: "0.16em"
+    fontFamily: "'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace"
+    fontSize: "0.74rem to 0.8rem"
+    fontWeight: 400
+    letterSpacing: "0.04em"
   wordmark:
     fontFamily: "'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace"
     fontSize: "1.55rem"
     fontWeight: 500
     lineHeight: 1
     letterSpacing: "-0.03em"
-  wordmark-comment:
-    fontFamily: "'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace"
-    fontSize: "0.86rem"
-    fontWeight: 400
-    letterSpacing: "-0.01em"
 rounded:
-  plaque: "4px"
   sm: "8px"
-  screen: "10px"
   field: "12px"
   md: "14px"
-  device: "16px"
+  console: "20px"
   lg: "24px"
   desk: "32px"
   pill: "999px"
 spacing:
   gutter: "clamp(20px, 4vw, 56px)"
   container: "1280px"
-  section: "clamp(96px, 12vw, 168px)"
-  card: "clamp(28px, 4vw, 56px)"
-  plaque: "clamp(30px, 5vw, 76px)"
-  field-gap: "22px"
+  section: "clamp(88px, 11vw, 160px)"
   header: "88px"
 components:
   button-primary:
-    backgroundColor: "{colors.day-jade}"
-    textColor: "{colors.day-jade-ink}"
-    typography: "{typography.button}"
-    rounded: "{rounded.pill}"
-    padding: "0 28px"
-    height: "52px"
-  button-primary-night:
-    backgroundColor: "{colors.night-jade}"
-    textColor: "{colors.night-jade-ink}"
-    typography: "{typography.button}"
+    backgroundColor: "{colors.jade}"
+    textColor: "{colors.jade-ink}"
     rounded: "{rounded.pill}"
     padding: "0 28px"
     height: "52px"
   button-ghost:
     backgroundColor: "transparent"
-    textColor: "{colors.day-ink}"
-    typography: "{typography.button}"
+    textColor: "{colors.ivory}"
     rounded: "{rounded.pill}"
     padding: "0 28px"
     height: "52px"
-  button-ghost-hover:
-    textColor: "{colors.day-jade-text}"
-  nav-cta:
-    backgroundColor: "transparent"
-    textColor: "{colors.day-ink}"
-    rounded: "{rounded.pill}"
-    padding: "9px 18px"
-  nav-cta-hover:
-    backgroundColor: "{colors.day-jade}"
-    textColor: "{colors.day-jade-ink}"
+  panel:
+    backgroundColor: "{colors.verde-surface}"
+    rounded: "{rounded.lg}"
   input-field:
-    backgroundColor: "{colors.travertine}"
-    textColor: "{colors.day-ink}"
-    typography: "{typography.body}"
+    backgroundColor: "{colors.verde-deep}"
+    textColor: "{colors.ivory}"
     rounded: "{rounded.field}"
     padding: "14px 16px"
-  card-project:
-    backgroundColor: "{colors.travertine-surface}"
-    textColor: "{colors.day-ink}"
-    rounded: "{rounded.lg}"
-    padding: "clamp(28px, 4vw, 56px)"
-  plaque:
-    textColor: "{colors.day-ink}"
-    rounded: "{rounded.plaque}"
-    padding: "clamp(30px, 5vw, 76px)"
-  desk:
-    backgroundColor: "{colors.verde-slab}"
-    textColor: "{colors.night-ivory}"
-    rounded: "{rounded.desk}"
-    padding: "clamp(48px, 8vw, 112px) clamp(26px, 6vw, 92px)"
-  status-pill:
-    textColor: "{colors.day-ink-muted}"
-    typography: "{typography.label}"
-    rounded: "{rounded.pill}"
-    padding: "7px 13px"
-  device-frame:
-    rounded: "{rounded.device}"
-    padding: "7px"
-    width: "clamp(236px, 23vw, 300px)"
+  console:
+    backgroundColor: "{colors.verde-surface}"
+    rounded: "{rounded.console}"
 ---
 
 # Design System: Department of One
 
 ## Overview
 
-**Creative North Star: "The Front Desk"**
+**Creative North Star: "The Console"**
 
-The studio is the front desk of a small, very well kept hotel with one person behind it. Every app is a numbered jade key tag on a steel rail, ideas are left at the desk, and the house rules hang on a framed plaque. The same set of materials is shown under two lights. At night the room is verde marble (ambientCG Marble009, CC0) lit by warm lamps. By day it is honed travertine (ambientCG Travertine009, CC0) in cool daylight, with jade deepened so it still reads on pale stone. The page follows the operating system's colour scheme and a manual toggle can override it.
+One dark room. The ground is verde marble (ambientCG Marble009, CC0) under a faint 72px grid that fades out toward the edges, with two slow lamp pools drifting over it and a fine grain on top. The page talks the way a terminal does: small mono labels, numbered sections (`01 Services`), and a block cursor that echoes the logo wherever something is being typed. Jade is the only accent and marks anything you can act on. The earlier "front desk of a small hotel" direction (travertine by day, key tags on a steel rail, a framed plaque) was retired on 2026-10-08; the marble, the jade and the cursor carried over, the furniture and the light theme did not.
 
-Nothing is a flat fill. A fixed layer of stone texture sits behind everything, masked as a lamp falloff: fullest in a pool behind the slideshow, dimming toward the edges of the viewport. Two slow lamp pools and one faint shaft of light drift over it, a vignette darkens the corners, and a fine noise grain in soft-light blend covers the whole viewport. Panels carry a top inner highlight and a pool of light in one corner. Density is low: large, tightly tracked Geist headlines, generous section spacing, and long measure limits on body copy.
+The hero is the signature moment: a console window where a command is typed (`new website --for "a sauna club"`) and the thing it makes appears under it, as real screens in browser, phone and chat frames. Three tabs (website, app, bot) take over once a visitor clicks, and the rotation stops for good.
 
-Motion is damped and weighted, like a heavy door on a closer. The lights fade up on load and the headline settles line by line, three blocks (key board, plaque, desk) fade in with a short rise as they arrive, slides crossfade over 1.6 seconds, a key fob swings to rest on hover, and nothing snaps. Colour lives at the edges and in the light; reading surfaces and text fields stay achromatic.
+Nothing is a flat fill. Panels are slabs of stone with a lit top edge, and hovering one moves a jade spotlight under the pointer. Density is low, headlines are large and tightly tracked, and every block earns its place: real screenshots stand in for decoration, and anything that does not help a visitor decide is cut.
 
 **Key Characteristics:**
-- Two lights on one set of materials: verde marble at night, travertine by day.
-- Jade is the only accent, and a solid jade fill always marks something you can act on.
-- Geist for display and reading, Geist Mono (the logo's own face) for the wordmark, the hero's emphasised word and small numbers. No hairlines anywhere, so nothing breaks up on low-DPI phones.
-- Stone grain, lamp falloff and a noise layer on every surface.
+- Dark only. Verde ground, ivory text, jade for actions.
+- Geist for display and reading, Geist Mono for the wordmark, section indexes, labels, commands and numbers.
+- Real work shown in device frames (browser, phone, chat window) over a dotted stage with a jade glow.
+- Spotlight panels, grain, grid and lamp falloff on every surface.
 - Door-closer easing on everything that moves.
 
 ## Colors
 
-A near-monochrome stone palette in two lights, with jade as the single accent and one small green for "live". Jade replaced brushed brass on 2026-09-27: the owner found the gold off-key and wanted something more casual and less flat. It sits naturally on verde marble and echoes FitLog's own green.
+A near-monochrome stone palette with jade as the single accent.
 
-### Primary
-- **Jade** (day-jade / night-jade): the fill of every primary button (a radial gradient from jade-hi at the top left to jade-lo underneath, so it reads as a lit, rounded object), the Contact pill on hover, the live FitLog key tag, the focus ring, text selection and the wordmark cursor. The day value is deeper so it holds on pale stone.
-- **Jade Highlight** (day-jade-hi / night-jade-hi): the lit top of the button and key-tag gradients. Never a fill on its own.
-- **Jade Shadow** (day-jade-lo / night-jade-lo): the shaded bottom of those gradients.
-- **Jade Ink** (day-jade-ink / night-jade-ink): text and icons set on a jade fill.
-- **Jade Text** (day-jade-text / night-jade-text): jade used as text colour, for link and ghost-button hover states and the mono-set word in the H1s.
-- **Steel** (night-steel): the key rail, hooks and key rings. Hardware, not an accent.
-
-### Tertiary
-- **Live Green** (day-live / night-live): only the 7px dot inside the "Live" status pill.
-- **Clay** (clay-error): invalid field borders and form error text on the contact page.
-
-### Neutral
-- **Travertine** (travertine, travertine-deep): the day page ground. **Travertine Surface** (travertine-surface, travertine-surface-2) is the lighter panel stone for cards and the contact form.
-- **Verde** (verde, verde-deep): the night page ground, green-black. **Verde Surface** (verde-surface, verde-surface-2) lifts panels one step.
-- **Verde Slab** (verde-slab): the Requests desk and the device screen backing, the same in both lights.
-- **Day Ink** (day-ink, day-ink-muted, day-ink-faint): green-black text, secondary copy, and the faintest tier for idle numerals and scrollbars.
-- **Night Ivory** (night-ivory, night-ivory-muted, night-ivory-faint): warm off-white text and its two quieter tiers. **Desk Ivory Muted** (desk-ivory-muted) is the body text on the desk slab.
-- **Border and Rule** (day-border, day-rule, night-border, night-rule): translucent ink hairlines. Border separates list rows and outlines cards; rule is the stronger line under headers of lists and around the plaque.
+- **Verde** (verde, verde-deep, verde-surface, verde-surface-2): the page ground and the panel steps above it.
+- **Ivory** (ivory, ivory-muted, ivory-faint): warm off-white text and its two quieter tiers.
+- **Jade** (jade, jade-hi, jade-lo, jade-ink, jade-text): the lit radial fill of primary buttons, the CTA pill's border and hover fill, focus rings, selection, the wordmark cursor, tick marks, section index numbers and the mono emphasised word in the H1. Jade text uses the lighter jade-text value.
+- **Live** (live): only the pulsing dot beside "Open for projects", "online" and "Live".
+- **Clay** (clay-error): invalid field borders and form error text.
 
 ### Named Rules
-**The Jade Means Act Rule.** A solid jade fill marks a control: buttons, the Contact pill on hover, the live key tag, focus rings. The blinking cursor is the one decorative jade fill. Jade at hairline weight (section joints at 45% strength) and the jade line icons on the house rules are structure and may appear anywhere.
+**The Jade Means Act Rule.** A solid jade fill marks a control: buttons, the CTA on hover, focus rings. The blinking cursor is the one decorative jade fill. Jade at hairline weight (section joints, tabs, the process line) is structure and may appear anywhere.
 
-**The Achromatic Reading Rule.** Body copy, panels and text fields stay in stone and ink. Warmth arrives through lamplight gradients; colour through jade edges, icons and focus states, never through tinted text blocks.
-
-**The Desk Is Always Night Rule.** The Requests desk is a verde marble slab in both themes and pins the night jade values locally, so it reads as one piece of furniture under daylight too.
+**The Achromatic Reading Rule.** Body copy, panels and text fields stay in stone and ink. Colour arrives through jade edges and glow, never through tinted text blocks.
 
 ## Typography
 
-**Display and Body Font:** Geist (with ui-sans-serif, system-ui, Segoe UI)
-**Mono Font:** Geist Mono, the face the logo is drawn in
+**Display and Body Font:** Geist. **Mono Font:** Geist Mono, the face the logo is drawn in.
 
-**Character:** One superfamily. Geist at 550 to 560 with tight tracking for headings, 400 for reading, and its mono sibling wherever the logo's voice comes through. Replaced Bodoni Moda plus Hanken Grotesk on 2026-09-27: Bodoni's hairlines vanished on phones, so headings looked half-written.
-
-### Hierarchy
-- **Display** (560, clamp(3.1rem, 6.7vw, 6rem), 1, -0.045em): the page H1 on the homepage and contact page, max 11.5ch. One word inside it (`<em>`) is set in Geist Mono 500 in jade text, the logo's voice.
-- **Headline** (560, clamp(2.5rem, 5vw, 4.4rem), 1, -0.045em): section H2s, max 14ch. The desk headline uses the same role at up to 4.5rem.
-- **Title** (550, clamp(1.4rem, 2vw, 1.7rem), 1.12): house-rule headings. The project name runs larger (clamp(2.1rem, 3.3vw, 2.75rem)).
-- **Pull** (450, clamp(1.5rem, 2.6vw, 2.2rem), 1.32): the opening paragraph of About.
-- **Numeral** (Geist Mono 500): key tag numbers ("001") and "No. 002".
-- **Lede** (400, clamp(1.1rem, 1.35vw, 1.28rem), 1.6): the hero paragraph in muted ink, max 42ch.
-- **Body** (400, 17px, 1.6; 16px under 520px): all running copy. Long paragraphs cap between 38ch and 56ch.
-- **Label** (500 or 600, 0.74rem, 0.16em tracking, uppercase): data labels only, meaning spec list terms, the status pill and the slide counter, with tabular lining numerals where digits appear.
-- **Wordmark** (Geist Mono 500, 1.55rem, -0.03em; 1.12rem under 520px; footer version clamp(1.6rem, 8.5vw, 7.4rem) at -0.05em): lowercase "department of one" followed by the cursor. In the header a code comment sits under it, "// ... for now", in Geist Mono 400 at 0.86rem in faint ink.
+Geist at 560 with tight tracking for headings, 400 for reading. Geist Mono carries the logo's voice: the wordmark and its `// ... for now` comment, the emphasised H1 word, section indexes, labels, chips, console text, delivery times and numbers that name things. Running text stays in Geist.
 
 ### Named Rules
-**The Mono Is the Logo Rule.** Geist Mono carries the logo's voice: the wordmark and its comment line, the emphasised H1 word, and numbers that name things. Running text, labels and counters stay in Geist.
+**The Mono Is the Voice Rule.** Mono is for labels, commands and numbers, never for paragraphs.
 
-**The Blinking Cursor Rule.** The wordmark ends in a solid jade block (0.56em by 0.73em, 0.14em after the text) that blinks on a 1.06s cycle as a pure opacity step. It keeps blinking under reduced motion, since it is the logo and the owner's own Windows setup reports reduced motion.
+**The Blinking Cursor Rule.** The wordmark ends in a solid jade block (0.56em by 0.73em) that blinks on a 1.06s cycle as a pure opacity step. It keeps blinking under reduced motion, since it is the logo. The smaller cursor after the console's typed command and the one in the footer word follow the same cycle.
 
 ## Layout
 
-A single 1280px container with a fluid gutter of clamp(20px, 4vw, 56px). Sections breathe with clamp(96px, 12vw, 168px) of vertical padding and are divided by a jade hairline that fades out at both ends like a joint between two stone slabs.
+A single 1280px container with a fluid gutter. Sections breathe with clamp(88px, 11vw, 160px) and are joined by a jade hairline that fades out at both ends.
 
-Content sits in asymmetric two-column grids. The hero is 1.2fr to 0.8fr, with the headline and lede on the left and the device slideshow on the right. Work puts a sticky key board (0.62fr) beside the project card (1.38fr). About puts a sticky H2 (0.8fr) beside the copy (1.6fr). The house rules are a two-column ordered list inside the plaque, each item a numeral column of 3.4rem beside its title and text.
+Order on the page: header, hero console, tool strip, four proof facts, Services (three panels with the visual alternating sides and a three-tier package row under each), Selected work (websites two-up, apps four-up, bots two-up, all labelled concepts), FitLog (copy beside the swipeable carousel), Process (four steps with a line that fills on scroll, two notes, a native `<details>` FAQ), About (sticky heading, four house rules), the Ideas slab (id `requests`), Inquiry (sticky intro beside the form), footer with the oversized wordmark.
 
-Responsive behaviour: at 1000px the work, about and rules grids collapse to one column and sticky elements go static; at 900px the hero, contact grid and desk stack, with the device at min(260px, 66vw); at 760px the text nav links hide and only the Contact pill and theme toggle remain; at 520px body drops to 16px, the header to 64px, and spec rows stack.
+Responsive behaviour: at 1100px the facts go two-up and the process, about and inquiry grids stack; at 980px the nav links hide behind the menu button, the hero, services and FitLog stack; at 760px work grids and package rows become one column; at 520px body drops to 16px, the header to 64px and the apps grid stays two-up.
 
-The header is sticky at 88px (72px under 520px), transparent over the hero, and picks up a frosted ground (blur 16px, saturate 1.3) with a bottom border once the page scrolls.
+The header is sticky and transparent over the hero, then picks up a frosted ground (blur 16px) with a bottom border once the page scrolls. The nav marks the section in view.
 
 ## Elevation & Depth
 
-Depth comes from light falling on stone. Surfaces get a one-pixel inner top highlight plus a long, soft drop shadow that starts well below the element, so panels read as slabs resting on a lit floor. Night shadows are deeper and darker; day shadows stay faint and green-grey. The room itself adds depth through the lamp pools, the vignette and a pointer-following lamp (a 420px radial halo) over the hero.
+Depth comes from light on stone. Surfaces get a one-pixel inner top highlight plus a long, soft drop shadow, and the console and stages carry a jade-tinted glow underneath. Device frames sit on a stage: a radial jade pool over a dotted grid, masked to fade out.
 
-### Shadow Vocabulary
-- **Slab** (`box-shadow: inset 0 1px 0 var(--panel-hi), var(--shadow)`, where `--shadow` is `0 1px 1px rgba(22,33,29,.05), 0 28px 56px -28px rgba(22,33,29,.3)` by day and `0 1px 0 rgba(0,0,0,.3), 0 30px 60px -30px rgba(0,0,0,.8)` at night): project card, plaque, contact card, admin login card.
-- **Jade Lift** (`inset 0 1px 0 white at 50%, inset 0 -3px 8px rgba(0,40,24,.3), 0 14px 28px -14px rgba(0,0,0,.6), 0 0 32px -12px jade-glow`; hover lifts and widens the glow): primary buttons.
-- **Device** (`0 50px 80px -44px var(--device-shadow), 0 18px 30px -24px var(--device-shadow)`): the slideshow frame, with a warm halo glow behind it.
-- **Desk** (`inset 0 1px 0 rgba(255,255,255,.1), inset 0 0 0 1px rgba(236,231,220,.06), 0 36px 60px -36px rgba(0,0,0,.6)`): the Requests slab.
-- **Hanging Key** (`filter: drop-shadow(0 18px 18px rgba(0,0,0,.28))`): key tags.
+- **Panel:** `inset 0 1px 0 rgba(255,255,255,.07), 0 1px 0 rgba(0,0,0,.3), 0 30px 60px -30px rgba(0,0,0,.8)`, plus a spotlight (`::before` glow and `::after` 1px jade border, both following the pointer) on hover.
+- **Jade Lift** (primary buttons): inner top highlight and bottom shade, a soft drop shadow and a jade glow that widens on hover.
+- **Device:** browser frames are outlined at 13% ivory with a deep shadow; phones add a 4px dark bezel; chat windows are rounded 14px.
 
 ### Named Rules
-**The Never Flat Rule.** Every panel has stone, grain or a lamp gradient behind it and an inner top highlight on it. A plain fill with no light on it is a bug.
+**The Never Flat Rule.** Every panel has stone, grain or a lamp gradient behind it and an inner top highlight on it.
 
-**The Heavy Door Rule.** Movement uses `cubic-bezier(0.16, 1, 0.3, 1)` for travel and `cubic-bezier(0.22, 0.8, 0.24, 1)` for colour, with durations from 0.3s for colour up to 1.1s to 1.6s for entrances and crossfades. Nothing bounces or snaps. Under reduced motion nothing travels, drifts or swings; fades, the slide crossfade and the cursor blink stay.
+**The Heavy Door Rule.** Movement uses `cubic-bezier(0.16, 1, 0.3, 1)` for travel and `cubic-bezier(0.22, 0.8, 0.24, 1)` for colour, with entrances of 1s to 1.3s. Nothing bounces or snaps. Layers in device stages drift opposite the pointer by depth (10 to 34px). Under reduced motion nothing travels, drifts or auto-rotates; fades, the carousel's opacity changes and the cursor blink stay.
 
 ## Shapes
 
-Rounded, soft-cornered furniture with thin lines. Actions and chips are full pills (999px). Cards and the next-up strip use 24px, the desk 32px (24px on small screens), the device frame 16px around a 10px screen, fields 12px. The plaque is the one near-square object at 4px, with a second hairline border inset 9px inside it like a frame mat. Borders are always one pixel. Key tags are oval with a steel ring at the top; a dashed outline marks an empty hook or an unbuilt slot.
+Soft-cornered furniture. Actions and chips are full pills. Panels 24px, the console 20px, fields and selects 12px, the Ideas slab 32px, device frames 12px to 14px (phones 12% of their width). Borders are always one pixel.
 
 ## Components
 
 ### Buttons
-Solid pills, lit from above.
-- **Shape:** full pill (999px), minimum height 52px, 28px side padding, 12px gap to a trailing arrow.
-- **Primary:** lit jade pill, jade-ink text, Geist 600 at 0.98rem. By day it is deep verde leather with a jade edge. Used for "Open FitLog" and "Send an idea".
-- **Hover / Focus:** the pill brightens slightly, rises 1px, its glow widens and the arrow slides 4px right, all on the door easing over 0.5s. Press nudges down 1px and scales to 0.99. Focus is a 2px jade outline at 3px offset.
-- **Ghost:** transparent with a rule-colour border; on hover the border and text turn jade.
-- **Text link:** body text with a 1px underline that wipes away to the right on hover while the text turns bronze.
+Solid pills, lit from above. Primary is the jade radial fill with jade-ink text, 52px high, with a trailing arrow that slides 4px on hover. Ghost is transparent with a rule-coloured border that turns jade on hover. Text links underline with a line that wipes away to the right on hover.
 
-### Chips
-- **Status pill:** label type in muted ink, 1px border, 7px by 13px padding, with a 7px live-green dot before the word.
+### Console
+Window chrome (three dots, `~/studio`, a pulsing "online"), a typed command line with a blinking cursor, a result line (`✓ 7 pages, online booking, Lighthouse 99`), a stage of device frames, and a three-tab bar (Website, App, Bot) with a jade underline on the active tab. Roving tabindex and arrow keys. The result line only announces to screen readers once a visitor picks a tab.
 
-### Cards / Containers
-- **Corner Style:** 24px (project card, contact card), 4px (plaque), 32px (desk).
-- **Background:** surface stone with a radial pool of panel light from the top-left corner.
-- **Shadow Strategy:** Slab, from Elevation & Depth.
-- **Border:** 1px border tone; the plaque uses the stronger rule tone plus its inset inner frame.
-- **Internal Padding:** clamp(28px, 4vw, 56px) for the project card, clamp(30px, 5vw, 76px) for the plaque.
+### Service panel
+Index (`01 / Websites`), a title, a description, three tick-marked bullets, mono tech tags, a primary CTA that fills the inquiry form and a text link, a device stage on the other side, and a three-column package row (name, scope, typical delivery in jade mono).
 
-### Inputs / Fields
-- **Style:** page-ground fill, 1px border, 12px radius, 14px by 16px padding, 1rem text so iOS does not zoom. Label above in Geist 600 at 0.9rem; hint below at 0.82rem in muted ink.
-- **Focus:** border turns jade with a 4px jade halo at 18% strength; no outline.
-- **Error / Disabled:** clay border and clay status text; a disabled submit drops to 55% opacity.
+### Work card
+A panel holding a framed screenshot (browser bar, phone on a stage, or cropped chat) over a name, one line and mono chips. Websites list their measured Lighthouse scores. The image eases to 103% on hover.
 
-### Navigation
-- **Style:** Geist 500 at 0.93rem in muted ink. On hover the link brightens to full ink and a 1px underline grows from the centre.
-- **Contact pill:** full ink text in a pill with a jade border at 60%; on hover or on the current page it fills solid jade.
-- **Theme toggle:** a 40px circular outline button with a line-drawn sun or moon; it turns 30 degrees on hover.
-- **Mobile:** under 760px only the Contact pill and toggle remain beside the wordmark.
+### Inquiry form
+Reason select (native, restyled) decides which fields appear: a project or a service question reveals "Which service are you inquiring about?", and a project also reveals an optional timeline. Fields slide open on a 0fr to 1fr grid transition and are `inert` while shut. Name (optional), email, message with a live counter and a placeholder that follows the reason. Focus is a jade border with a 4px jade halo; errors are clay. The Cloudflare Turnstile check loads when the form is first touched. A success view replaces the form.
 
-### Key Board
-The signature object. A 3px brushed-steel rail with steel hooks, and oval key tags hanging from them on steel rings. A live app's tag is lit jade (radial gradient, a soft gloss at the top left, an inner edge and a punched hole) with its number in Geist Mono ("001") and the app name in widely tracked caps in jade ink; it links to the app and swings to rest over 2.2s on hover or focus. An upcoming slot is a dashed rule-colour outline with a faint number.
-
-### Device Slideshow
-A slim 9:16 frame at room scale, 7px padding and a faint glass sheen, over a warm halo. Real app screens crossfade every 5.2s with a slow 7s settle from 104% scale. Below it: a label-style "n of 6" counter, a Geist caption, a row of progress dots where the current one stretches and fills with jade, and a round pause button. Autoplay pauses on hover, off screen, or when the user presses pause.
-
-### Requests Desk
-A verde marble slab in both themes with a warm lamp in its top-left corner and a diagonal sheen. Ivory headline, desk-muted body, night jade button.
+### Inputs
+Dark inset fill, 1px border, 12px radius, 14px by 16px padding, 1rem text so iOS does not zoom, label above in Geist 600 at 0.9rem.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep both lights in step: any new surface needs a day travertine value and a night verde value, set through the shared custom properties.
-- **Do** use a solid jade fill only for things a visitor can press, plus the wordmark cursor.
-- **Do** give every panel an inner top highlight and a light gradient or stone behind it.
-- **Do** move things on `cubic-bezier(0.16, 1, 0.3, 1)` with entrances of 1.1s to 1.6s, and keep scroll reveals to the few blocks that earn them.
 - **Do** keep the wordmark cursor blinking in every motion setting.
-- **Do** use Geist Mono for numbers that name things (key numbers, "No. 002").
-- **Do** use real app screens in the device frame, with captions that describe what is on screen.
+- **Do** use a solid jade fill only for things a visitor can press, plus the cursor.
+- **Do** show real screens in frames, and label concept work as concepts.
+- **Do** give every panel an inner top highlight and light or grain behind it.
+- **Do** move things on `cubic-bezier(0.16, 1, 0.3, 1)` and keep scroll reveals to blocks that earn them.
+- **Do** use Geist Mono for labels, commands and numbers that name things.
 
 ### Don't:
-- **Don't** use Geist Mono for running text or labels; it is the logo's voice.
+- **Don't** use Geist Mono for running text.
 - **Don't** fill decorative shapes with jade or tint body text with it.
 - **Don't** ship a flat colour field with no grain, stone or light on it.
 - **Don't** add a second accent hue; the live dot's green and clay for errors are the only other colours.
 - **Don't** use springy, bouncing or snapping motion.
-- **Don't** add bureaucracy props (stamps, forms, office signage) around the name.
+- **Don't** invent testimonials, client logos, user counts or prices.

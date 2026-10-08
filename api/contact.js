@@ -14,6 +14,10 @@
 //                         only way in is through this endpoint and its checks.
 // Without the Gmail ones, messages are still stored - only the email copy is skipped.
 //
+// The site's inquiry form sends a `reason` (and, for project and service questions, a `service`, an
+// optional `timeline` and `name`). The server turns those into a readable subject and a short
+// details block above the message, since contact_messages only has subject, email and message.
+//
 // The FitLog app posts here too (its Send feedback form), from another origin - hence the CORS
 // allow-list below. It sends `source: "fitlog"` plus a short `context` line (app build, platform,
 // signed-in account) so its messages are labelled in the inbox and the email.
@@ -36,6 +40,30 @@ const FITLOG_ORIGINS = new Set([
 const FITLOG_PREVIEW_RE = /^https:\/\/fitlog-[a-z0-9-]+-fit-log\.vercel\.app$/
 const SOURCES = { fitlog: 'FitLog' }
 
+// Inquiry form choices. Anything else is rejected, so the subject line can't be made to say whatever a
+// sender likes.
+const REASONS = {
+  project: 'Project inquiry',
+  question: 'Service question',
+  fitlog: 'FitLog feedback',
+  idea: 'App idea',
+  other: 'General message',
+}
+const SERVICES = {
+  website: 'Full website',
+  landing: 'Landing page',
+  app: 'Mobile app',
+  bot: 'Discord or Telegram bot',
+  unsure: 'Not sure yet',
+}
+const TIMELINES = {
+  asap: 'As soon as possible',
+  month: 'Within a month',
+  quarter: 'In the next few months',
+  flexible: 'Flexible',
+}
+const MESSAGE_MAX = 5000
+
 function allowCors(req, res) {
   const origin = req.headers.origin
   if (!origin || !(FITLOG_ORIGINS.has(origin) || FITLOG_PREVIEW_RE.test(origin))) return
@@ -52,21 +80,46 @@ function cleanContext(value) {
 }
 
 function validate(body) {
-  const subject = typeof body.subject === 'string' ? body.subject.trim() : ''
   const email = typeof body.email === 'string' ? body.email.trim() : ''
   const message = typeof body.message === 'string' ? body.message : ''
-  if (!subject || subject.length > 200) return { error: 'Add a subject (up to 200 characters).' }
   if (email.length > 320 || !EMAIL_RE.test(email)) return { error: "That email address doesn't look right." }
-  if (!message.trim() || message.length > 5000) return { error: 'Write a message (up to 5,000 characters).' }
+
+  // Inquiry form: the subject is built here from the chosen reason and service.
+  if (body.reason !== undefined && body.reason !== '') {
+    const reasonLabel = REASONS[body.reason]
+    if (!reasonLabel) return { error: 'Choose what this is about.' }
+    const wantsService = body.reason === 'project' || body.reason === 'question'
+    const serviceLabel = wantsService ? SERVICES[body.service] : null
+    if (wantsService && !serviceLabel) return { error: 'Choose a service, or "Not sure yet".' }
+    const timelineLabel = body.reason === 'project' ? TIMELINES[body.timeline] || null : null
+    const name = typeof body.name === 'string' ? body.name.replace(/[\r\n]+/g, ' ').trim().slice(0, 100) : ''
+    const details = [
+      `Reason: ${reasonLabel}`,
+      serviceLabel && `Service: ${serviceLabel}`,
+      timelineLabel && `Timeline: ${timelineLabel}`,
+      name && `Name: ${name}`,
+    ].filter(Boolean).join('\n')
+    if (!message.trim() || message.length > MESSAGE_MAX - details.length - 2) {
+      return { error: 'Write a message (up to 4,500 characters).' }
+    }
+    const subject = serviceLabel ? `${reasonLabel}: ${serviceLabel}` : reasonLabel
+    return { subject, email, message, label: null, context: '', details, inquiry: true }
+  }
+
+  // FitLog's feedback form and anything else that sends its own subject.
+  const subject = typeof body.subject === 'string' ? body.subject.trim() : ''
+  if (!subject || subject.length > 200) return { error: 'Add a subject (up to 200 characters).' }
+  if (!message.trim() || message.length > MESSAGE_MAX) return { error: 'Write a message (up to 5,000 characters).' }
   const label = SOURCES[body.source] || null
-  return { subject, email, message, label, context: label ? cleanContext(body.context) : '' }
+  return { subject, email, message, label, context: label ? cleanContext(body.context) : '', details: '' }
 }
 
 // What goes into contact_messages: app messages get their label on the subject (the admin inbox
 // shows subjects) and the context under the message. Kept within the table's check limits.
 function toRow(msg) {
   const subject = (msg.label ? `[${msg.label}] ${msg.subject}` : msg.subject).slice(0, 200)
-  const message = (msg.context ? `${msg.message}\n\n--\n${msg.context}` : msg.message).slice(0, 5000)
+  const body = msg.details ? `${msg.details}\n\n${msg.message}` : msg.message
+  const message = (msg.context ? `${body}\n\n--\n${msg.context}` : body).slice(0, MESSAGE_MAX)
   return { subject, email: msg.email, message }
 }
 
@@ -118,7 +171,7 @@ async function forward(msg) {
     // Plain text, so the sender's line breaks arrive exactly as typed.
     text: msg.label
       ? `From: ${msg.email}\n\n${msg.message}\n\n-- \n${msg.context || msg.label}\nSent from the ${msg.label} app's feedback form. Reply to this email to answer them.`
-      : `From: ${msg.email}\n\n${msg.message}\n\n-- \nSent from the contact form on department-of-one.vercel.app. Reply to this email to answer them.`,
+      : `From: ${msg.email}\n\n${msg.details ? msg.details + '\n\n' : ''}${msg.message}\n\n-- \nSent from the ${msg.inquiry ? 'inquiry' : 'contact'} form on department-of-one.vercel.app. Reply to this email to answer them.`,
   })
   return true
 }

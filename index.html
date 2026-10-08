@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Department of One - apps made by one person</title>
-  <meta name="description" content="Apps made by one developer who does every job alone. The first one is FitLog, a workout, meal and fasting tracker." />
-  <meta name="theme-color" content="#0a1310" media="(prefers-color-scheme: dark)" />
+  <title>Department of One - websites, apps and bots by one developer</title>
+  <meta name="description" content="Department of One is one developer who builds websites, mobile apps and Discord or Telegram bots, and runs the live app FitLog. Send a project or an idea." />
+  <meta name="theme-color" content="#070d0b" />
   <link rel="canonical" href="https://department-of-one.vercel.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Department of One" />
   <meta property="og:title" content="Department of One" />
-  <meta property="og:description" content="Apps made by one developer who does every job alone." />
+  <meta property="og:description" content="Websites, mobile apps and bots, built by one developer who does every job." />
   <meta property="og:url" content="https://department-of-one.vercel.app/" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Department of One" />
-  <meta name="twitter:description" content="Apps made by one developer who does every job alone." />
+  <meta name="twitter:description" content="Websites, mobile apps and bots, built by one developer who does every job." />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="assets/stone/marble-day.webp" media="(prefers-color-scheme: light)" />
+  <link rel="preload" as="image" href="assets/work/site-kiln.webp" />
   <link rel="stylesheet" href="style.css" />
   <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -28,7 +28,7 @@
 
   <div class="ambience" aria-hidden="true">
     <div class="stone"></div>
-    <div class="sun"></div>
+    <div class="grid"></div>
     <div class="light light-a"></div>
     <div class="light light-b"></div>
     <div class="light light-c"></div>
@@ -41,16 +41,21 @@
         <span class="wm-comment" aria-hidden="true">// ... for now</span>
       </a>
       <nav class="primary" aria-label="Main">
+        <a class="navlink" href="#services">Services</a>
         <a class="navlink" href="#work">Work</a>
+        <a class="navlink" href="#fitlog">FitLog</a>
+        <a class="navlink" href="#process">Process</a>
         <a class="navlink" href="#about">About</a>
-        <a class="navlink" href="#requests">Ideas</a>
-        <a class="navlink navlink-cta" href="/contact.html">Contact</a>
+        <a class="navlink navlink-cta" href="#inquiry">Start a project</a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 6.5h13M3.5 13.5h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
       </nav>
       <div class="menu-panel" id="menuPanel" hidden>
+        <a href="#services">Services</a>
         <a href="#work">Work</a>
+        <a href="#fitlog">FitLog</a>
+        <a href="#process">Process</a>
         <a href="#about">About</a>
         <a href="#requests">Ideas</a>
       </div>
@@ -58,181 +63,483 @@
   </header>
 
   <main id="main">
+    <!-- ================= Hero ================= -->
     <section class="hero wrap" id="top">
       <div class="hero-copy">
+        <p class="eyebrow enter enter-1"><span class="pulse" aria-hidden="true"></span>Open for projects</p>
         <h1 class="headline">
-          <span class="hl" data-content-key="hero_title_pre">Apps, built by</span>
-          <span class="hl hl-2"><em data-content-key="hero_title_em">one</em> <span data-content-key="hero_title_post">person.</span></span>
+          <span class="hl">Websites, apps</span>
+          <span class="hl hl-2">and bots, built</span>
+          <span class="hl hl-3">by <em>one</em> person.</span>
         </h1>
-        <p class="lede enter enter-3" data-content-key="hero_lede">Department of One is me, a developer doing every job alone, from writing the code to answering the support inbox. I build the apps I want to use, mostly because I enjoy building them.</p>
+        <p class="lede enter enter-3" data-content-key="s_hero_lede">Department of One is one developer doing every job: the design, the code, the testing and the inbox after launch. If you hire it, you talk to the person who built it.</p>
         <div class="ctas enter enter-4">
-          <a class="btn btn-primary" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="textlink" href="#requests">Suggest an app</a>
+          <a class="btn btn-primary" href="#inquiry"><span>Start a project</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn-ghost" href="#services"><span>See what I build</span></a>
         </div>
+        <ul class="hero-meta enter enter-5" aria-label="At a glance">
+          <li><span class="k">Web</span>HTML, React, Next.js, WordPress</li>
+          <li><span class="k">Mobile</span>Flutter, React Native</li>
+          <li><span class="k">Bots</span>Discord, Telegram, Slack</li>
+        </ul>
       </div>
 
-      <figure class="showcase enter enter-2" id="showcase" aria-roledescription="carousel" aria-label="FitLog screens">
-        <div class="stack" id="stack" tabindex="0" data-lenis-prevent aria-describedby="stackHint">
-            <div class="card" role="group" aria-roledescription="slide" aria-label="1 of 6">
-              <img class="shot shot-night" src="assets/fitlog/1-train.webp" width="720" height="1280" alt="FitLog's Train tab showing yesterday's workout: 20,500 kg of volume over 45 minutes, with leg press and hamstring curls logged" draggable="false" />
-              <img class="shot shot-day" src="assets/fitlog/day/1-train.webp" width="720" height="1280" alt="FitLog's Train tab showing yesterday's workout: 20,500 kg of volume over 45 minutes, with leg press and hamstring curls logged" draggable="false" />
-            </div>
-            <div class="card" role="group" aria-roledescription="slide" aria-label="2 of 6">
-              <img class="shot shot-night" src="assets/fitlog/2-week.webp" width="720" height="1280" alt="The weekly summary: 3 workouts, 31,373 kg moved, average calories and protein, and training and diet streaks" draggable="false" />
-              <img class="shot shot-day" src="assets/fitlog/day/2-week.webp" width="720" height="1280" alt="The weekly summary: 3 workouts, 31,373 kg moved, average calories and protein, and training and diet streaks" draggable="false" />
-            </div>
-            <div class="card" role="group" aria-roledescription="slide" aria-label="3 of 6">
-              <img class="shot shot-night" src="assets/fitlog/3-meals.webp" width="720" height="1280" alt="The Eat tab with today's calories against a 2,075 kcal goal, macros, a water counter and a logged breakfast" draggable="false" />
-              <img class="shot shot-day" src="assets/fitlog/day/3-meals.webp" width="720" height="1280" alt="The Eat tab with today's calories against a 2,075 kcal goal, macros, a water counter and a logged breakfast" draggable="false" />
-            </div>
-            <div class="card" role="group" aria-roledescription="slide" aria-label="4 of 6">
-              <img class="shot shot-night" src="assets/fitlog/4-diet.webp" width="720" height="1280" alt="The diet goal screen with calories left today and a micronutrients breakdown" draggable="false" loading="lazy" />
-              <img class="shot shot-day" src="assets/fitlog/day/4-diet.webp" width="720" height="1280" alt="The diet goal screen with calories left today and a micronutrients breakdown" draggable="false" loading="lazy" />
-            </div>
-            <div class="card" role="group" aria-roledescription="slide" aria-label="5 of 6">
-              <img class="shot shot-night" src="assets/fitlog/5-community.webp" width="720" height="1280" alt="Community: shared diets and meal plans, with the official Mediterranean diet at the top" draggable="false" loading="lazy" />
-              <img class="shot shot-day" src="assets/fitlog/day/5-community.webp" width="720" height="1280" alt="Community: shared diets and meal plans, with the official Mediterranean diet at the top" draggable="false" loading="lazy" />
-            </div>
-            <div class="card" role="group" aria-roledescription="slide" aria-label="6 of 6">
-              <img class="shot shot-night" src="assets/fitlog/6-fasting.webp" width="720" height="1280" alt="Starting a fast, with 16:8, 18:6, 20:4 and one-meal-a-day windows or a custom length" draggable="false" />
-              <img class="shot shot-day" src="assets/fitlog/day/6-fasting.webp" width="720" height="1280" alt="Starting a fast, with 16:8, 18:6, 20:4 and one-meal-a-day windows or a custom length" draggable="false" />
-            </div>
+      <div class="console enter enter-2" id="console">
+        <div class="console-bar">
+          <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="console-title">~/studio</span>
+          <span class="console-live"><span class="pulse" aria-hidden="true"></span>online</span>
         </div>
-        <figcaption class="show-caption" aria-live="polite">
-          <span class="show-count"><span id="slideNo">1</span> of 6</span>
-          <span class="show-title" id="slideTitle"><span class="t on">Yesterday's session, 20,500 kg in 45 minutes</span><span class="t" aria-hidden="true"></span></span>
-        </figcaption>
-        <div class="show-controls">
-          <button type="button" class="nav-btn" id="prevBtn" aria-label="Previous screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="dots" role="group" aria-label="Choose a screen">
-              <button type="button" class="dot" aria-label="Screen 1: a logged workout"><i></i></button>
-              <button type="button" class="dot" aria-label="Screen 2: the week so far"><i></i></button>
-              <button type="button" class="dot" aria-label="Screen 3: meals"><i></i></button>
-              <button type="button" class="dot" aria-label="Screen 4: diet goal"><i></i></button>
-              <button type="button" class="dot" aria-label="Screen 5: community"><i></i></button>
-              <button type="button" class="dot" aria-label="Screen 6: fasting"><i></i></button>
+        <div class="console-body">
+          <p class="console-line" aria-hidden="true"><span class="prompt">$</span> <span id="typed">new website --for "a sauna club"</span><span class="cursor cursor-sm"></span></p>
+          <p class="console-result" id="result" aria-live="polite"><span class="ok">&#10003;</span> 7 pages, online booking, Lighthouse 99</p>
+          <div class="scenes" id="scenes">
+            <div class="scene is-on" data-scene="0" role="tabpanel" id="scene-0" aria-labelledby="tab-0">
+              <figure class="dev browser b-back" data-depth="10"><div class="bar"><i></i><i></i><i></i><span>lintel.example</span></div><img src="assets/work/site-lintel.webp" width="1280" height="800" alt="Lintel, a concept website for an estate agent, with a property search over a desert house" /></figure>
+              <figure class="dev browser b-front" data-depth="22"><div class="bar"><i></i><i></i><i></i><span>kiln.example</span></div><img src="assets/work/site-kiln.webp" width="1280" height="800" alt="Kiln, a concept website for a sauna club with online booking" /></figure>
+              <figure class="dev phone phone-sm" data-depth="34"><img src="assets/work/site-whisk-m.webp" width="420" height="910" alt="Whisk, a concept matcha store, on a phone" /></figure>
+            </div>
+            <div class="scene" data-scene="1" role="tabpanel" id="scene-1" aria-labelledby="tab-1">
+              <figure class="dev phone p-left" data-depth="12"><img src="assets/work/app-fringe.webp" width="520" height="1125" alt="Fringe, a concept salon booking app, choosing a time" loading="lazy" /></figure>
+              <figure class="dev phone p-right" data-depth="12"><img src="assets/work/app-polly.webp" width="520" height="1125" alt="Polly, a concept language tutor app with a voice chat" loading="lazy" /></figure>
+              <figure class="dev phone p-mid" data-depth="26"><img src="assets/work/app-steep.webp" width="520" height="1125" alt="Steep, a concept cafe ordering app, showing the menu" loading="lazy" /></figure>
+            </div>
+            <div class="scene" data-scene="2" role="tabpanel" id="scene-2" aria-labelledby="tab-2">
+              <figure class="dev chat c-back" data-depth="10"><img src="assets/work/bot-whenabouts.webp" width="1000" height="987" alt="Whenabouts, a concept Discord bot that finds the best meeting time across time zones" loading="lazy" /></figure>
+              <figure class="dev chat c-front" data-depth="24"><img src="assets/work/bot-ferry.webp" width="1000" height="898" alt="Ferry, a concept support bot answering on Discord and Telegram" loading="lazy" /></figure>
+            </div>
           </div>
-          <button type="button" class="nav-btn" id="nextBtn" aria-label="Next screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button type="button" class="pause" id="pauseBtn" aria-label="Pause slideshow" hidden>
-            <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9M10.5 3.5v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor"/></svg>
-          </button>
         </div>
-        <p class="show-hint" id="stackHint"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M6.5 6.5 3 10l3.5 3.5M13.5 6.5 17 10l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="hint-fine">Drag or scroll to browse</span><span class="hint-touch">Swipe to browse</span></p>
-      </figure>
+        <div class="console-tabs" role="tablist" aria-label="Kinds of project">
+          <button type="button" role="tab" id="tab-0" aria-controls="scene-0" aria-selected="true"><span class="n">01</span>Website</button>
+          <button type="button" role="tab" id="tab-1" aria-controls="scene-1" aria-selected="false" tabindex="-1"><span class="n">02</span>App</button>
+          <button type="button" role="tab" id="tab-2" aria-controls="scene-2" aria-selected="false" tabindex="-1"><span class="n">03</span>Bot</button>
+        </div>
+      </div>
     </section>
 
+    <!-- ================= Stack strip ================= -->
+    <div class="strip" aria-label="Tools I work with">
+      <div class="strip-track">
+        <ul>
+          <li>Next.js</li><li>React</li><li>TypeScript</li><li>Flutter</li><li>React Native</li><li>Expo</li><li>Supabase</li><li>Firebase</li><li>Stripe</li><li>Discord.js</li><li>Telegram</li><li>Python</li><li>WordPress</li><li>Shopify</li><li>Webflow</li><li>Framer</li><li>Vercel</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>Next.js</li><li>React</li><li>TypeScript</li><li>Flutter</li><li>React Native</li><li>Expo</li><li>Supabase</li><li>Firebase</li><li>Stripe</li><li>Discord.js</li><li>Telegram</li><li>Python</li><li>WordPress</li><li>Shopify</li><li>Webflow</li><li>Framer</li><li>Vercel</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ================= Proof facts ================= -->
+    <section class="wrap facts" aria-label="Facts">
+      <dl class="facts-grid">
+        <div class="fact reveal"><dt>Lighthouse, phone</dt><dd><span class="big">99</span><span class="sub">/ 100 / 100 / 100</span></dd><p>Performance, accessibility, best practices and SEO on the Kiln concept site.</p></div>
+        <div class="fact reveal"><dt>One codebase</dt><dd><span class="big">2</span><span class="sub">app stores</span></dd><p>iPhone and Android apps from the same Flutter or React Native project.</p></div>
+        <div class="fact reveal"><dt>Tests per bot</dt><dd><span class="big">30</span><span class="sub">automated</span></dd><p>The Discord and Telegram bot templates ship with a test suite and a setup guide.</p></div>
+        <div class="fact reveal"><dt>Source code</dt><dd><span class="big">100%</span><span class="sub">yours</span></dd><p>Everything runs on your hosting and accounts. You get the files and the logins.</p></div>
+      </dl>
+    </section>
+
+    <!-- ================= Services ================= -->
+    <section class="section services" id="services">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="idx"><span>01</span> Services</p>
+          <h2>What I build.</h2>
+          <p class="section-lede">Three kinds of project, one person on every one of them. Delivery times are typical for the size of the package. The price depends on the scope, so describe yours in the form below.</p>
+        </header>
+
+        <!-- Websites -->
+        <article class="service panel reveal" id="service-website" data-spot>
+          <div class="service-copy">
+            <p class="service-no">01 <span>/ Websites</span></p>
+            <h3>Websites, from one page to a full store.</h3>
+            <p class="service-desc">A custom design for your business, coded by hand or built on WordPress, Shopify, Webflow or Framer when you want to edit it yourself. Checked on phone, tablet and desktop, and speed-tested before it ships.</p>
+            <ul class="ticks">
+              <li>Booking, payments, newsletter signup, a blog or an online store</li>
+              <li>Page titles, descriptions, sitemap and social share images</li>
+              <li>Set up on your own hosting and domain</li>
+            </ul>
+            <p class="tags"><span>HTML / CSS / JS</span><span>React</span><span>Next.js</span><span>WordPress</span><span>Shopify</span></p>
+            <div class="service-cta">
+              <a class="btn btn-primary" href="#inquiry" data-inquire="website"><span>Inquire about a website</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a class="textlink" href="#inquiry" data-inquire="landing">Only need one page?</a>
+            </div>
+          </div>
+          <div class="service-visual stage" data-stage>
+            <figure class="dev browser sv-web-a" data-depth="10"><div class="bar"><i></i><i></i><i></i><span>parley.example/dashboard</span></div><img src="assets/work/site-parley-dash.webp" width="1280" height="800" alt="Parley, a concept SaaS dashboard with a calls chart and a call transcript" loading="lazy" /></figure>
+            <figure class="dev browser sv-web-b" data-depth="22"><div class="bar"><i></i><i></i><i></i><span>parley.example</span></div><img src="assets/work/site-parley.webp" width="1280" height="800" alt="Parley's home page, a concept AI phone receptionist site" loading="lazy" /></figure>
+            <figure class="dev phone phone-sm sv-web-c" data-depth="34"><img src="assets/work/site-whisk-m.webp" width="420" height="910" alt="Whisk, a concept matcha store, on a phone" loading="lazy" /></figure>
+          </div>
+          <ol class="tiers" aria-label="Website packages">
+            <li><span class="t-name">Starter Site</span><span class="t-scope">Up to 3 custom pages, mobile ready, a contact form and SEO basics.</span><span class="t-time">About 3 days</span></li>
+            <li><span class="t-name">Business Site</span><span class="t-scope">Up to 6 pages with a blog or booking, newsletter signup, payments and help with the copy.</span><span class="t-time">About 6 days</span></li>
+            <li><span class="t-name">Complete Site</span><span class="t-scope">Up to 12 pages, an online store or memberships, an editor for your text, and 30 days of support.</span><span class="t-time">About 10 days</span></li>
+          </ol>
+        </article>
+
+        <!-- Apps -->
+        <article class="service panel reveal is-flip" id="service-app" data-spot>
+          <div class="service-copy">
+            <p class="service-no">02 <span>/ Mobile apps</span></p>
+            <h3>Apps for iPhone and Android, from one codebase.</h3>
+            <p class="service-desc">Built in Flutter or React Native. You get a first version to tap through early, then the rest, then a hand with the App Store and Google Play. FitLog, further down, is my own app and it is live.</p>
+            <ul class="ticks">
+              <li>Accounts and cloud sync on Firebase or Supabase, in your own project</li>
+              <li>Push alerts, payments, maps, ads, an admin panel, AI features</li>
+              <li>Full source code and a plain-English handover guide</li>
+            </ul>
+            <p class="tags"><span>Flutter</span><span>React Native</span><span>Expo</span><span>Firebase</span><span>Supabase</span></p>
+            <div class="service-cta">
+              <a class="btn btn-primary" href="#inquiry" data-inquire="app"><span>Inquire about an app</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <a class="textlink" href="#fitlog">See FitLog, my live app</a>
+            </div>
+          </div>
+          <div class="service-visual stage" data-stage>
+            <figure class="dev phone p-left" data-depth="12"><img src="assets/work/app-hearth.webp" width="520" height="1125" alt="Hearth, a concept travel app with a map of stays and nightly prices" loading="lazy" /></figure>
+            <figure class="dev phone p-right" data-depth="12"><img src="assets/work/app-polly.webp" width="520" height="1125" alt="Polly, a concept language tutor app with a voice chat" loading="lazy" /></figure>
+            <figure class="dev phone p-mid" data-depth="26"><img src="assets/work/app-fringe.webp" width="520" height="1125" alt="Fringe, a concept salon booking app, choosing a time" loading="lazy" /></figure>
+          </div>
+          <ol class="tiers" aria-label="App packages">
+            <li><span class="t-name">Starter App</span><span class="t-scope">iPhone and Android, up to 5 screens, app icon, splash screen and the source code.</span><span class="t-time">About 5 days</span></li>
+            <li><span class="t-name">Full App</span><span class="t-scope">Up to 12 screens, user login, a Firebase or Supabase backend, push alerts and store upload.</span><span class="t-time">About 14 days</span></li>
+            <li><span class="t-name">Launch App</span><span class="t-scope">Up to 25 screens, an admin panel, payments or AI features, both stores and 30 days of fixes.</span><span class="t-time">About 21 days</span></li>
+          </ol>
+        </article>
+
+        <!-- Bots -->
+        <article class="service panel reveal" id="service-bot" data-spot>
+          <div class="service-copy">
+            <p class="service-no">03 <span>/ Bots</span></p>
+            <h3>Bots that run parts of your community.</h3>
+            <p class="service-desc">Discord and Telegram, from the same code. Tickets, moderation, levels, onboarding, paid roles, answers from your own docs, or whatever your team does by hand today.</p>
+            <ul class="ticks">
+              <li>Slash commands, buttons and forms, with logs and a database where it helps</li>
+              <li>Slack and WhatsApp bots on request</li>
+              <li>Source code, tests and a setup guide, running on hosting you own</li>
+            </ul>
+            <p class="tags"><span>TypeScript</span><span>Python</span><span>Discord</span><span>Telegram</span><span>Stripe</span></p>
+            <div class="service-cta">
+              <a class="btn btn-primary" href="#inquiry" data-inquire="bot"><span>Inquire about a bot</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+          <div class="service-visual stage" data-stage>
+            <figure class="dev chat c-back" data-depth="10"><img src="assets/work/bot-ferry-tickets.webp" width="1000" height="960" alt="Ferry's ticket system on Discord: a button opens a private thread with staff" loading="lazy" /></figure>
+            <figure class="dev chat c-front" data-depth="24"><img src="assets/work/bot-whenabouts.webp" width="1000" height="987" alt="Whenabouts, a concept Discord bot that finds the best meeting time across time zones" loading="lazy" /></figure>
+          </div>
+          <ol class="tiers" aria-label="Bot packages">
+            <li><span class="t-name">Essential Bot</span><span class="t-scope">One complete system, such as tickets, moderation, levels or verification, with tests and a setup guide.</span><span class="t-time">About 2 days</span></li>
+            <li><span class="t-name">Server Bot</span><span class="t-scope">Up to 4 systems working together, or one fully custom system, with a database, logs and hosting setup.</span><span class="t-time">About 4 days</span></li>
+            <li><span class="t-name">Complete Bot</span><span class="t-scope">Up to 8 systems including 2 custom ones, Discord and Telegram, AI or payments, and 30 days of fixes.</span><span class="t-time">About 7 days</span></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= Work ================= -->
     <section class="section work" id="work">
-      <div class="wrap work-grid">
-        <div class="keyboard reveal">
-          <div class="rail" aria-hidden="true"></div>
-          <a class="hook hook-link" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener" aria-label="Open FitLog, app number 001">
-            <svg class="fob fob-live" viewBox="0 0 120 230" aria-hidden="true">
-              <defs>
-                <radialGradient id="jadeFill" cx="0.34" cy="0.3" r="0.95">
-                  <stop offset="0" class="jade-stop-hi" />
-                  <stop offset="0.48" class="jade-stop-mid" />
-                  <stop offset="1" class="jade-stop-lo" />
-                </radialGradient>
-                <linearGradient id="jadeGloss" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#fff" stop-opacity="0.32" />
-                  <stop offset="1" stop-color="#fff" stop-opacity="0" />
-                </linearGradient>
-              </defs>
-              <circle class="fob-ring" cx="60" cy="22" r="15" fill="none" stroke-width="4"/>
-              <path class="fob-ring" d="M60 37v12" stroke-width="4"/>
-              <path d="M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z" fill="url(#jadeFill)"/>
-              <path class="fob-edge" d="M60 51.5c25 0 42.5 21.5 42.5 60.5v34c0 39-17.5 68.5-42.5 68.5S17.5 185 17.5 146v-34c0-39 17.5-60.5 42.5-60.5z" fill="none" stroke-width="1.2"/>
-              <ellipse cx="46" cy="84" rx="17" ry="26" fill="url(#jadeGloss)" transform="rotate(-18 46 84)"/>
-              <circle cx="60" cy="70" r="5.5" class="fob-hole"/>
-              <text x="60" y="144" text-anchor="middle" class="fob-no">001</text>
-              <text x="60" y="170" text-anchor="middle" class="fob-name">FITLOG</text>
-            </svg>
-          </a>
-          <div class="hook" aria-hidden="true">
-            <svg class="fob fob-next" viewBox="0 0 120 230">
-              <circle cx="60" cy="22" r="15" fill="none" stroke="var(--rule)" stroke-width="3"/>
-              <path d="M60 37v12" stroke="var(--rule)" stroke-width="3"/>
-              <path d="M60 50c26 0 44 22 44 62v34c0 40-18 70-44 70S16 186 16 146v-34c0-40 18-62 44-62z" fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="3 5"/>
-              <text x="60" y="144" text-anchor="middle" class="fob-no fob-no-next">002</text>
-            </svg>
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="idx"><span>02</span> Selected work</p>
+          <h2>Ten concepts, built the way a client project would be.</h2>
+          <p class="section-lede">None of these is for a paying client yet. Each is a made-up business, designed, written and coded from scratch, so you can judge the work before you hire it.</p>
+        </header>
+
+        <div class="work-group">
+          <p class="group-label reveal"><span>Websites</span><i></i><span>4 concepts</span></p>
+          <div class="work-grid work-sites">
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot browser"><div class="bar"><i></i><i></i><i></i><span>kiln.example</span></div><img src="assets/work/site-kiln.webp" width="1280" height="800" alt="Kiln's home page: Sweat with friends, plunge with strangers" loading="lazy" /></div>
+              <div class="work-meta"><h3>Kiln</h3><p>A sauna club with a four-step booking flow and memberships.</p><p class="chips"><span>Lighthouse 99 / 100 / 100 / 100</span><span>7 pages</span></p></div>
+            </article>
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot browser"><div class="bar"><i></i><i></i><i></i><span>whisk.example</span></div><img src="assets/work/site-whisk.webp" width="1280" height="800" alt="Whisk's home page, a matcha store with a tin of ceremonial matcha" loading="lazy" /></div>
+              <div class="work-meta"><h3>Whisk</h3><p>A matcha store with a cart drawer, subscriptions and checkout.</p><p class="chips"><span>Lighthouse 89 / 100 / 100 / 100</span><span>7 pages</span></p></div>
+            </article>
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot browser"><div class="bar"><i></i><i></i><i></i><span>parley.example</span></div><img src="assets/work/site-parley.webp" width="1280" height="800" alt="Parley's home page: Never send a patient to voicemail again" loading="lazy" /></div>
+              <div class="work-meta"><h3>Parley</h3><p>A SaaS site with a pricing calculator, plus a logged-in dashboard.</p><p class="chips"><span>Lighthouse 99 / 100 / 100 / 100</span><span>7 pages</span></p></div>
+            </article>
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot browser"><div class="bar"><i></i><i></i><i></i><span>lintel.example</span></div><img src="assets/work/site-lintel.webp" width="1280" height="800" alt="Lintel's home page: houses with a point of view, with a property search" loading="lazy" /></div>
+              <div class="work-meta"><h3>Lintel</h3><p>An estate agent with listings, a map and a page per property.</p><p class="chips"><span>Lighthouse 85 / 100 / 100 / 100</span><span>18 pages</span></p></div>
+            </article>
           </div>
         </div>
 
-        <div class="work-body">
-          <h2 data-content-key="work_title">One app so far.</h2>
-          <article class="project">
+        <div class="work-group">
+          <p class="group-label reveal"><span>Apps</span><i></i><span>4 concepts</span></p>
+          <div class="work-grid work-apps">
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot phone-shot"><img src="assets/work/app-fringe.webp" width="520" height="1125" alt="Fringe, choosing a stylist and a time" loading="lazy" /></div>
+              <div class="work-meta"><h3>Fringe</h3><p>Booking for salons and barbers.</p><p class="chips"><span>Flutter or React Native</span></p></div>
+            </article>
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot phone-shot"><img src="assets/work/app-steep.webp" width="520" height="1125" alt="Steep, a cafe menu with a cart bar" loading="lazy" /></div>
+              <div class="work-meta"><h3>Steep</h3><p>Order ahead, delivery and rewards for a cafe.</p><p class="chips"><span>Payments</span><span>Push alerts</span></p></div>
+            </article>
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot phone-shot"><img src="assets/work/app-polly.webp" width="520" height="1125" alt="Polly, a Spanish voice chat with a tutor" loading="lazy" /></div>
+              <div class="work-meta"><h3>Polly</h3><p>An AI language tutor you talk to.</p><p class="chips"><span>AI features</span></p></div>
+            </article>
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot phone-shot"><img src="assets/work/app-hearth.webp" width="520" height="1125" alt="Hearth, a map of stays with nightly prices" loading="lazy" /></div>
+              <div class="work-meta"><h3>Hearth</h3><p>Stays on a map, with search and trips.</p><p class="chips"><span>Maps</span></p></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="work-group">
+          <p class="group-label reveal"><span>Bots</span><i></i><span>2 concepts</span></p>
+          <div class="work-grid work-bots">
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot chat-shot"><img src="assets/work/bot-ferry.webp" width="1000" height="898" alt="Ferry answering a member on Discord and on Telegram" loading="lazy" /></div>
+              <div class="work-meta"><h3>Ferry</h3><p>One help bot for a community on Discord and Telegram, from the same TypeScript code.</p><p class="chips"><span>30 tests</span><span>Docker</span></p></div>
+            </article>
+            <article class="work-card panel reveal" data-spot>
+              <div class="shot chat-shot"><img src="assets/work/bot-whenabouts.webp" width="1000" height="987" alt="Whenabouts drawing a heat map of when everyone in a server is free" loading="lazy" /></div>
+              <div class="work-meta"><h3>Whenabouts</h3><p>Finds the time that works for everyone across time zones and creates the server event in one click.</p><p class="chips"><span>30 tests</span><span>Docker</span></p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FitLog ================= -->
+    <section class="section fitlog" id="fitlog">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="idx"><span>03</span> The live one</p>
+          <h2>The app I run myself.</h2>
+        </header>
+        <div class="fitlog-grid">
+          <div class="fitlog-copy reveal">
             <div class="project-title">
               <img src="assets/fitlog-icon.png" alt="" width="56" height="56" />
               <h3>FitLog</h3>
-              <span class="status">Live</span>
+              <span class="status"><span class="pulse" aria-hidden="true"></span>Live</span>
             </div>
-            <p class="desc" data-content-key="fitlog_desc">A workout log, a meal and macro tracker and a fasting timer in one app. I built it for my own training, because the trackers I tried felt bloated and I wanted all three in one place.</p>
+            <p class="desc" data-content-key="s_fitlog_desc">A workout log, a meal and macro tracker and a fasting timer in one app. I built it for my own training, because the trackers I tried felt bloated and I wanted all three in one place. Everything I would do for your app, I did here first: the design, the code, the store listing and the support inbox.</p>
             <dl class="spec">
-              <div><dt>Also in it</dt><dd data-content-key="fitlog_extras">Personal records, trend charts, and workout and meal programs you can reuse</dd></div>
-              <div><dt>Offline</dt><dd data-content-key="fitlog_offline">Log a workout with no signal. It syncs when you're back online.</dd></div>
-              <div><dt>Install</dt><dd data-content-key="fitlog_install">Runs in the browser, and you can add it to your home screen without going through an app store.</dd></div>
-              <div><dt>Your data</dt><dd data-content-key="fitlog_data">Export all of it, or delete your account from Settings.</dd></div>
+              <div><dt>Also in it</dt><dd>Personal records, trend charts, and workout and meal programs you can reuse</dd></div>
+              <div><dt>Offline</dt><dd>Log a workout with no signal. It syncs when you're back online.</dd></div>
+              <div><dt>Install</dt><dd>Runs in the browser, and you can add it to your home screen without going through an app store.</dd></div>
+              <div><dt>Your data</dt><dd>Export all of it, or delete your account from Settings.</dd></div>
             </dl>
             <a class="btn btn-primary" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener"><span>Open FitLog</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </article>
-          <div class="next-up">
-            <span class="no">No. 002</span>
-            <p data-content-key="more_soon_text">The second app is already in progress.</p>
-            <a class="textlink" href="#requests">Have an idea for it?</a>
+          </div>
+
+          <figure class="showcase reveal" id="showcase" aria-roledescription="carousel" aria-label="FitLog screens">
+            <div class="stack" id="stack" tabindex="0" data-lenis-prevent aria-describedby="stackHint">
+              <div class="card" role="group" aria-roledescription="slide" aria-label="1 of 6"><img class="shot-img" src="assets/fitlog/1-train.webp" width="720" height="1280" alt="FitLog's Train tab showing yesterday's workout: 20,500 kg of volume over 45 minutes, with leg press and hamstring curls logged" draggable="false" loading="lazy" /></div>
+              <div class="card" role="group" aria-roledescription="slide" aria-label="2 of 6"><img class="shot-img" src="assets/fitlog/2-week.webp" width="720" height="1280" alt="The weekly summary: 3 workouts, 31,373 kg moved, average calories and protein, and training and diet streaks" draggable="false" loading="lazy" /></div>
+              <div class="card" role="group" aria-roledescription="slide" aria-label="3 of 6"><img class="shot-img" src="assets/fitlog/3-meals.webp" width="720" height="1280" alt="The Eat tab with today's calories against a 2,075 kcal goal, macros, a water counter and a logged breakfast" draggable="false" loading="lazy" /></div>
+              <div class="card" role="group" aria-roledescription="slide" aria-label="4 of 6"><img class="shot-img" src="assets/fitlog/4-diet.webp" width="720" height="1280" alt="The diet goal screen with calories left today and a micronutrients breakdown" draggable="false" loading="lazy" /></div>
+              <div class="card" role="group" aria-roledescription="slide" aria-label="5 of 6"><img class="shot-img" src="assets/fitlog/5-community.webp" width="720" height="1280" alt="Community: shared diets and meal plans, with the official Mediterranean diet at the top" draggable="false" loading="lazy" /></div>
+              <div class="card" role="group" aria-roledescription="slide" aria-label="6 of 6"><img class="shot-img" src="assets/fitlog/6-fasting.webp" width="720" height="1280" alt="Starting a fast, with 16:8, 18:6, 20:4 and one-meal-a-day windows or a custom length" draggable="false" loading="lazy" /></div>
+            </div>
+            <figcaption class="show-caption" aria-live="polite">
+              <span class="show-count"><span id="slideNo">1</span> of 6</span>
+              <span class="show-title" id="slideTitle"><span class="t on">Yesterday's session, 20,500 kg in 45 minutes</span><span class="t" aria-hidden="true"></span></span>
+            </figcaption>
+            <div class="show-controls">
+              <button type="button" class="nav-btn" id="prevBtn" aria-label="Previous screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <div class="dots" role="group" aria-label="Choose a screen">
+                <button type="button" class="dot" aria-label="Screen 1: a logged workout"><i></i></button>
+                <button type="button" class="dot" aria-label="Screen 2: the week so far"><i></i></button>
+                <button type="button" class="dot" aria-label="Screen 3: meals"><i></i></button>
+                <button type="button" class="dot" aria-label="Screen 4: diet goal"><i></i></button>
+                <button type="button" class="dot" aria-label="Screen 5: community"><i></i></button>
+                <button type="button" class="dot" aria-label="Screen 6: fasting"><i></i></button>
+              </div>
+              <button type="button" class="nav-btn" id="nextBtn" aria-label="Next screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button type="button" class="pause" id="pauseBtn" aria-label="Pause slideshow" hidden>
+                <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9M10.5 3.5v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor"/></svg>
+              </button>
+            </div>
+            <p class="show-hint" id="stackHint"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M6.5 6.5 3 10l3.5 3.5M13.5 6.5 17 10l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="hint-fine">Drag or scroll to browse</span><span class="hint-touch">Swipe to browse</span></p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Process ================= -->
+    <section class="section process" id="process">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="idx"><span>04</span> Process</p>
+          <h2>How a project goes.</h2>
+          <p class="section-lede">The same four steps for a one-page site or a full app. Revisions are included in every package.</p>
+        </header>
+        <div class="process-grid">
+          <ol class="steps" id="steps">
+            <li class="step reveal"><span class="step-no">01</span><div><h3>Send a brief</h3><p>Tell me what it should do and who it is for, plus two or three sites or apps you like. I reply with what fits and a rough scope.</p></div></li>
+            <li class="step reveal"><span class="step-no">02</span><div><h3>See a first version</h3><p>A private preview link, or a build you can tap through on your phone. The look is settled before the rest is built.</p></div></li>
+            <li class="step reveal"><span class="step-no">03</span><div><h3>Build the rest</h3><p>You review as it comes together and we adjust. Tests and speed checks run before anything goes to you.</p></div></li>
+            <li class="step reveal"><span class="step-no">04</span><div><h3>Launch</h3><p>It goes live on your hosting and in your accounts, with the source code and a plain-English handover guide.</p></div></li>
+          </ol>
+          <div class="process-side">
+            <div class="panel note reveal" data-spot>
+              <h3>About AI</h3>
+              <p>I use AI tools to speed up coding and writing. I review and test every page, screen and command myself. If you want none of it, say so before we start.</p>
+            </div>
+            <div class="panel note reveal" data-spot>
+              <h3>Access</h3>
+              <p>I never ask for passwords. Hosting, stores and bot accounts are shared through invites, and you can remove me when we are done.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section deal" id="how">
-      <div class="wrap">
-        <h2 data-content-key="deal_title">How I work.</h2>
-        <div class="plaque reveal">
-          <ol class="rules">
-            <li>
-              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M226.76,69a8,8,0,0,0-12.84-2.88l-40.3,37.19-17.23-3.7-3.7-17.23,37.19-40.3A8,8,0,0,0,187,29.24,72,72,0,0,0,88,96,72.34,72.34,0,0,0,94,124.94L33.79,177c-.15.12-.29.26-.43.39a32,32,0,0,0,45.26,45.26c.13-.13.27-.28.39-.42L131.06,162A72,72,0,0,0,232,96,71.56,71.56,0,0,0,226.76,69ZM160,152a56.14,56.14,0,0,1-27.07-7,8,8,0,0,0-9.92,1.77L67.11,211.51a16,16,0,0,1-22.62-22.62L109.18,133a8,8,0,0,0,1.77-9.93,56,56,0,0,1,58.36-82.31l-31.2,33.81a8,8,0,0,0-1.94,7.1L141.83,108a8,8,0,0,0,6.14,6.14l26.35,5.66a8,8,0,0,0,7.1-1.94l33.81-31.2A56.06,56.06,0,0,1,160,152Z"/></svg></span>
-              <h3 data-content-key="principle_1_title">I use what I make</h3>
-              <p data-content-key="principle_1_desc">Everything here started as something I wanted for myself, so I'm usually the first to notice when it breaks.</p>
-            </li>
-            <li>
-              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"/></svg></span>
-              <h3 data-content-key="principle_2_title">No tricks</h3>
-              <p data-content-key="principle_2_desc">No fake countdowns and no pop-ups built to wear you down. If something ever costs money, it will say so plainly.</p>
-            </li>
-            <li>
-              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M128,112a28,28,0,0,0-8,54.83V184a8,8,0,0,0,16,0V166.83A28,28,0,0,0,128,112Zm0,40a12,12,0,1,1,12-12A12,12,0,0,1,128,152Zm80-72H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></svg></span>
-              <h3 data-content-key="principle_3_title">Your data stays yours</h3>
-              <p data-content-key="principle_3_desc">Nothing gets sold, to advertisers or to anyone else. You can delete your account whenever you like.</p>
-            </li>
-            <li>
-              <span class="rule-mark" aria-hidden="true"><svg viewBox="0 0 256 256"><path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128ZM84,116a12,12,0,1,0,12,12A12,12,0,0,0,84,116Zm88,0a12,12,0,1,0,12,12A12,12,0,0,0,172,116Zm60,12A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"/></svg></span>
-              <h3 data-content-key="principle_4_title">You'll reach me</h3>
-              <p data-content-key="principle_4_desc">There's no support team to get past. The person reading your bug report is the one who wrote the bug.</p>
-            </li>
-          </ol>
+        <div class="faq reveal">
+          <h3 class="faq-title">Questions people ask</h3>
+          <details><summary>Do I own what you build?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Yes. It runs on your hosting and accounts, and you get the source code and the logins.</p></details>
+          <details><summary>What will it cost?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>It depends on the scope. Describe the project in the form below and I will reply with a price that fits it, before you commit to anything.</p></details>
+          <details><summary>Which platform will you use for my website?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Whichever suits you. A hand-coded site is the fastest and costs nothing to host on Vercel or Netlify. WordPress, Shopify, Webflow and Framer are easier to edit yourself. I will recommend one after reading your brief.</p></details>
+          <details><summary>Do I need store accounts for an app?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Only to publish: Apple's developer program is $99 a year and Google Play is $25 once, both in your name. I walk you through both. New personal Google Play accounts also have to run a closed test with 12 testers for 14 days before an app can go public.</p></details>
+          <details><summary>Where does a bot run?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>On hosting you own, such as a small VPS or a container host like Railway or Render. That is usually a few dollars a month. Bots never need your Discord password: the token goes straight into your hosting settings.</p></details>
+          <details><summary>Can you fix or extend something that already exists?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Usually. I work on bots written in JavaScript, TypeScript or Python, apps in Flutter, React Native or Expo, and sites on the platforms above. Send me what it does and what you need.</p></details>
         </div>
       </div>
     </section>
 
+    <!-- ================= About ================= -->
     <section class="section about" id="about">
       <div class="wrap about-grid">
-        <h2 data-content-key="about_title">Who's behind it.</h2>
-        <div class="about-body">
-          <p class="pull" data-content-key="about_body_1">Just me. I make apps for fun, and I like finishing what I start.</p>
-          <p class="follow" data-content-key="about_body_2">Away from the keyboard I read a lot: Tolkien and Sanderson for fiction, and anything about finance, a world I find fascinating.</p>
-          <p class="follow" data-content-key="about_support">Running FitLog still costs something, between hosting, the database and my time. If it's earned a spot on your phone, you can buy me a coffee. It's optional and doesn't unlock anything.</p>
+        <header class="reveal">
+          <p class="idx"><span>05</span> About</p>
+          <h2>Who's behind it.</h2>
+        </header>
+        <div class="about-body reveal">
+          <p class="pull" data-content-key="s_about_1">Just me. I build apps, sites and bots, and I like finishing what I start.</p>
+          <p class="follow" data-content-key="s_about_2">Away from the keyboard I read a lot: Tolkien and Sanderson for fiction, and anything about finance, a world I find fascinating.</p>
+          <ul class="rules">
+            <li><h3>I use what I make</h3><p>FitLog started as something I wanted for myself, so I am usually the first to notice when it breaks.</p></li>
+            <li><h3>You'll reach me</h3><p>There is no account manager to get past. The person reading your message is the one who will write the code.</p></li>
+            <li><h3>No tricks</h3><p>No fake countdowns and no pressure. If something costs money, it will say so plainly.</p></li>
+            <li><h3>Your data stays yours</h3><p>Nothing gets sold, to advertisers or to anyone else, and you can delete your FitLog account whenever you like.</p></li>
+          </ul>
+          <p class="follow" data-content-key="s_about_support">Running FitLog still costs something, between hosting, the database and my time. If it has earned a spot on your phone, you can buy me a coffee. It's optional and doesn't unlock anything.</p>
           <a class="textlink support-link" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a>
         </div>
       </div>
     </section>
 
+    <!-- ================= Ideas ================= -->
     <section class="wrap requests" id="requests" aria-labelledby="requestTitle">
       <div class="desk reveal">
-        <h2 id="requestTitle" data-content-key="request_title">Got an idea for an app?</h2>
+        <h2 id="requestTitle" data-content-key="s_ideas_title">Got an idea for an app?</h2>
         <div class="desk-side">
-          <p data-content-key="request_body">Tell me what it would do and how you'd use it. I read every message, and good ideas go on the list for what I build next.</p>
-          <a class="btn btn-primary" href="/contact.html"><span>Send an idea</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p data-content-key="s_ideas_body">Tell me what it would do and how you'd use it. I read every message, and good ideas go on the list for what I build next.</p>
+          <a class="btn btn-primary" href="#inquiry" data-inquire="idea"><span>Send an idea</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Inquiry ================= -->
+    <section class="section inquiry" id="inquiry" aria-labelledby="inquiryTitle">
+      <div class="wrap inquiry-grid">
+        <div class="inquiry-intro reveal">
+          <p class="idx"><span>06</span> Inquiry</p>
+          <h2 id="inquiryTitle">Start a project, or just ask.</h2>
+          <p class="section-lede" data-content-key="s_inquiry_intro">Everything sent here lands in one inbox, and I read all of it. Pick a reason and I will know what kind of reply to write.</p>
+          <ol class="next-steps">
+            <li><span>01</span>I read your message and reply to your email.</li>
+            <li><span>02</span>For a project, I ask what is missing and suggest a scope and a price.</li>
+            <li><span>03</span>You decide, and nothing starts until you say so.</li>
+          </ol>
+          <p class="direct">Prefer email? <a href="mailto:departmentofone.app@gmail.com">departmentofone.app@gmail.com</a></p>
+        </div>
+
+        <div class="inquiry-card panel reveal" id="inquiryCard" data-spot>
+          <form id="inquiryForm" novalidate>
+            <div class="field">
+              <label for="reason">What is this about?</label>
+              <div class="select">
+                <select id="reason" name="reason" required>
+                  <option value="" disabled selected>Choose a reason</option>
+                  <option value="project">I want to hire you for a project</option>
+                  <option value="question">I have a question about a service</option>
+                  <option value="fitlog">A FitLog bug or feedback</option>
+                  <option value="idea">I have an idea for an app</option>
+                  <option value="other">Something else, hello included</option>
+                </select>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+            <div class="reveal-field" id="serviceWrap" data-open="false" inert>
+              <div class="reveal-inner">
+                <div class="field">
+                  <label for="service">Which service are you inquiring about?</label>
+                  <div class="select">
+                    <select id="service" name="service" required>
+                      <option value="" disabled selected>Choose a service</option>
+                      <option value="website">A full website</option>
+                      <option value="landing">A single landing page</option>
+                      <option value="app">A mobile app</option>
+                      <option value="bot">A Discord or Telegram bot</option>
+                      <option value="unsure">Not sure yet</option>
+                    </select>
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="reveal-field" id="timelineWrap" data-open="false" inert>
+              <div class="reveal-inner">
+                <div class="field">
+                  <label for="timeline">When do you need it? <span class="opt">Optional</span></label>
+                  <div class="select">
+                    <select id="timeline" name="timeline">
+                      <option value="" selected>No deadline yet</option>
+                      <option value="asap">As soon as possible</option>
+                      <option value="month">Within a month</option>
+                      <option value="quarter">In the next few months</option>
+                      <option value="flexible">Flexible</option>
+                    </select>
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Your name <span class="opt">Optional</span></label>
+                <input id="name" name="name" type="text" maxlength="100" autocomplete="name" placeholder="Ada Lovelace" />
+              </div>
+              <div class="field">
+                <label for="email">Your email</label>
+                <input id="email" name="email" type="email" maxlength="320" required autocomplete="email" inputmode="email" placeholder="you@example.com" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" maxlength="4500" required placeholder="Tell me what you have in mind. Line breaks are kept."></textarea>
+              <span class="hint"><span id="emailHint">Your email is only used to reply to you. It is never shared.</span><span class="count"><span id="charCount">0</span> / 4500</span></span>
+            </div>
+
+            <!-- Honeypot: hidden from people, often filled in by spam bots. Anything in it = silently dropped. -->
+            <label class="hp" aria-hidden="true">Website <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+
+            <!-- Cloudflare Turnstile bot check: loaded when the form is first used, usually invisible. -->
+            <div id="turnstileBox"></div>
+
+            <div class="form-foot">
+              <button id="sendBtn" class="btn btn-primary" type="submit"><span>Send inquiry</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div id="sentView" class="sent" hidden>
+            <p class="sent-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+            <h3>Got it.</h3>
+            <p>Thanks for writing. If it needs an answer, I'll reply to <strong id="sentEmail"></strong>.</p>
+            <button class="btn btn-ghost" type="button" id="againBtn"><span>Send another</span></button>
+          </div>
         </div>
       </div>
     </section>
@@ -241,9 +548,9 @@
   <footer class="site">
     <div class="wrap">
       <div class="footer-top">
-        <p class="tagline" data-content-key="footer_tagline">Made by one person, who also wrote this footer.</p>
+        <p class="tagline" data-content-key="s_footer_tagline">Made by one person, who also wrote this footer.</p>
         <nav class="footer-links" aria-label="Footer">
-          <a href="/contact.html">Contact</a>
+          <a href="#inquiry">Inquiry</a>
           <a href="mailto:departmentofone.app@gmail.com">Email</a>
           <a href="https://github.com/departmentofone" target="_blank" rel="noopener">GitHub</a>
           <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a>
@@ -257,5 +564,6 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous" defer></script>
   <script src="content.js"></script>
   <script src="script.js" defer></script>
+  <script src="inquiry.js" defer></script>
 </body>
 </html>
