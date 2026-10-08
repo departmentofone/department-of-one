@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Privacy - Department of One</title>
-  <meta name="description" content="What the Department of One website collects, and what happens to a message sent through its inquiry form." />
+  <title>Process - Department of One</title>
+  <meta name="description" content="What a project with Department of One looks like, from the first brief to launch, and answers to common questions." />
   <meta name="theme-color" content="#070d0b" />
-  <link rel="canonical" href="https://www.departmentofone.net/privacy" />
+  <link rel="canonical" href="https://www.departmentofone.net/process" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Department of One" />
+  <meta property="og:title" content="Process - Department of One" />
+  <meta property="og:description" content="What a project with Department of One looks like, from the first brief to launch, and answers to common questions." />
+  <meta property="og:url" content="https://www.departmentofone.net/process" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +41,7 @@
         <a class="navlink" href="/#services">Services</a>
         <a class="navlink" href="/work">Work</a>
         <a class="navlink" href="/work#fitlog">FitLog</a>
-        <a class="navlink" href="/process">Process</a>
+        <a class="navlink" href="/process" aria-current="page">Process</a>
         <a class="navlink" href="/about">About</a>
         <a class="navlink navlink-cta" href="/contact">Start a project</a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
@@ -54,58 +60,44 @@
     </div>
   </header>
 
-  <main id="main" class="legal wrap">
-    <h1>Privacy</h1>
-    <p class="legal-meta">Last updated: 8 October 2026</p>
+  <main id="main">
+    <section class="section page-first process" id="process">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="idx"><span>03</span> Process</p>
+          <h1>What the process looks like.</h1>
+          <p class="section-lede">The same four steps for a one-page site or a full app. Revisions are included in every package.</p>
+        </header>
+        <div class="process-grid">
+          <ol class="steps" id="steps">
+            <li class="step reveal"><span class="step-no">01</span><div><h3>Send a brief</h3><p>Tell me what it should do and who it is for, plus two or three sites or apps you like. I reply with what fits and a rough scope.</p></div></li>
+            <li class="step reveal"><span class="step-no">02</span><div><h3>See a first version</h3><p>A private preview link, or a build you can tap through on your phone. The look is settled before the rest is built.</p></div></li>
+            <li class="step reveal"><span class="step-no">03</span><div><h3>Build the rest</h3><p>You review as it comes together and we adjust. Tests and speed checks run before anything goes to you.</p></div></li>
+            <li class="step reveal"><span class="step-no">04</span><div><h3>Launch</h3><p>It goes live on your hosting and in your accounts, with the source code and a plain-English handover guide.</p></div></li>
+          </ol>
+          <div class="process-side">
+            <div class="panel note reveal" data-spot>
+              <h3>About AI</h3>
+              <p>I use AI tools to speed up coding and writing. I review and test every page, screen and command myself. If you want none of it, say so before we start.</p>
+            </div>
+            <div class="panel note reveal" data-spot>
+              <h3>Access</h3>
+              <p>I never ask for passwords. Hosting, stores and bot accounts are shared through invites, and you can remove me when we are done.</p>
+            </div>
+          </div>
+        </div>
 
-    <p>
-      This page covers the Department of One website, departmentofone.net. It's run by Milan Solarov, an
-      independent developer based in Serbia. FitLog, the app, has its own
-      <a href="https://fitlog-two-gamma.vercel.app/privacy">privacy policy</a>.
-    </p>
-
-    <h2>What the site collects</h2>
-    <p>
-      Nothing about you, unless you send a message through the inquiry form. There are no ads, no analytics and no
-      tracking cookies. If you switch between light and dark mode, your browser remembers that choice on your device,
-      and it never reaches us.
-    </p>
-
-    <h2>The inquiry form</h2>
-    <p>
-      When you send a message, we receive the reason you chose, the service you asked about and when you need it
-      (if the form asked), your name if you gave it, your email address and the message itself. It's stored in our
-      database so I can read and answer it, and a copy is emailed to my inbox. We use it only to reply to you, and I
-      delete it when you ask.
-    </p>
-    <p>
-      Before a message is accepted, Cloudflare Turnstile checks that it comes from a person and not a bot. The check
-      loads only when you start using the form, not when you open the page. It runs in the background and uses your
-      IP address, browser details such as the User-Agent, connection details and which site the check runs on.
-      Cloudflare's use of this data is covered by its
-      <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Turnstile Privacy Addendum</a>.
-    </p>
-
-    <h2>Services involved</h2>
-    <ul>
-      <li><a href="https://vercel.com/legal/privacy-policy">Vercel</a> hosts the site and handles each request, which includes your IP address.</li>
-      <li><a href="https://supabase.com/privacy">Supabase</a> stores contact messages and the site's text.</li>
-      <li><a href="https://policies.google.com/privacy">Google (Gmail)</a> delivers the email copy of your message.</li>
-      <li><a href="https://www.cloudflare.com/turnstile-privacy-policy/">Cloudflare Turnstile</a> runs the bot check on the inquiry form.</li>
-      <li><a href="https://policies.google.com/privacy">Google Fonts</a> and <a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net">jsDelivr</a> deliver the site's fonts and one script, which means they see your IP address and browser details.</li>
-    </ul>
-    <p>
-      Some of these providers process data outside Serbia and the European Economic Area, including in the United
-      States, and rely on recognized safeguards such as the European Commission's Standard Contractual Clauses.
-    </p>
-
-    <h2>Your rights</h2>
-    <p>
-      You can ask to see, correct or delete anything you've sent, by writing to
-      <a href="mailto:departmentofone.app@gmail.com">departmentofone.app@gmail.com</a>. You can also complain to the
-      Commissioner for Information of Public Importance and Personal Data Protection in Serbia
-      (<a href="https://www.poverenik.rs">poverenik.rs</a>), or to the data protection authority where you live.
-    </p>
+        <div class="faq reveal">
+          <h3 class="faq-title">Questions people ask</h3>
+          <details><summary>Do I own what you build?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Yes. It runs on your hosting and accounts, and you get the source code and the logins.</p></details>
+          <details><summary>What will it cost?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>It depends on the scope. Describe the project in the form below and I will reply with a price that fits it, before you commit to anything.</p></details>
+          <details><summary>Which platform will you use for my website?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Whichever suits you. A hand-coded site is the fastest and costs nothing to host on Vercel or Netlify. WordPress, Shopify, Webflow and Framer are easier to edit yourself. I will recommend one after reading your brief.</p></details>
+          <details><summary>Do I need store accounts for an app?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Only to publish: Apple's developer program is $99 a year and Google Play is $25 once, both in your name. I walk you through both. New personal Google Play accounts also have to run a closed test with 12 testers for 14 days before an app can go public.</p></details>
+          <details><summary>Where does a bot run?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>On hosting you own, such as a small VPS or a container host like Railway or Render. That is usually a few dollars a month. Bots never need your Discord password: the token goes straight into your hosting settings.</p></details>
+          <details><summary>Can you fix or extend something that already exists?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p>Usually. I work on bots written in JavaScript, TypeScript or Python, apps in Flutter, React Native or Expo, and sites on the platforms above. Send me what it does and what you need.</p></details>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site">

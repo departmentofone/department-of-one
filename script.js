@@ -2,10 +2,16 @@
 // line, the FitLog carousel and the mobile menu. Everything degrades to a complete static page: no
 // element depends on this file to become visible.
 ;(function () {
-  const root = document.documentElement
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
   const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v))
+
+  // ---------- Links from the one-page era (/#inquiry, /#work ...) land on the right page ----------
+  ;(function oldAnchors() {
+    const moved = { inquiry: '/contact', work: '/work', fitlog: '/work#fitlog', process: '/process', about: '/about' }
+    const id = window.location.hash.slice(1)
+    if (id && moved[id] && !document.getElementById(id)) window.location.replace(moved[id] + window.location.search)
+  })()
 
   // ---------- Smooth, weighted scrolling (Lenis), skipped under reduced motion ----------
   if (!reduceMotion && window.Lenis) {
@@ -113,29 +119,6 @@
     document.addEventListener('click', (e) => { if (!panel.hidden && !panel.contains(e.target) && !btn.contains(e.target)) set(false) })
   })()
 
-  // ---------- Nav shows which section is in view ----------
-  ;(function spy() {
-    if (!('IntersectionObserver' in window)) return
-    const links = new Map()
-    document.querySelectorAll('nav.primary a.navlink:not(.navlink-cta)').forEach((a) => links.set(a.getAttribute('href').slice(1), a))
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const a = links.get(entry.target.id)
-          if (!a) return
-          if (entry.isIntersecting) {
-            links.forEach((l) => l.removeAttribute('aria-current'))
-            a.setAttribute('aria-current', 'true')
-          } else if (a.getAttribute('aria-current')) {
-            a.removeAttribute('aria-current')
-          }
-        })
-      },
-      { rootMargin: '-45% 0px -50% 0px' },
-    )
-    links.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s) })
-  })()
-
   // ---------- Process: the line fills as the steps scroll past ----------
   ;(function process() {
     const steps = document.getElementById('steps')
@@ -162,7 +145,7 @@
     const data = [
       { cmd: 'new website --for "a sauna club"', res: '7 pages, online booking, Lighthouse 99' },
       { cmd: 'new app --for "a hair salon"', res: 'iPhone and Android from one codebase' },
-      { cmd: 'new bot --for "a community"', res: 'Discord and Telegram, 30 tests' },
+      { cmd: 'new bot --for "a community"', res: 'Discord and Telegram, from the same code' },
     ]
     let cur = 0
     let auto = !reduceMotion

@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Privacy - Department of One</title>
-  <meta name="description" content="What the Department of One website collects, and what happens to a message sent through its inquiry form." />
+  <title>About - Department of One</title>
+  <meta name="description" content="Department of One is one developer. Who that is, how the work gets done, and where to find me." />
   <meta name="theme-color" content="#070d0b" />
-  <link rel="canonical" href="https://www.departmentofone.net/privacy" />
+  <link rel="canonical" href="https://www.departmentofone.net/about" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Department of One" />
+  <meta property="og:title" content="About - Department of One" />
+  <meta property="og:description" content="Department of One is one developer. Who that is, how the work gets done, and where to find me." />
+  <meta property="og:url" content="https://www.departmentofone.net/about" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,7 +42,7 @@
         <a class="navlink" href="/work">Work</a>
         <a class="navlink" href="/work#fitlog">FitLog</a>
         <a class="navlink" href="/process">Process</a>
-        <a class="navlink" href="/about">About</a>
+        <a class="navlink" href="/about" aria-current="page">About</a>
         <a class="navlink navlink-cta" href="/contact">Start a project</a>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 6.5h13M3.5 13.5h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -54,58 +60,41 @@
     </div>
   </header>
 
-  <main id="main" class="legal wrap">
-    <h1>Privacy</h1>
-    <p class="legal-meta">Last updated: 8 October 2026</p>
-
-    <p>
-      This page covers the Department of One website, departmentofone.net. It's run by Milan Solarov, an
-      independent developer based in Serbia. FitLog, the app, has its own
-      <a href="https://fitlog-two-gamma.vercel.app/privacy">privacy policy</a>.
-    </p>
-
-    <h2>What the site collects</h2>
-    <p>
-      Nothing about you, unless you send a message through the inquiry form. There are no ads, no analytics and no
-      tracking cookies. If you switch between light and dark mode, your browser remembers that choice on your device,
-      and it never reaches us.
-    </p>
-
-    <h2>The inquiry form</h2>
-    <p>
-      When you send a message, we receive the reason you chose, the service you asked about and when you need it
-      (if the form asked), your name if you gave it, your email address and the message itself. It's stored in our
-      database so I can read and answer it, and a copy is emailed to my inbox. We use it only to reply to you, and I
-      delete it when you ask.
-    </p>
-    <p>
-      Before a message is accepted, Cloudflare Turnstile checks that it comes from a person and not a bot. The check
-      loads only when you start using the form, not when you open the page. It runs in the background and uses your
-      IP address, browser details such as the User-Agent, connection details and which site the check runs on.
-      Cloudflare's use of this data is covered by its
-      <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Turnstile Privacy Addendum</a>.
-    </p>
-
-    <h2>Services involved</h2>
-    <ul>
-      <li><a href="https://vercel.com/legal/privacy-policy">Vercel</a> hosts the site and handles each request, which includes your IP address.</li>
-      <li><a href="https://supabase.com/privacy">Supabase</a> stores contact messages and the site's text.</li>
-      <li><a href="https://policies.google.com/privacy">Google (Gmail)</a> delivers the email copy of your message.</li>
-      <li><a href="https://www.cloudflare.com/turnstile-privacy-policy/">Cloudflare Turnstile</a> runs the bot check on the inquiry form.</li>
-      <li><a href="https://policies.google.com/privacy">Google Fonts</a> and <a href="https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net">jsDelivr</a> deliver the site's fonts and one script, which means they see your IP address and browser details.</li>
-    </ul>
-    <p>
-      Some of these providers process data outside Serbia and the European Economic Area, including in the United
-      States, and rely on recognized safeguards such as the European Commission's Standard Contractual Clauses.
-    </p>
-
-    <h2>Your rights</h2>
-    <p>
-      You can ask to see, correct or delete anything you've sent, by writing to
-      <a href="mailto:departmentofone.app@gmail.com">departmentofone.app@gmail.com</a>. You can also complain to the
-      Commissioner for Information of Public Importance and Personal Data Protection in Serbia
-      (<a href="https://www.poverenik.rs">poverenik.rs</a>), or to the data protection authority where you live.
-    </p>
+  <main id="main">
+    <section class="section page-first about" id="about">
+      <div class="wrap about-grid">
+        <header class="reveal">
+          <p class="idx"><span>04</span> About</p>
+          <h1>Who's behind it.</h1>
+        </header>
+        <div class="about-body reveal">
+          <p class="pull" data-content-key="s_about_1">Just me. I build apps, sites and bots, and I like finishing what I start.</p>
+          <p class="follow" data-content-key="s_about_2">Away from the keyboard I read a lot: Tolkien and Sanderson for fiction, and anything about finance, a world I find fascinating.</p>
+          <ul class="rules">
+            <li><h3>I use what I make</h3><p>FitLog started as something I wanted for myself, so I am usually the first to notice when it breaks.</p></li>
+            <li><h3>You'll reach me</h3><p>There is no account manager to get past. The person reading your message is the one who will write the code.</p></li>
+            <li><h3>No tricks</h3><p>No fake countdowns and no pressure. If something costs money, it will say so plainly.</p></li>
+            <li><h3>Your data stays yours</h3><p>Nothing gets sold, to advertisers or to anyone else, and you can delete your FitLog account whenever you like.</p></li>
+          </ul>
+          <div class="about-extra">
+            <div class="find-me reveal">
+              <p class="label">Find me</p>
+              <ul class="socials" aria-label="Elsewhere">
+            <li><a href="#" data-todo="add the X link" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></li>
+            <li><a href="#" data-todo="add the Instagram link" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg></a></li>
+            <li><a href="https://github.com/departmentofone" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></li>
+            <li><a href="mailto:departmentofone.app@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.8 7 12 13l8.2-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+          </ul>
+            </div>
+            <div class="coffee-card panel reveal" data-spot>
+              <span class="coffee-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <p data-content-key="s_about_support">Running FitLog still costs something, between hosting, the database and my time. If it has earned a spot on your phone, you can buy me a coffee. It's optional and doesn't unlock anything.</p>
+              <a class="btn btn-ghost" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buy me a coffee</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site">
