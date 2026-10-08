@@ -16,7 +16,7 @@ Department of One is the studio of one developer. The homepage sells three servi
 Every job, from code to the support inbox, is done by the same person. The person reading your message is the one who will write the code.
 
 ## Operating Context
-Static HTML/CSS/JS on Vercel (department-of-one.vercel.app). Copy on elements with `data-content-key` (keys prefixed `s_`) is overwritten from the Supabase `site_content` table (content.js), edited through admin.html. The inquiry form (inquiry.js) posts to /api/contact, which turns the chosen reason, service and timeline into a subject and a details block, stores it in `contact_messages` and emails a copy. /contact.html redirects to /#inquiry. admin.html and privacy.html reuse the site tokens and `.btn`, `.wrap`, `.wordmark`.
+Static HTML/CSS/JS on Vercel (departmentofone.net). Copy on elements with `data-content-key` (keys prefixed `s_`) is overwritten from the Supabase `site_content` table (content.js), edited through admin.html. The inquiry form (inquiry.js) posts to /api/contact, which turns the chosen reason, service and timeline into a subject and a details block, stores it in `contact_messages` and emails a copy. /contact.html redirects to /#inquiry. admin.html and privacy.html reuse the site tokens and `.btn`, `.wrap`, `.wordmark`.
 
 ## Capabilities and Constraints
 - Services, taken from the Fiverr gig kit (Desktop\Fiverr): websites (Starter, Business, Complete; landing page as a one-page variant), mobile apps in Flutter or React Native (Starter, Full, Launch), Discord and Telegram bots (Essential, Server, Complete). Scope and typical delivery days are shown. Prices are not published; the FAQ says a price follows the inquiry.

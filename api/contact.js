@@ -171,7 +171,7 @@ async function forward(msg) {
     // Plain text, so the sender's line breaks arrive exactly as typed.
     text: msg.label
       ? `From: ${msg.email}\n\n${msg.message}\n\n-- \n${msg.context || msg.label}\nSent from the ${msg.label} app's feedback form. Reply to this email to answer them.`
-      : `From: ${msg.email}\n\n${msg.details ? msg.details + '\n\n' : ''}${msg.message}\n\n-- \nSent from the ${msg.inquiry ? 'inquiry' : 'contact'} form on department-of-one.vercel.app. Reply to this email to answer them.`,
+      : `From: ${msg.email}\n\n${msg.details ? msg.details + '\n\n' : ''}${msg.message}\n\n-- \nSent from the ${msg.inquiry ? 'inquiry' : 'contact'} form on departmentofone.net. Reply to this email to answer them.`,
   })
   return true
 }
