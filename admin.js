@@ -30,6 +30,53 @@ var whoami = document.getElementById('whoami')
 function showLogin() {
   loginView.style.display = 'block'
   editorView.style.display = 'none'
+  loadTurnstile()
+}
+
+// ---------- Cloudflare Turnstile for sign-in ----------
+// Supabase Auth has CAPTCHA protection on (it also guards FitLog's sign-in), so every sign-in must
+// carry a Turnstile token. Same widget and site key as FitLog and the inquiry form; Supabase checks
+// the token with the secret set in its Auth settings.
+var TURNSTILE_SITE_KEY = '0x4AAAAAAFJNfo4pofObKvVn'
+var tsWidget = null
+var tsNeedsTick = false
+var tsLoading = false
+
+window.adminTurnstileReady = function () {
+  tsWidget = window.turnstile.render('#turnstileBox', {
+    sitekey: TURNSTILE_SITE_KEY,
+    action: 'admin',
+    theme: 'dark',
+    size: 'flexible',
+    appearance: 'interaction-only',
+    callback: function () { tsNeedsTick = false },
+    'before-interactive-callback': function () { tsNeedsTick = true },
+  })
+}
+
+function loadTurnstile() {
+  if (tsLoading) return
+  tsLoading = true
+  var s = document.createElement('script')
+  s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=adminTurnstileReady'
+  s.async = true
+  document.head.appendChild(s)
+}
+
+function turnstileToken() {
+  return tsWidget !== null && window.turnstile ? window.turnstile.getResponse(tsWidget) || '' : ''
+}
+
+// The check usually finishes in a second or two; wait for it (up to 10 seconds) before signing in.
+function waitForToken() {
+  return new Promise(function (resolve) {
+    var start = Date.now()
+    ;(function poll() {
+      var t = turnstileToken()
+      if (t || tsNeedsTick || Date.now() - start > 10000) return resolve(t)
+      setTimeout(poll, 150)
+    })()
+  })
 }
 
 // Only the site owner gets past sign-in. Any other FitLog account is signed out immediately.
@@ -171,7 +218,20 @@ document.getElementById('signInBtn').onclick = async function () {
   var password = document.getElementById('password').value
   var errorEl = document.getElementById('loginError')
   errorEl.textContent = ''
-  var { data, error } = await sb.auth.signInWithPassword({ email: email, password: password })
+  var button = this
+  button.disabled = true
+  var captchaToken = await waitForToken()
+  if (!captchaToken) {
+    button.disabled = false
+    errorEl.textContent = tsNeedsTick
+      ? 'Tick "Verify you are human" above, then sign in again.'
+      : "The bot check didn't load. Check your connection and reload the page."
+    return
+  }
+  var { data, error } = await sb.auth.signInWithPassword({ email: email, password: password, options: { captchaToken: captchaToken } })
+  // Each token works once, so get a fresh check ready for the next attempt.
+  if (window.turnstile && tsWidget !== null) window.turnstile.reset(tsWidget)
+  button.disabled = false
   if (error) {
     errorEl.textContent = error.message
     return
