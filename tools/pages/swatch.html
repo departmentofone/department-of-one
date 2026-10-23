@@ -1,0 +1,53 @@
+    <style>
+      .sw { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px; align-items: start; }
+      .sw-photo { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); box-shadow: var(--shadow-sm); }
+      .sw-photo img { width: 100%; max-height: 520px; object-fit: contain; background: var(--bg-deep); }
+      .sw-strip { display: flex; height: 64px; }
+      .sw-strip i { flex: var(--w) 1 0; transition: flex-grow 300ms var(--ease-out); }
+      .chips-c { display: grid; gap: 8px; }
+      .color { display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center; padding: 8px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); }
+      .color .sw-dot { width: 56px; height: 56px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); display: grid; place-items: center; font-family: var(--font-display); font-weight: 750; font-size: 1.05rem; }
+      .color b { font-weight: 650; }
+      .color .codes { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+      .color .pct { font-family: var(--font-mono); font-size: 0.75rem; color: var(--faint); }
+      .export { display: grid; gap: 10px; }
+      .export pre { margin: 0; padding: 14px; border-radius: 12px; background: var(--text); color: #f6f3ec; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; overflow: auto; max-height: 220px; }
+      @media (max-width: 860px) { .sw { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Swatch</h1>
+      <p>Drop in a photo and get its main colours, with names, codes and a contrast check. The photo never leaves your device.</p>
+    </div>
+
+    <label class="drop" id="drop" for="file">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="14.5" r="5"/></svg>
+      <strong>Drop a photo here</strong>
+      <span class="muted small">or click to choose one. You can also paste an image.</span>
+      <input id="file" type="file" accept="image/*" hidden />
+    </label>
+
+    <div class="sw" id="result" hidden style="margin-top:16px">
+      <div class="stack">
+        <div class="sw-photo"><img id="preview" alt="Your photo" /><div class="sw-strip" id="strip" aria-hidden="true"></div></div>
+        <div class="row">
+          <span class="k-label">Colours</span>
+          <div class="seg" role="group" aria-label="Number of colours" id="count">
+            <button type="button" aria-pressed="false" data-k="5">5</button><button type="button" aria-pressed="true" data-k="6">6</button><button type="button" aria-pressed="false" data-k="8">8</button><button type="button" aria-pressed="false" data-k="10">10</button>
+          </div>
+          <label class="btn btn-ghost btn-sm" for="file">New photo</label>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="chips-c" id="colors"></div>
+        <div class="panel-k export">
+          <div class="row" style="justify-content:space-between">
+            <div class="seg" role="tablist" aria-label="Export format" id="formats">
+              <button type="button" role="tab" aria-selected="true" data-f="hex">Hex</button><button type="button" role="tab" aria-selected="false" data-f="css">CSS</button><button type="button" role="tab" aria-selected="false" data-f="tw">Tailwind</button><button type="button" role="tab" aria-selected="false" data-f="json">JSON</button>
+            </div>
+            <button class="btn btn-primary btn-sm" id="copyAll" type="button">Copy</button>
+          </div>
+          <pre id="code"></pre>
+        </div>
+      </div>
+    </div>

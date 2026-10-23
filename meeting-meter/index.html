@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Meeting Meter - Watch what this meeting is costing, live</title>
+  <meta name="description" content="Enter how many people are in the room and a rough hourly rate, then watch the bill tick up by the second. Share it on screen if you dare." />
+  <meta name="theme-color" content="#f6f3ec" />
+  <link rel="canonical" href="https://www.departmentofone.net/meeting-meter" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Department of One" />
+  <meta property="og:title" content="Meeting Meter - Watch what this meeting is costing, live" />
+  <meta property="og:description" content="Enter how many people are in the room and a rough hourly rate, then watch the bill tick up by the second. Share it on screen if you dare." />
+  <meta property="og:url" content="https://www.departmentofone.net/meeting-meter" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/kit/kit.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="tool-bar">
+    <div class="wrap">
+      <a class="home" href="/#shelf" aria-label="Back to the shelf"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#ff5a36"/><path d="M15 9.2 19.6 7h1.9v18.2h3.3V28H11.8v-2.8h4.6V11.7l-3.1 1.5-1.1-2.5z" fill="#fff"/><g class="eyes" fill="#17171a"><circle cx="17.3" cy="15.4" r="1.25"/><circle cx="20.6" cy="15.4" r="1.25"/></g></svg><span>Shelf</span></a>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="title"><span class="tile t-sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13l3.5-3.5M12 2.5v2.5M9.5 2.5h5"/></svg></span><span>Meeting Meter</span></span>
+      <span class="spacer"></span>
+      <a class="btn btn-coffee btn-sm" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="label-long">Buy me a </span>coffee</span></a>
+    </div>
+  </header>
+
+  <main id="main" class="wrap tool">
+    <style>
+      .mm { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+      .mm-stage { display: grid; gap: 18px; justify-items: center; text-align: center; padding: clamp(28px, 6vw, 64px) 20px; background: var(--text); color: #f6f3ec; border-radius: var(--radius-lg); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+      .mm-stage:fullscreen { border-radius: 0; place-content: center; }
+      .mm-label { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.6; }
+      .mm-cost { font-family: var(--font-display); font-weight: 800; font-size: clamp(3.4rem, 12vw, 9rem); letter-spacing: -0.05em; line-height: 0.95; font-variant-numeric: tabular-nums; }
+      .mm-cost .cents { opacity: 0.5; }
+      .mm-time { font-family: var(--font-mono); font-size: 1.05rem; opacity: 0.75; font-variant-numeric: tabular-nums; }
+      .mm-milestone { min-height: 1.6em; font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 600; color: var(--coffee); transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
+      .mm-milestone.is-new { opacity: 0; transform: translateY(6px); }
+      .mm-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .mm-stage .btn-ghost { background: rgba(255, 255, 255, 0.08); color: #f6f3ec; border-color: rgba(255, 255, 255, 0.18); box-shadow: none; }
+      .mm-stage .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.4); }
+      .mm-stage .btn-start { background: var(--accent); color: #fff; min-width: 140px; }
+      .stepper { display: grid; grid-template-columns: 44px 1fr 44px; gap: 6px; }
+      .stepper input { text-align: center; }
+      .log { display: grid; gap: 6px; max-height: 220px; overflow: auto; }
+      .log li { display: flex; justify-content: space-between; gap: 10px; font-size: 0.9rem; color: var(--muted); }
+      .log li b { color: var(--text); font-weight: 600; }
+      @media (max-width: 860px) { .mm { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Meeting Meter</h1>
+      <p>Tell it who's in the room and what an hour of their time costs, then watch the bill tick up. Nothing is saved or sent anywhere.</p>
+    </div>
+
+    <div class="mm">
+      <section class="mm-stage" id="stage" aria-label="Meeting cost">
+        <span class="mm-label">This meeting has cost</span>
+        <div class="mm-cost" id="cost" aria-live="off">$0<span class="cents">.00</span></div>
+        <div class="mm-time" id="time">00:00:00</div>
+        <p class="mm-milestone" id="milestone" aria-live="polite">Press start when the meeting does.</p>
+        <div class="mm-controls">
+          <button class="btn btn-start" id="startBtn" type="button">Start</button>
+          <button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
+          <button class="btn btn-ghost" id="fullBtn" type="button">Full screen</button>
+        </div>
+      </section>
+
+      <aside class="panel-k stack">
+        <label class="k-field"><span>People in the meeting</span>
+          <div class="stepper">
+            <button class="icon-btn" type="button" data-step="-1" aria-label="One fewer person"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 12h12"/></svg></button>
+            <input class="k-input" id="people" type="number" min="1" max="999" value="6" inputmode="numeric" />
+            <button class="icon-btn" type="button" data-step="1" aria-label="One more person"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg></button>
+          </div>
+        </label>
+        <label class="k-field"><span>Average cost per person, per hour</span>
+          <input class="k-input" id="rate" type="number" min="0" step="1" value="60" inputmode="decimal" />
+        </label>
+        <label class="k-field"><span>Currency</span>
+          <select class="k-select" id="currency">
+            <option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>CHF</option><option>JPY</option><option>INR</option><option>RSD</option>
+          </select>
+        </label>
+        <p class="small faint" id="perMinute"></p>
+        <div>
+          <p class="k-label">Milestones reached</p>
+          <ul class="log" id="log" style="margin-top:8px"><li>None yet.</li></ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="k-footer">
+    <div class="wrap">
+      <span>Meeting Meter is free and open source, made by <a href="/about">one person</a>.</span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="/kit/kit.js" defer></script>
+  <script src="/meeting-meter/app.js" defer></script>
+</body>
+</html>

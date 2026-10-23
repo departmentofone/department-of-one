@@ -1,0 +1,48 @@
+    <style>
+      .bb { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+      .bb-stage { position: relative; display: grid; place-items: center; min-height: min(70vh, 560px); border-radius: var(--radius-lg); background: radial-gradient(120% 100% at 50% 0%, #e7f6f1, #cfeee4 60%, #b9e3d6); overflow: hidden; box-shadow: var(--shadow-sm); }
+      .bb-stage:fullscreen { border-radius: 0; }
+      .bb-shape { position: absolute; width: min(56vw, 300px); aspect-ratio: 1; background: radial-gradient(circle at 35% 30%, #ffffff, #7fd6bf 55%, #34c3a0); opacity: 0.9; border-radius: 42% 58% 55% 45% / 48% 42% 58% 52%; transform: scale(0.55); animation: morph 18s ease-in-out infinite alternate; box-shadow: 0 30px 60px -30px rgba(15, 90, 70, 0.6); }
+      @keyframes morph { 0% { border-radius: 42% 58% 55% 45% / 48% 42% 58% 52%; } 50% { border-radius: 58% 42% 40% 60% / 56% 60% 40% 44%; } 100% { border-radius: 48% 52% 62% 38% / 40% 52% 48% 60%; } }
+      .bb-text { position: relative; display: grid; gap: 6px; text-align: center; color: #0f4d3d; }
+      .bb-phase { font-family: var(--font-display); font-weight: 750; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.03em; }
+      .bb-count { font-family: var(--font-mono); font-size: 1.1rem; opacity: 0.7; font-variant-numeric: tabular-nums; }
+      .bb-meta { position: absolute; left: 18px; bottom: 14px; font-family: var(--font-mono); font-size: 0.82rem; color: #0f4d3d; opacity: 0.65; }
+      .pattern-list { display: grid; gap: 8px; }
+      .pattern { display: grid; gap: 2px; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--border-hi); background: var(--surface); cursor: pointer; text-align: left; transition: border-color 150ms ease, transform 160ms var(--ease-out); }
+      .pattern:active { transform: scale(0.98); }
+      .pattern[aria-pressed='true'] { border-color: var(--text); box-shadow: inset 0 0 0 1px var(--text); }
+      .pattern b { font-weight: 650; }
+      .pattern span { font-size: 0.85rem; color: var(--muted); }
+      .custom { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .custom label { display: grid; gap: 4px; font-size: 0.78rem; color: var(--muted); }
+      @media (max-width: 860px) { .bb { grid-template-columns: 1fr; } }
+      @media (prefers-reduced-motion: reduce) { .bb-shape { animation: none; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Box Breath</h1>
+      <p>Follow the shape: it grows as you breathe in and shrinks as you breathe out. A few minutes is enough to settle down.</p>
+    </div>
+
+    <div class="bb">
+      <section class="bb-stage" id="stage" aria-label="Breathing guide">
+        <div class="bb-shape" id="shape"></div>
+        <div class="bb-text"><span class="bb-phase" id="phase" aria-live="polite">Ready when you are</span><span class="bb-count" id="count"></span></div>
+        <span class="bb-meta" id="meta"></span>
+      </section>
+      <aside class="panel-k stack">
+        <div class="pattern-list" id="patterns" role="group" aria-label="Breathing pattern"></div>
+        <div class="custom" id="customBox" hidden>
+          <label>In<input class="k-input" type="number" min="1" max="20" value="4" data-i="0" /></label>
+          <label>Hold<input class="k-input" type="number" min="0" max="20" value="4" data-i="1" /></label>
+          <label>Out<input class="k-input" type="number" min="1" max="20" value="4" data-i="2" /></label>
+          <label>Hold<input class="k-input" type="number" min="0" max="20" value="4" data-i="3" /></label>
+        </div>
+        <label class="row small"><input type="checkbox" id="sound" /> Soft sound at each change</label>
+        <div class="row">
+          <button class="btn btn-primary" id="startBtn" type="button">Start</button>
+          <button class="btn btn-ghost" id="fullBtn" type="button">Full screen</button>
+        </div>
+      </aside>
+    </div>

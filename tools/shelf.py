@@ -99,13 +99,21 @@ SHELF = [
          blurb='Background noise you mix yourself: rain, cafe, fan, train.',
          about='Slide a few sounds together until it feels right, then leave it running while you work or sleep. Mixes save to a link you can share.',
          points=['Mix up to six sounds', 'Sleep timer with fade-out', 'Works offline']),
-    dict(slug='coin-flip', name='Decider', kind='Toys', status='soon', tile='t-grape', icon='dice',
+    dict(slug='decider', name='Decider', kind='Toys', status='soon', tile='t-grape', icon='dice',
          blurb='Coin flips, dice and wheels for when you really cannot choose.',
          about='Flip a coin, roll some dice or spin a wheel of your own options. It remembers your wheels, and it has a "best of three" button for sore losers.',
          points=['Coin, dice and custom wheels', 'Fair randomness from the browser', 'Big buttons for phones']),
 ]
 
 KINDS = ['Apps', 'Tools', 'Toys', 'Wallpapers']
+
+# A tool is live once its page fragment exists in tools/pages/<slug>.html. It is then served at
+# /<slug> (generated into <slug>/index.html, with its script at <slug>/app.js).
+PAGES = Path(__file__).resolve().parent / 'pages'
+for _item in SHELF:
+    if (PAGES / f"{_item['slug']}.html").exists():
+        _item['status'] = 'live'
+        _item['url'] = '/' + _item['slug']
 e = html.escape
 
 
@@ -123,7 +131,10 @@ def card(item, i):
     search = e(' '.join([item['name'], item['kind'], item['blurb']]).lower())
     points = ''.join(f'<li>{e(p)}</li>' for p in item['points'])
     if live:
-        action = f'<a class="btn btn-primary" href="{e(item["url"])}" target="_blank" rel="noopener">Open {e(item["name"])}</a><span class="note">Free. Opens in a new tab.</span>'
+        external = item['url'].startswith('http')
+        target = ' target="_blank" rel="noopener"' if external else ''
+        note = 'Free. Opens in a new tab.' if external else 'Free, runs right in your browser.'
+        action = f'<a class="btn btn-primary" href="{e(item["url"])}"{target}>Open {e(item["name"])}</a><span class="note">{note}</span>'
     else:
         action = (f'<a class="btn btn-ghost" href="{GITHUB}" target="_blank" rel="noopener">Follow on GitHub</a>'
                   f'<span class="note">Still in the workshop. It will be free and open source when it ships.</span>')
@@ -449,7 +460,51 @@ def privacy():
     return head('Privacy - Department of One', 'What the Department of One website collects: nothing, unless you email me.', '/privacy') + header('privacy') + body + FOOTER + SCRIPTS
 
 
+def tool_page(item):
+    body = (PAGES / f"{item['slug']}.html").read_text(encoding='utf-8')
+    # Optional first-line directive: <!-- head: ... --> is copied into <head> (extra scripts, preloads).
+    extra = ''
+    if body.startswith('<!-- head:'):
+        first, body = body.split('\n', 1)
+        extra = '  ' + first[len('<!-- head:'):-len('-->')].strip() + '\n'
+    bar = f'''
+  <header class="tool-bar">
+    <div class="wrap">
+      <a class="home" href="/#shelf" aria-label="Back to the shelf">{MARK}<span>Shelf</span></a>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="title">{tile(item)}<span>{e(item['name'])}</span></span>
+      <span class="spacer"></span>
+      <a class="btn btn-coffee btn-sm" href="{COFFEE}" target="_blank" rel="noopener">{COFFEE_ICON}<span><span class="label-long">Buy me a </span>coffee</span></a>
+    </div>
+  </header>
+'''
+    foot = f'''
+  <footer class="k-footer">
+    <div class="wrap">
+      <span>{e(item['name'])} is free and open source, made by <a href="/about">one person</a>.</span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="{COFFEE}" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+    </div>
+  </footer>
+'''
+    page = head(f"{item['name']} - {item['blurb'].rstrip('.')}", e(item['about']), '/' + item['slug'],
+                extra=extra + '  <link rel="stylesheet" href="/kit/kit.css" />\n')
+    page += bar + '\n  <main id="main" class="wrap tool">\n' + body.rstrip() + '\n  </main>\n' + foot
+    page += f'''
+  <script src="/kit/kit.js" defer></script>
+  <script src="/{item['slug']}/app.js" defer></script>
+</body>
+</html>
+'''
+    out = ROOT / item['slug']
+    out.mkdir(exist_ok=True)
+    (out / 'index.html').write_text(page, encoding='utf-8', newline='\n')
+    print('wrote', item['slug'] + '/index.html')
+
+
 if __name__ == '__main__':
     for name, build in [('index.html', index), ('about.html', about), ('brand.html', brand), ('privacy.html', privacy)]:
         (ROOT / name).write_text(build(), encoding='utf-8', newline='\n')
         print('wrote', name)
+    for item in SHELF:
+        if (PAGES / f"{item['slug']}.html").exists():
+            tool_page(item)

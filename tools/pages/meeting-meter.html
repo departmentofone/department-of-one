@@ -1,0 +1,63 @@
+    <style>
+      .mm { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+      .mm-stage { display: grid; gap: 18px; justify-items: center; text-align: center; padding: clamp(28px, 6vw, 64px) 20px; background: var(--text); color: #f6f3ec; border-radius: var(--radius-lg); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+      .mm-stage:fullscreen { border-radius: 0; place-content: center; }
+      .mm-label { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.6; }
+      .mm-cost { font-family: var(--font-display); font-weight: 800; font-size: clamp(3.4rem, 12vw, 9rem); letter-spacing: -0.05em; line-height: 0.95; font-variant-numeric: tabular-nums; }
+      .mm-cost .cents { opacity: 0.5; }
+      .mm-time { font-family: var(--font-mono); font-size: 1.05rem; opacity: 0.75; font-variant-numeric: tabular-nums; }
+      .mm-milestone { min-height: 1.6em; font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 600; color: var(--coffee); transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out); }
+      .mm-milestone.is-new { opacity: 0; transform: translateY(6px); }
+      .mm-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .mm-stage .btn-ghost { background: rgba(255, 255, 255, 0.08); color: #f6f3ec; border-color: rgba(255, 255, 255, 0.18); box-shadow: none; }
+      .mm-stage .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.4); }
+      .mm-stage .btn-start { background: var(--accent); color: #fff; min-width: 140px; }
+      .stepper { display: grid; grid-template-columns: 44px 1fr 44px; gap: 6px; }
+      .stepper input { text-align: center; }
+      .log { display: grid; gap: 6px; max-height: 220px; overflow: auto; }
+      .log li { display: flex; justify-content: space-between; gap: 10px; font-size: 0.9rem; color: var(--muted); }
+      .log li b { color: var(--text); font-weight: 600; }
+      @media (max-width: 860px) { .mm { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Meeting Meter</h1>
+      <p>Tell it who's in the room and what an hour of their time costs, then watch the bill tick up. Nothing is saved or sent anywhere.</p>
+    </div>
+
+    <div class="mm">
+      <section class="mm-stage" id="stage" aria-label="Meeting cost">
+        <span class="mm-label">This meeting has cost</span>
+        <div class="mm-cost" id="cost" aria-live="off">$0<span class="cents">.00</span></div>
+        <div class="mm-time" id="time">00:00:00</div>
+        <p class="mm-milestone" id="milestone" aria-live="polite">Press start when the meeting does.</p>
+        <div class="mm-controls">
+          <button class="btn btn-start" id="startBtn" type="button">Start</button>
+          <button class="btn btn-ghost" id="resetBtn" type="button">Reset</button>
+          <button class="btn btn-ghost" id="fullBtn" type="button">Full screen</button>
+        </div>
+      </section>
+
+      <aside class="panel-k stack">
+        <label class="k-field"><span>People in the meeting</span>
+          <div class="stepper">
+            <button class="icon-btn" type="button" data-step="-1" aria-label="One fewer person"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 12h12"/></svg></button>
+            <input class="k-input" id="people" type="number" min="1" max="999" value="6" inputmode="numeric" />
+            <button class="icon-btn" type="button" data-step="1" aria-label="One more person"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg></button>
+          </div>
+        </label>
+        <label class="k-field"><span>Average cost per person, per hour</span>
+          <input class="k-input" id="rate" type="number" min="0" step="1" value="60" inputmode="decimal" />
+        </label>
+        <label class="k-field"><span>Currency</span>
+          <select class="k-select" id="currency">
+            <option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>CHF</option><option>JPY</option><option>INR</option><option>RSD</option>
+          </select>
+        </label>
+        <p class="small faint" id="perMinute"></p>
+        <div>
+          <p class="k-label">Milestones reached</p>
+          <ul class="log" id="log" style="margin-top:8px"><li>None yet.</li></ul>
+        </div>
+      </aside>
+    </div>

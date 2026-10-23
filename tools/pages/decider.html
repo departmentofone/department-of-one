@@ -1,0 +1,76 @@
+    <style>
+      .dc-tabs { margin-bottom: 18px; }
+      .dc-panel { display: grid; justify-items: center; gap: 22px; padding: clamp(28px, 6vw, 56px) 20px; text-align: center; }
+      .dc-panel[hidden] { display: none; }
+      .dc-result { min-height: 1.6em; font-family: var(--font-display); font-weight: 750; font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -0.02em; }
+      .dc-sub { color: var(--muted); min-height: 1.5em; }
+
+      /* Coin: two faces on a 3D flip. */
+      .coin-wrap { perspective: 900px; }
+      .coin { position: relative; width: 170px; height: 170px; transform-style: preserve-3d; transition: transform 1100ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+      .coin .face { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 50%; backface-visibility: hidden; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em; box-shadow: inset 0 0 0 8px rgba(0, 0, 0, 0.08), inset 0 -6px 0 rgba(0, 0, 0, 0.12), var(--shadow); }
+      .coin .heads { background: radial-gradient(circle at 35% 30%, #ffe794, #f5b400 60%, #d79a00); color: #4a3500; }
+      .coin .tails { background: radial-gradient(circle at 35% 30%, #fff, #d9d4c8 60%, #b9b2a3); color: #3a3833; transform: rotateY(180deg); }
+
+      /* Dice */
+      .dice { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; min-height: 96px; }
+      .die { width: 86px; height: 86px; padding: 12px; border-radius: 20px; background: var(--surface); border: 1px solid var(--border-hi); box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.06), var(--shadow); display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
+      .die i { width: 14px; height: 14px; margin: auto; border-radius: 50%; background: var(--text); visibility: hidden; }
+      .die.is-rolling { animation: shake 420ms var(--ease-out); }
+      @keyframes shake { 0% { transform: rotate(0); } 25% { transform: rotate(-14deg) translateY(-6px); } 55% { transform: rotate(10deg); } 80% { transform: rotate(-4deg); } 100% { transform: rotate(0); } }
+
+      /* Wheel */
+      .wheel-box { position: relative; width: min(380px, 86vw); aspect-ratio: 1; }
+      .wheel-box canvas { width: 100%; height: 100%; display: block; }
+      .wheel-box .pointer { position: absolute; top: -6px; left: 50%; width: 0; height: 0; translate: -50% 0; border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 24px solid var(--text); filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2)); }
+      .wheel-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+      @media (max-width: 860px) { .wheel-grid { grid-template-columns: 1fr; } }
+      @media (prefers-reduced-motion: reduce) { .coin { transition-duration: 1ms; } .die.is-rolling { animation: none; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Decider</h1>
+      <p>For when you really can't choose. Every result comes from your browser's cryptographic random source, so it's as fair as it gets.</p>
+    </div>
+
+    <div class="seg dc-tabs" role="tablist" aria-label="Choose a decider">
+      <button type="button" role="tab" aria-selected="true" data-tab="coin">Coin</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="dice">Dice</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="wheel">Wheel</button>
+    </div>
+
+    <section class="panel-k dc-panel" id="tab-coin">
+      <div class="coin-wrap"><div class="coin" id="coin"><div class="face heads">Heads</div><div class="face tails">Tails</div></div></div>
+      <p class="dc-result" id="coinResult" aria-live="polite">Flip it.</p>
+      <p class="dc-sub" id="coinSub"></p>
+      <div class="row" style="justify-content:center">
+        <button class="btn btn-primary" id="flipBtn" type="button">Flip</button>
+        <button class="btn btn-ghost" id="bestBtn" type="button">Best of three</button>
+      </div>
+    </section>
+
+    <section class="panel-k dc-panel" id="tab-dice" hidden>
+      <div class="dice" id="dice"></div>
+      <p class="dc-result" id="diceResult" aria-live="polite">Roll them.</p>
+      <div class="row" style="justify-content:center">
+        <div class="seg" role="group" aria-label="How many dice" id="diceCount">
+          <button type="button" aria-pressed="false" data-n="1">1</button><button type="button" aria-pressed="true" data-n="2">2</button><button type="button" aria-pressed="false" data-n="3">3</button><button type="button" aria-pressed="false" data-n="4">4</button><button type="button" aria-pressed="false" data-n="5">5</button>
+        </div>
+        <button class="btn btn-primary" id="rollBtn" type="button">Roll</button>
+      </div>
+    </section>
+
+    <section class="dc-panel" id="tab-wheel" hidden style="padding:0">
+      <div class="wheel-grid" style="width:100%">
+        <div class="panel-k" style="display:grid;justify-items:center;gap:18px">
+          <div class="wheel-box"><canvas id="wheel" width="760" height="760" aria-label="Wheel of options"></canvas><span class="pointer" aria-hidden="true"></span></div>
+          <p class="dc-result" id="wheelResult" aria-live="polite">Spin it.</p>
+          <button class="btn btn-primary" id="spinBtn" type="button">Spin</button>
+        </div>
+        <div class="panel-k stack" style="text-align:left">
+          <label class="k-field"><span>Options, one per line</span><textarea class="k-textarea" id="options" rows="8" spellcheck="false"></textarea></label>
+          <label class="row small"><input type="checkbox" id="removeWinner" /> Remove the winner after each spin</label>
+          <p class="small faint">Your wheel is saved in this browser.</p>
+        </div>
+      </div>
+    </section>

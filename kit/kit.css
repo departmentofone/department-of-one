@@ -1,0 +1,69 @@
+/* Shared frame and controls for the tools on the shelf (/squish, /decider ...). Loaded after
+   /style.css, so it reuses the site's tokens, buttons and fonts. */
+
+.tool-bar { position: sticky; top: 0; z-index: 60; background: rgba(246, 243, 236, 0.86); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4); box-shadow: 0 1px 0 var(--border); }
+.tool-bar .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+.tool-bar .home { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px 6px 6px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; color: var(--muted); transition: background-color 150ms ease, color 150ms ease, transform 160ms var(--ease-out); }
+.tool-bar .home:hover { background: rgba(23, 23, 26, 0.05); color: var(--text); }
+.tool-bar .home:active { transform: scale(0.97); }
+.tool-bar .home .mark { width: 28px; height: 28px; }
+.tool-bar .sep { width: 1px; height: 22px; background: var(--border-hi); }
+.tool-bar .title { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 750; font-size: 1.1rem; letter-spacing: -0.02em; min-width: 0; }
+.tool-bar .title .tile { grid-row: auto; width: 30px; height: 30px; border-radius: 9px; }
+.tool-bar .title .tile svg { width: 17px; height: 17px; }
+.tool-bar .title .tile img { width: 100%; height: 100%; }
+.tool-bar .spacer { flex: 1; }
+@media (max-width: 560px) { .tool-bar .home span, .tool-bar .sep { display: none; } .tool-bar .btn-coffee .label-long { display: none; } }
+
+.tool { padding-block: clamp(20px, 4vw, 44px) clamp(40px, 6vw, 72px); }
+.tool-head { display: grid; gap: 8px; margin-bottom: clamp(18px, 3vw, 28px); }
+.tool-head h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); }
+.tool-head p { color: var(--muted); max-width: 60ch; }
+
+.panel-k { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: clamp(16px, 2.6vw, 26px); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.stack { display: grid; gap: 14px; }
+.muted { color: var(--muted); }
+.faint { color: var(--faint); }
+.small { font-size: 0.88rem; }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Form controls */
+.k-field { display: grid; gap: 6px; }
+.k-field > span, .k-label { font-weight: 600; font-size: 0.88rem; }
+.k-input, .k-select, .k-textarea {
+  width: 100%; min-height: 44px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border-hi); background: var(--surface);
+  font: inherit; font-size: 1rem; color: var(--text); transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.k-textarea { resize: vertical; min-height: 120px; line-height: 1.5; }
+.k-input:focus, .k-select:focus, .k-textarea:focus { outline: none; border-color: var(--text); box-shadow: 0 0 0 4px rgba(23, 23, 26, 0.08); }
+.k-select { appearance: none; -webkit-appearance: none; padding-right: 36px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' fill='none' stroke='%235f5c55' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; background-size: 18px; }
+input[type='range'].k-range { width: 100%; accent-color: var(--accent); }
+.seg { display: inline-flex; padding: 4px; gap: 4px; border-radius: 999px; background: var(--bg-deep); }
+.seg button { height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--muted); transition: background-color 150ms ease, color 150ms ease, transform 160ms var(--ease-out); -webkit-tap-highlight-color: transparent; }
+.seg button:active { transform: scale(0.96); }
+.seg button[aria-pressed='true'], .seg button[aria-selected='true'] { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
+.icon-btn { width: 40px; height: 40px; display: inline-grid; place-items: center; border-radius: 12px; border: 1px solid var(--border-hi); background: var(--surface); cursor: pointer; color: var(--text); transition: transform 160ms var(--ease-out), border-color 150ms ease; -webkit-tap-highlight-color: transparent; }
+.icon-btn:active { transform: scale(0.94); }
+.icon-btn:hover { border-color: rgba(23, 23, 26, 0.3); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* Drop zone for file tools */
+.drop { display: grid; place-items: center; gap: 10px; min-height: 200px; padding: 24px; border-radius: var(--radius-lg); border: 2px dashed var(--border-hi); background: var(--surface-2); text-align: center; cursor: pointer; transition: border-color 150ms ease, background-color 150ms ease, transform 200ms var(--ease-out); }
+.drop:hover, .drop.is-over { border-color: var(--accent); background: var(--accent-soft); }
+.drop.is-over { transform: scale(0.99); }
+.drop strong { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: -0.02em; }
+.drop svg { width: 36px; height: 36px; color: var(--accent); }
+
+/* Toast */
+.k-toast { position: fixed; left: 50%; bottom: 24px; z-index: 100; translate: -50% 0; padding: 10px 16px; border-radius: 999px; background: var(--text); color: var(--bg); font-weight: 600; font-size: 0.9rem; box-shadow: var(--shadow-lift); opacity: 0; transform: translateY(8px); transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out); pointer-events: none; }
+.k-toast.is-on { opacity: 1; transform: none; }
+
+.k-footer { padding-block: 28px; border-top: 1px solid var(--border); color: var(--faint); font-size: 0.88rem; }
+.k-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 20px; }
+.k-footer a { color: var(--muted); }
+.k-footer a:hover { color: var(--text); }
+
+@media (prefers-reduced-motion: reduce) { .k-toast { transform: none; } }
+label.row { flex-wrap: nowrap; align-items: center; cursor: pointer; }
+label.row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
