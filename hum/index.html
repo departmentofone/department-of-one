@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Hum - Hum a tune and see the notes you sang</title>
+  <meta name="description" content="Hum or whistle into your mic and Hum writes the melody down as notes you can play back, transpose or copy. Good for catching a tune before it disappears." />
+  <meta name="theme-color" content="#f6f3ec" />
+  <link rel="canonical" href="https://www.departmentofone.net/hum" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Department of One" />
+  <meta property="og:title" content="Hum - Hum a tune and see the notes you sang" />
+  <meta property="og:description" content="Hum or whistle into your mic and Hum writes the melody down as notes you can play back, transpose or copy. Good for catching a tune before it disappears." />
+  <meta property="og:url" content="https://www.departmentofone.net/hum" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/kit/kit.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="tool-bar">
+    <div class="wrap">
+      <a class="home" href="/#shelf" aria-label="Back to the shelf"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#ff5a36"/><path d="M15 9.2 19.6 7h1.9v18.2h3.3V28H11.8v-2.8h4.6V11.7l-3.1 1.5-1.1-2.5z" fill="#fff"/><g class="eyes" fill="#17171a"><circle cx="17.3" cy="15.4" r="1.25"/><circle cx="20.6" cy="15.4" r="1.25"/></g></svg><span>Shelf</span></a>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="title"><span class="tile t-grape" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="16.5" cy="16" r="2.6"/></svg></span><span>Hum</span></span>
+      <span class="spacer"></span>
+      <a class="btn btn-coffee btn-sm" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="label-long">Buy me a </span>coffee</span></a>
+    </div>
+  </header>
+
+  <main id="main" class="wrap tool">
+    <style>
+      .hm { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+      .hm-live { display: grid; justify-items: center; gap: 10px; padding: clamp(20px, 4vw, 36px); border-radius: var(--radius-lg); background: linear-gradient(180deg, #f1ecff, #e4dcff); box-shadow: var(--shadow-sm); text-align: center; }
+      .hm-note { font-family: var(--font-display); font-weight: 800; font-size: clamp(3.4rem, 10vw, 6rem); letter-spacing: -0.04em; line-height: 1; color: #3b2a7a; min-height: 1em; }
+      .hm-note small { font-size: 0.4em; opacity: 0.6; margin-left: 4px; }
+      .tuner { position: relative; width: min(320px, 80%); height: 10px; border-radius: 10px; background: rgba(59, 42, 122, 0.15); }
+      .tuner i { position: absolute; top: -4px; left: 50%; width: 4px; height: 18px; margin-left: -2px; border-radius: 4px; background: #3b2a7a; transition: transform 80ms linear; }
+      .tuner::after { content: ''; position: absolute; left: 50%; top: -6px; bottom: -6px; width: 1px; background: rgba(59, 42, 122, 0.4); }
+      .hm-msg { color: #5b4a9a; font-weight: 600; min-height: 1.5em; }
+      .rec-btn { width: 84px; height: 84px; border-radius: 50%; border: 0; cursor: pointer; background: #ec4899; color: #fff; display: grid; place-items: center; box-shadow: 0 10px 24px -10px rgba(236, 72, 153, 0.8); transition: transform 160ms var(--ease-out); }
+      .rec-btn:active { transform: scale(0.95); }
+      .rec-btn svg { width: 30px; height: 30px; }
+      .rec-btn[aria-pressed='true'] { background: var(--text); box-shadow: 0 0 0 6px rgba(236, 72, 153, 0.25); }
+      .roll { width: 100%; height: 220px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); display: block; }
+      .notes-txt { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); word-break: break-word; }
+      @media (max-width: 860px) { .hm { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Hum</h1>
+      <p>Hum, whistle or sing a tune and Hum writes it down as notes. Play it back, shift it up or down, or save it as a MIDI file. Your microphone is only used while recording, and the sound never leaves your device.</p>
+    </div>
+
+    <div class="hm">
+      <div class="stack">
+        <section class="hm-live" aria-label="Live pitch">
+          <div class="hm-note" id="note" aria-live="off">--</div>
+          <div class="tuner" aria-hidden="true"><i id="needle"></i></div>
+          <p class="hm-msg" id="msg" aria-live="polite">Press the button and hum something.</p>
+          <button class="rec-btn" id="rec" type="button" aria-pressed="false" aria-label="Start recording">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>
+          </button>
+        </section>
+        <canvas class="roll" id="roll" width="1200" height="440" aria-label="Your melody as a piano roll"></canvas>
+        <p class="notes-txt" id="notesTxt"></p>
+      </div>
+      <aside class="panel-k stack">
+        <div class="row"><button class="btn btn-primary" id="playBtn" type="button" disabled>Play it back</button></div>
+        <label class="k-field"><span>Shift by <b id="tv">0</b> semitones</span><input class="k-range" id="transpose" type="range" min="-12" max="12" value="0" /></label>
+        <label class="k-field"><span>Sound</span>
+          <select class="k-select" id="voice"><option value="piano">Soft piano</option><option value="sine">Pure tone</option><option value="square">8-bit</option><option value="saw">Synth</option></select>
+        </label>
+        <label class="row small"><input type="checkbox" id="snap" checked /> Tidy up timing</label>
+        <button class="btn btn-ghost" id="midiBtn" type="button" disabled>Save as MIDI</button>
+        <p class="small faint">Works best with a clear hum or whistle in a quiet room. Headphones help.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="k-footer">
+    <div class="wrap">
+      <span>Hum is free and open source, made by <a href="/about">one person</a>.</span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="/kit/kit.js" defer></script>
+  <script src="/hum/app.js" defer></script>
+</body>
+</html>

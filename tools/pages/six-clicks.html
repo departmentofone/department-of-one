@@ -1,0 +1,57 @@
+    <style>
+      .sc-head { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; }
+      .sc-end { padding: 14px 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); }
+      .sc-end small { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); text-transform: uppercase; letter-spacing: 0.04em; }
+      .sc-end b { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: -0.02em; }
+      .sc-end.target { background: var(--accent-soft); border-color: transparent; text-align: right; }
+      .sc-arrow { font-size: 1.6rem; color: var(--faint); }
+      .sc-stats { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0; }
+      .sc-stat { padding: 6px 12px; border-radius: 999px; background: var(--bg-deep); font-family: var(--font-mono); font-size: 0.85rem; }
+      .sc-path { display: flex; flex-wrap: wrap; gap: 4px; font-size: 0.85rem; color: var(--muted); }
+      .sc-path span + span::before { content: '→ '; color: var(--faint); }
+      .article { padding: clamp(18px, 3vw, 32px); border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); min-height: 300px; line-height: 1.65; overflow-wrap: anywhere; }
+      .article h1.art-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 14px; }
+      .article h2, .article h3 { font-family: var(--font-display); margin: 1.4em 0 0.4em; letter-spacing: -0.02em; }
+      .article h2 { font-size: 1.45rem; } .article h3 { font-size: 1.15rem; }
+      .article p, .article li { margin: 0.6em 0; color: #2a2a2e; }
+      .article ul, .article ol { padding-left: 1.4em; list-style: disc; }
+      .article img { display: inline-block; max-width: 100%; height: auto; border-radius: 6px; }
+      .article table { border-collapse: collapse; font-size: 0.88rem; margin: 1em 0; max-width: 100%; display: block; overflow-x: auto; }
+      .article td, .article th { border: 1px solid var(--border); padding: 4px 8px; vertical-align: top; }
+      .article .infobox { float: right; width: min(300px, 100%); margin: 0 0 1em 1.4em; background: var(--surface-2); }
+      .article a.go { color: #2754c5; text-decoration: underline; text-decoration-color: rgba(39, 84, 197, 0.3); text-underline-offset: 2px; cursor: pointer; }
+      .article a.go:hover { text-decoration-color: currentColor; }
+      .article a.go.is-target { color: var(--accent); font-weight: 700; }
+      .article .loading { color: var(--muted); }
+      .win { display: grid; justify-items: center; gap: 12px; padding: clamp(24px, 5vw, 44px); text-align: center; border-radius: var(--radius-lg); background: var(--accent-soft); margin-bottom: 16px; }
+      .win h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+      @media (max-width: 700px) { .sc-head { grid-template-columns: 1fr; } .sc-arrow { display: none; } .sc-end.target { text-align: left; } .article .infobox { float: none; margin: 0 0 1em; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Six Clicks</h1>
+      <p>Get from one Wikipedia article to another using only the links on each page. Same puzzle for everyone each day. Fewer clicks wins.</p>
+    </div>
+
+    <div class="row" style="margin-bottom:14px">
+      <div class="seg" role="tablist" aria-label="Mode">
+        <button type="button" role="tab" aria-selected="true" data-mode="daily">Today's puzzle</button>
+        <button type="button" role="tab" aria-selected="false" data-mode="practice">Practice</button>
+      </div>
+      <button class="btn btn-ghost btn-sm" id="newPractice" type="button" hidden>New random pair</button>
+    </div>
+
+    <div class="sc-head">
+      <div class="sc-end"><small>Start</small><b id="startName">…</b></div>
+      <span class="sc-arrow" aria-hidden="true">→</span>
+      <div class="sc-end target"><small>Get to</small><b id="targetName">…</b></div>
+    </div>
+    <div class="sc-stats">
+      <span class="sc-stat" id="clicks">0 clicks</span>
+      <span class="sc-stat" id="timer">0:00</span>
+      <button class="btn btn-ghost btn-sm" id="backBtn" type="button" disabled>Back (costs a click)</button>
+      <button class="btn btn-ghost btn-sm" id="restartBtn" type="button">Restart</button>
+    </div>
+    <div class="sc-path" id="path" aria-label="Your route"></div>
+    <div id="winBox" hidden></div>
+    <article class="article" id="article" aria-live="polite" style="margin-top:14px"><p class="loading">Loading…</p></article>

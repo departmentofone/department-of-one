@@ -1,0 +1,47 @@
+    <style>
+      .hm { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+      .hm-live { display: grid; justify-items: center; gap: 10px; padding: clamp(20px, 4vw, 36px); border-radius: var(--radius-lg); background: linear-gradient(180deg, #f1ecff, #e4dcff); box-shadow: var(--shadow-sm); text-align: center; }
+      .hm-note { font-family: var(--font-display); font-weight: 800; font-size: clamp(3.4rem, 10vw, 6rem); letter-spacing: -0.04em; line-height: 1; color: #3b2a7a; min-height: 1em; }
+      .hm-note small { font-size: 0.4em; opacity: 0.6; margin-left: 4px; }
+      .tuner { position: relative; width: min(320px, 80%); height: 10px; border-radius: 10px; background: rgba(59, 42, 122, 0.15); }
+      .tuner i { position: absolute; top: -4px; left: 50%; width: 4px; height: 18px; margin-left: -2px; border-radius: 4px; background: #3b2a7a; transition: transform 80ms linear; }
+      .tuner::after { content: ''; position: absolute; left: 50%; top: -6px; bottom: -6px; width: 1px; background: rgba(59, 42, 122, 0.4); }
+      .hm-msg { color: #5b4a9a; font-weight: 600; min-height: 1.5em; }
+      .rec-btn { width: 84px; height: 84px; border-radius: 50%; border: 0; cursor: pointer; background: #ec4899; color: #fff; display: grid; place-items: center; box-shadow: 0 10px 24px -10px rgba(236, 72, 153, 0.8); transition: transform 160ms var(--ease-out); }
+      .rec-btn:active { transform: scale(0.95); }
+      .rec-btn svg { width: 30px; height: 30px; }
+      .rec-btn[aria-pressed='true'] { background: var(--text); box-shadow: 0 0 0 6px rgba(236, 72, 153, 0.25); }
+      .roll { width: 100%; height: 220px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border); display: block; }
+      .notes-txt { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); word-break: break-word; }
+      @media (max-width: 860px) { .hm { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Hum</h1>
+      <p>Hum, whistle or sing a tune and Hum writes it down as notes. Play it back, shift it up or down, or save it as a MIDI file. Your microphone is only used while recording, and the sound never leaves your device.</p>
+    </div>
+
+    <div class="hm">
+      <div class="stack">
+        <section class="hm-live" aria-label="Live pitch">
+          <div class="hm-note" id="note" aria-live="off">--</div>
+          <div class="tuner" aria-hidden="true"><i id="needle"></i></div>
+          <p class="hm-msg" id="msg" aria-live="polite">Press the button and hum something.</p>
+          <button class="rec-btn" id="rec" type="button" aria-pressed="false" aria-label="Start recording">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>
+          </button>
+        </section>
+        <canvas class="roll" id="roll" width="1200" height="440" aria-label="Your melody as a piano roll"></canvas>
+        <p class="notes-txt" id="notesTxt"></p>
+      </div>
+      <aside class="panel-k stack">
+        <div class="row"><button class="btn btn-primary" id="playBtn" type="button" disabled>Play it back</button></div>
+        <label class="k-field"><span>Shift by <b id="tv">0</b> semitones</span><input class="k-range" id="transpose" type="range" min="-12" max="12" value="0" /></label>
+        <label class="k-field"><span>Sound</span>
+          <select class="k-select" id="voice"><option value="piano">Soft piano</option><option value="sine">Pure tone</option><option value="square">8-bit</option><option value="saw">Synth</option></select>
+        </label>
+        <label class="row small"><input type="checkbox" id="snap" checked /> Tidy up timing</label>
+        <button class="btn btn-ghost" id="midiBtn" type="button" disabled>Save as MIDI</button>
+        <p class="small faint">Works best with a clear hum or whistle in a quiet room. Headphones help.</p>
+      </aside>
+    </div>

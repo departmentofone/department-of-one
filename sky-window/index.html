@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Sky Window - A live wallpaper of the real sky colour over any city</title>
+  <meta name="description" content="Pick a city and Sky Window paints the sky as it looks there right now, from dawn pinks to night blues, drifting slowly through the day." />
+  <meta name="theme-color" content="#f6f3ec" />
+  <link rel="canonical" href="https://www.departmentofone.net/sky-window" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Department of One" />
+  <meta property="og:title" content="Sky Window - A live wallpaper of the real sky colour over any city" />
+  <meta property="og:description" content="Pick a city and Sky Window paints the sky as it looks there right now, from dawn pinks to night blues, drifting slowly through the day." />
+  <meta property="og:url" content="https://www.departmentofone.net/sky-window" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/kit/kit.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="tool-bar">
+    <div class="wrap">
+      <a class="home" href="/#shelf" aria-label="Back to the shelf"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#ff5a36"/><path d="M15 9.2 19.6 7h1.9v18.2h3.3V28H11.8v-2.8h4.6V11.7l-3.1 1.5-1.1-2.5z" fill="#fff"/><g class="eyes" fill="#17171a"><circle cx="17.3" cy="15.4" r="1.25"/><circle cx="20.6" cy="15.4" r="1.25"/></g></svg><span>Shelf</span></a>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="title"><span class="tile t-indigo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M12 3.5v17M3.5 12h17"/><path d="M6.5 8.6c.3-1 1.1-1.6 2-1.6.6 0 1.1.3 1.4.7.2-.1.4-.1.6-.1.8 0 1.4.6 1.4 1.4" stroke-width="1.6"/></svg></span><span>Sky Window</span></span>
+      <span class="spacer"></span>
+      <a class="btn btn-coffee btn-sm" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="label-long">Buy me a </span>coffee</span></a>
+    </div>
+  </header>
+
+  <main id="main" class="wrap tool">
+    <style>
+      .sky { position: relative; height: min(72vh, 640px); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); background: #0b1024; }
+      .sky:fullscreen { height: 100vh; border-radius: 0; }
+      .sky canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      .sky-info { position: absolute; left: clamp(18px, 3vw, 32px); bottom: clamp(18px, 3vw, 28px); color: #fff; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35); display: grid; gap: 2px; transition: opacity 300ms ease; }
+      .sky-info .t { font-family: var(--font-display); font-weight: 750; font-size: clamp(2.6rem, 7vw, 4.6rem); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+      .sky-info .c { font-weight: 600; font-size: 1.05rem; }
+      .sky-info .w { opacity: 0.85; font-size: 0.95rem; }
+      .sky-tools { position: absolute; right: 14px; top: 14px; display: flex; gap: 6px; }
+      .sky-tools .icon-btn { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.28); color: #fff; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+      .sky.is-clean .sky-info, .sky.is-clean .sky-tools { opacity: 0; }
+      .sky.is-clean:hover .sky-tools { opacity: 1; }
+      .city-results { display: grid; gap: 4px; }
+      .city-results button { display: flex; justify-content: space-between; gap: 10px; width: 100%; padding: 10px 12px; border: 0; border-radius: 10px; background: var(--surface-2); cursor: pointer; text-align: left; font-weight: 550; transition: background-color 150ms ease; }
+      .city-results button:hover { background: var(--bg-deep); }
+      .city-results small { color: var(--faint); font-weight: 400; }
+      .sky-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+      @media (max-width: 860px) { .sky-grid { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Sky Window</h1>
+      <p>The sky over any city, painted from where the sun really is and how cloudy it is right now. Leave it open on a spare screen or save it as a wallpaper.</p>
+    </div>
+
+    <div class="sky-grid">
+      <section class="sky" id="sky" aria-label="Live sky">
+        <canvas id="canvas"></canvas>
+        <div class="sky-info" aria-live="polite"><span class="t" id="clock">--:--</span><span class="c" id="city">Finding your sky…</span><span class="w" id="weather"></span></div>
+        <div class="sky-tools">
+          <button class="icon-btn" id="cleanBtn" type="button" title="Hide the text" aria-label="Hide the text"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h7"/></svg></button>
+          <button class="icon-btn" id="fullBtn" type="button" title="Full screen" aria-label="Full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        </div>
+      </section>
+      <aside class="panel-k stack">
+        <label class="k-field"><span>City</span><input class="k-input" id="search" type="search" placeholder="Search for a city" autocomplete="off" /></label>
+        <div class="city-results" id="results"></div>
+        <button class="btn btn-primary" id="saveBtn" type="button">Save as wallpaper</button>
+        <button class="btn btn-ghost" id="linkBtn" type="button">Copy a link to this sky</button>
+        <p class="small faint">Tip: set this page as your browser's home or new-tab page to see the sky every time you open a tab. Weather by <a href="https://open-meteo.com" target="_blank" rel="noopener" style="text-decoration:underline">Open-Meteo</a>.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="k-footer">
+    <div class="wrap">
+      <span>Sky Window is free and open source, made by <a href="/about">one person</a>.</span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="/kit/kit.js" defer></script>
+  <script src="/sky-window/app.js" defer></script>
+</body>
+</html>
