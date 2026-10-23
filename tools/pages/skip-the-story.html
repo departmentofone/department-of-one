@@ -1,0 +1,52 @@
+    <style>
+      .ss-form { display: flex; gap: 8px; }
+      .ss-form .k-input { flex: 1; }
+      .ss-recent { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+      .ss-card { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 18px; margin-top: 18px; align-items: start; }
+      .ss-hero { display: grid; gap: 12px; }
+      .ss-hero img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); background: var(--bg-deep); }
+      .ss-title { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+      .ss-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+      .ss-meta span { padding: 4px 10px; border-radius: 999px; background: var(--bg-deep); font-size: 0.84rem; color: var(--muted); }
+      .ss-src { font-size: 0.88rem; color: var(--muted); }
+      .ss-src a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
+      .serves { display: flex; align-items: center; gap: 8px; }
+      .serves b { min-width: 2.4ch; text-align: center; font-family: var(--font-display); font-size: 1.3rem; }
+      .ings { display: grid; gap: 2px; }
+      .ings label { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 8px 6px; border-radius: 10px; cursor: pointer; align-items: start; transition: background-color 150ms ease; }
+      .ings label:hover { background: var(--surface-2); }
+      .ings input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); }
+      .ings input:checked + span { color: var(--faint); text-decoration: line-through; }
+      .ings .q { font-weight: 700; }
+      .steps-l { display: grid; gap: 10px; counter-reset: step; }
+      .steps-l h3 { font-family: var(--font-mono); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); margin-top: 8px; }
+      .steps-l li { counter-increment: step; display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 10px; border-radius: 14px; cursor: pointer; transition: background-color 150ms ease, opacity 150ms ease; }
+      .steps-l li::before { content: counter(step); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--bg-deep); font-weight: 700; font-size: 0.88rem; }
+      .steps-l li.is-done { opacity: 0.45; }
+      .steps-l li.is-done::before { content: '✓'; background: #ddf3e6; color: #137044; }
+      .cook { position: fixed; inset: 0; z-index: 90; display: grid; grid-template-rows: auto 1fr auto; background: var(--bg); padding: clamp(16px, 4vw, 40px); }
+      .cook-step { display: grid; align-content: center; gap: 16px; max-width: 900px; margin: 0 auto; }
+      .cook-step small { font-family: var(--font-mono); color: var(--faint); }
+      .cook-step p { font-size: clamp(1.4rem, 3.6vw, 2.4rem); line-height: 1.4; letter-spacing: -0.01em; }
+      .cook-bar { display: flex; justify-content: space-between; gap: 10px; }
+      .error-box { margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: #fde7e3; color: #8a2a16; }
+      @media (max-width: 860px) { .ss-card { grid-template-columns: 1fr; } }
+      @media print { .tool-bar, .k-footer, .tool-head, .ss-input, .no-print { display: none !important; } .ss-card { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Skip the Story</h1>
+      <p>Paste a link to any recipe and get just the ingredients and steps, without the ads and the life story. Scale the servings, tick things off as you go, and keep your screen awake while you cook.</p>
+    </div>
+
+    <section class="panel-k ss-input">
+      <form class="ss-form" id="form">
+        <input class="k-input" id="url" type="url" inputmode="url" placeholder="https://www.example.com/best-pancakes" aria-label="Recipe link" required />
+        <button class="btn btn-primary" type="submit" id="go">Get the recipe</button>
+      </form>
+      <div class="ss-recent" id="recent"></div>
+      <p class="small faint" style="margin-top:10px">Works with most big recipe sites. Tip: drag this to your bookmarks bar, then click it on any recipe page: <a id="bookmarklet" class="chip" style="display:inline-flex;align-items:center;cursor:grab">Skip the story</a></p>
+    </section>
+
+    <div id="error" class="error-box" role="alert" hidden></div>
+    <div id="out"></div>
