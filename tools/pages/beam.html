@@ -1,0 +1,63 @@
+<!-- head: <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js" integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok" crossorigin="anonymous" defer></script><script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js" integrity="sha384-8FWZA6BGMXhsfO+BLtrJK0We6gg5o1JyO8xQm6peWDEUs17ACA5ziE/NIAkl9z2k" crossorigin="anonymous" defer></script> -->
+    <style>
+      .bm { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+      .bm-pair { display: grid; justify-items: center; gap: 14px; text-align: center; padding: clamp(20px, 4vw, 36px); }
+      .qr { width: 220px; height: 220px; padding: 10px; border-radius: 18px; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+      .qr svg { width: 100%; height: 100%; display: block; }
+      .code { font-family: var(--font-mono); font-size: 1.6rem; letter-spacing: 0.12em; font-weight: 600; }
+      .status { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--bg-deep); font-weight: 600; font-size: 0.88rem; }
+      .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); }
+      .status.ok i { background: var(--live); box-shadow: 0 0 0 3px rgba(31, 157, 92, 0.18); }
+      .status.wait i { background: #f5b400; animation: blinkdot 1.2s ease-in-out infinite; }
+      @keyframes blinkdot { 50% { opacity: 0.3; } }
+      .join { display: flex; gap: 8px; width: 100%; max-width: 360px; }
+      .join .k-input { text-transform: lowercase; font-family: var(--font-mono); letter-spacing: 0.08em; text-align: center; }
+      .feed { display: grid; gap: 8px; max-height: 460px; overflow: auto; }
+      .item { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); }
+      .item.mine { background: var(--surface-2); }
+      .item .ico-box { width: 44px; height: 44px; border-radius: 10px; background: var(--bg-deep); display: grid; place-items: center; overflow: hidden; }
+      .item .ico-box img { width: 100%; height: 100%; object-fit: cover; }
+      .item .ico-box svg { width: 20px; height: 20px; color: var(--muted); }
+      .item .nm { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .item .txt { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.95rem; }
+      .item .sub { font-family: var(--font-mono); font-size: 0.75rem; color: var(--faint); }
+      .item .bar { height: 4px; border-radius: 4px; background: var(--bg-deep); overflow: hidden; margin-top: 6px; }
+      .item .bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+      .send-row { display: flex; gap: 8px; }
+      .send-row .k-textarea { min-height: 46px; height: 46px; resize: none; }
+      @media (max-width: 860px) { .bm { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Beam</h1>
+      <p>Send files and text between your own devices. Open Beam here, scan the code with your phone's camera, and drop things across. They go straight from one device to the other, encrypted, and nothing is stored on a server.</p>
+    </div>
+
+    <div class="bm">
+      <section class="panel-k bm-pair" id="pairBox">
+        <div id="startView" class="stack" style="justify-items:center">
+          <button class="btn btn-primary" id="startBtn" type="button">Start a beam</button>
+          <p class="muted small">or type the code shown on your other device</p>
+          <form class="join" id="joinForm"><input class="k-input" id="joinCode" maxlength="9" placeholder="abcd-efgh" autocomplete="off" aria-label="Code from the other device" /><button class="btn btn-ghost" type="submit">Join</button></form>
+        </div>
+        <div id="roomView" hidden class="stack" style="justify-items:center">
+          <div class="qr" id="qr" aria-label="QR code to open this beam on another device"></div>
+          <p class="muted small">Scan with your phone's camera, or open <b id="shortLink"></b> and enter</p>
+          <div class="code" id="code"></div>
+        </div>
+        <span class="status" id="status"><i></i><span>Not connected</span></span>
+        <p class="small faint" id="hint"></p>
+        <button class="btn btn-ghost btn-sm" id="leaveBtn" type="button" hidden>End this beam</button>
+      </section>
+
+      <section class="panel-k stack" id="sendBox" aria-label="Send">
+        <label class="drop" id="drop" for="file" style="min-height:150px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+          <strong>Drop files to send</strong>
+          <span class="muted small" id="dropHint">Connect another device first.</span>
+          <input id="file" type="file" multiple hidden />
+        </label>
+        <form class="send-row" id="textForm"><textarea class="k-textarea" id="text" rows="1" placeholder="Or send some text or a link" aria-label="Text to send"></textarea><button class="btn btn-primary" type="submit">Send</button></form>
+        <div class="feed" id="feed" aria-live="polite"></div>
+      </section>
+    </div>

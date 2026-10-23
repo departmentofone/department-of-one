@@ -61,8 +61,11 @@
       .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
       @media (max-width: 760px) {
         .ov-head { display: none; }
-        .person { grid-template-columns: 1fr 1fr; padding: 10px; border-radius: 14px; background: var(--surface-2); }
+        .person { grid-template-columns: 1fr 1fr 40px; padding: 10px; border-radius: 14px; background: var(--surface-2); }
+        .person > :nth-child(1) { grid-column: 1 / 3; grid-row: 1; }
+        .person > :nth-child(5) { grid-column: 3; grid-row: 1; }
         .person .tz { grid-column: 1 / -1; }
+        .person > :nth-child(4) { grid-column: 2 / 4; }
         .tl-row { grid-template-columns: 1fr; gap: 4px; }
         .tl-spacer { display: none; }
       }
@@ -104,7 +107,7 @@
   <footer class="k-footer">
     <div class="wrap">
       <span>Overlap is free and open source, made by <a href="/about">one person</a>.</span>
-      <span><a href="/#shelf">More on the shelf</a> · <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="https://github.com/departmentofone/department-of-one/tree/main/overlap" target="_blank" rel="noopener">Source code</a> · <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
     </div>
   </footer>
 

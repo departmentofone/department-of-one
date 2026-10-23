@@ -46,7 +46,7 @@ SHELF = [
     dict(slug='squish', name='Squish', kind='Tools', status='soon', tile='t-tomato', icon='squish',
          blurb='Shrink and resize images right in your browser.',
          about='Drop in a pile of photos and get them back smaller, in WebP, AVIF or JPEG. Nothing is uploaded; the squishing happens on your own device.',
-         points=['Batch drag and drop', 'Side-by-side before and after', 'Works offline once loaded']),
+         points=['Batch drag and drop', 'Side-by-side before and after', 'Save one by one or as a ZIP']),
     dict(slug='beam', name='Beam', kind='Tools', status='soon', tile='t-sky', icon='qr',
          blurb='Send a file from your laptop to your phone by scanning a code.',
          about='Open Beam on both devices, scan the code, and drop files or text across. It goes straight from one device to the other, with no account and nothing stored on a server.',
@@ -70,11 +70,11 @@ SHELF = [
     dict(slug='desk-plant', name='Desk Plant', kind='Toys', status='soon', tile='t-lime', icon='sprout',
          blurb='A focus timer with a little plant that grows while you work.',
          about='Start a focus session and a pixel plant grows. Switch to another tab and it droops. Keep it up for a week and you have a small, smug garden.',
-         points=['Pomodoro or custom sessions', 'A garden that remembers your streak', 'Gentle chime, no notifications spam']),
+         points=['Sessions from 15 to 90 minutes', 'A garden that remembers your streak', 'Gentle chime, no notifications spam']),
     dict(slug='overlap', name='Overlap', kind='Tools', status='soon', tile='t-teal', icon='globe',
          blurb='Find the hours when friends in different time zones are all awake.',
          about='Add a few cities or people and Overlap shows a single day strip with the hours that work for everyone. Send the link and everyone sees it in their own time.',
-         points=['Daylight saving handled', 'Shareable link, no accounts', 'Mark sleep and work hours per person']),
+         points=['Daylight saving handled', 'Shareable link, no accounts', 'Set awake hours for each person']),
     dict(slug='box-breath', name='Box Breath', kind='Tools', status='soon', tile='t-mint', icon='breath',
          blurb='A breathing pacer with soft shapes that slowly change.',
          about='In for four, hold for four, out for four. A calm shape guides each breath and slowly morphs so it never feels like staring at a timer.',
@@ -94,11 +94,11 @@ SHELF = [
     dict(slug='six-clicks', name='Six Clicks', kind='Toys', status='soon', tile='t-rose', icon='cursor',
          blurb='Get from one Wikipedia page to another in as few clicks as you can.',
          about='You get a start page and a target, say "Toaster" to "Napoleon", and race there using only the links on each page. Daily puzzle, same for everyone.',
-         points=['A new pair every day', 'Compare routes with friends', 'Practice mode with random pairs']),
+         points=['A new pair every day', 'Share your result', 'Practice mode with random pairs']),
     dict(slug='static', name='Static', kind='Toys', status='soon', tile='t-orange', icon='wave',
-         blurb='Background noise you mix yourself: rain, cafe, fan, train.',
+         blurb='Background noise you mix yourself: rain, waves, fire, train.',
          about='Slide a few sounds together until it feels right, then leave it running while you work or sleep. Mixes save to a link you can share.',
-         points=['Mix up to six sounds', 'Sleep timer with fade-out', 'Works offline']),
+         points=['Seven sounds, all generated live', 'Sleep timer with a slow fade-out', 'Share a mix as a link']),
     dict(slug='decider', name='Decider', kind='Toys', status='soon', tile='t-grape', icon='dice',
          blurb='Coin flips, dice and wheels for when you really cannot choose.',
          about='Flip a coin, roll some dice or spin a wheel of your own options. It remembers your wheels, and it has a "best of three" button for sore losers.',
@@ -482,7 +482,7 @@ def tool_page(item):
   <footer class="k-footer">
     <div class="wrap">
       <span>{e(item['name'])} is free and open source, made by <a href="/about">one person</a>.</span>
-      <span><a href="/#shelf">More on the shelf</a> · <a href="{COFFEE}" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="{GITHUB}/department-of-one/tree/main/{item['slug']}" target="_blank" rel="noopener">Source code</a> · <a href="{COFFEE}" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
     </div>
   </footer>
 '''
