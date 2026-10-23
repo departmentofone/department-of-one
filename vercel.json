@@ -1,9 +1,35 @@
 {
   "cleanUrls": true,
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/pay/:token",
-      "destination": "/pay"
+      "source": "/work",
+      "destination": "/#shelf",
+      "permanent": false
+    },
+    {
+      "source": "/process",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/contact",
+      "destination": "/about",
+      "permanent": false
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/about",
+      "permanent": false
+    },
+    {
+      "source": "/pay/:token*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/pay",
+      "destination": "/",
+      "permanent": false
     }
   ],
   "headers": [
@@ -33,19 +59,11 @@
       ]
     },
     {
-      "source": "/pay(.*)",
+      "source": "/brand",
       "headers": [
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "no-referrer"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store"
         }
       ]
     }

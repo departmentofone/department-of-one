@@ -1,280 +1,375 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Department of One - websites, apps and bots by one developer</title>
-  <meta name="description" content="Department of One is one developer who builds websites, mobile apps and Discord or Telegram bots, and runs the live app FitLog. Send a project or an idea." />
-  <meta name="theme-color" content="#070d0b" />
+  <title>Department of One - free little apps, tools and toys</title>
+  <meta name="description" content="Free, open source apps, tools, toys and wallpapers made by one person. FitLog, Shan Shui and a shelf of small things on the way." />
+  <meta name="theme-color" content="#f6f3ec" />
   <link rel="canonical" href="https://www.departmentofone.net/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Department of One" />
-  <meta property="og:title" content="Department of One - websites, apps and bots by one developer" />
-  <meta property="og:description" content="Department of One is one developer who builds websites, mobile apps and Discord or Telegram bots, and runs the live app FitLog. Send a project or an idea." />
+  <meta property="og:title" content="Department of One - free little apps, tools and toys" />
+  <meta property="og:description" content="Free, open source apps, tools, toys and wallpapers made by one person. FitLog, Shan Shui and a shelf of small things on the way." />
   <meta property="og:url" content="https://www.departmentofone.net/" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="/assets/work/site-kiln.webp" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <div class="ambience" aria-hidden="true">
-    <div class="stone"></div>
-    <div class="grid"></div>
-    <div class="light light-a"></div>
-    <div class="light light-b"></div>
-    <div class="light light-c"></div>
-  </div>
-
   <header class="site">
     <div class="wrap">
-      <a class="wordmark" href="/" aria-label="Department of One, home">
-        <span class="wm-line"><span class="wm-text">department of one</span><span class="cursor" aria-hidden="true"></span></span>
-        <span class="wm-comment" aria-hidden="true">// ... for now</span>
-      </a>
+      <a class="wordmark" href="/" aria-label="Department of One, home"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#ff5a36"/><path d="M15 9.2 19.6 7h1.9v18.2h3.3V28H11.8v-2.8h4.6V11.7l-3.1 1.5-1.1-2.5z" fill="#fff"/><g class="eyes" fill="#17171a"><circle cx="17.3" cy="15.4" r="1.25"/><circle cx="20.6" cy="15.4" r="1.25"/></g></svg><span class="wm-full">department of one</span></a>
       <nav class="primary" aria-label="Main">
-        <a class="navlink" href="#services">Services</a>
-        <a class="navlink" href="/work">Work</a>
-        <a class="navlink" href="/work#fitlog">FitLog</a>
-        <a class="navlink" href="/process">Process</a>
+        <a class="navlink" href="/#shelf" aria-current="page">Shelf</a>
         <a class="navlink" href="/about">About</a>
-        <a class="navlink navlink-cta" href="/contact">Start a project</a>
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 6.5h13M3.5 13.5h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
+        <a class="btn btn-coffee btn-sm" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="label-long">Buy me a </span>coffee</span></a>
       </nav>
-      <div class="menu-panel" id="menuPanel" hidden>
-        <a href="/#services">Services</a>
-        <a href="/work">Work</a>
-        <a href="/work#fitlog">FitLog</a>
-        <a href="/process">Process</a>
-        <a href="/about">About</a>
-        <a href="/#requests">Ideas</a>
-        <a href="/contact">Contact</a>
-      </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero wrap" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow enter enter-1"><span class="pulse" aria-hidden="true"></span>Open for projects</p>
-        <h1 class="headline">
-          <span class="hl">Websites, apps</span>
-          <span class="hl hl-2">and bots, built</span>
-          <span class="hl hl-3">by <em>one</em> person.</span>
-        </h1>
-        <p class="lede enter enter-3" data-content-key="s_hero_lede">Department of One is one developer doing every job: the design, the code, the testing and the inbox after launch. If you hire it, you talk to the person who built it.</p>
-        <div class="ctas enter enter-4">
-          <a class="btn btn-primary" href="/contact"><span>Start a project</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="btn btn-ghost" href="#services"><span>See what I build</span></a>
-        </div>
-        <ul class="hero-meta enter enter-5" aria-label="At a glance">
-          <li><span class="k">Web</span>HTML, React, Next.js, WordPress</li>
-          <li><span class="k">Mobile</span>Flutter, React Native</li>
-          <li><span class="k">Bots</span>Discord, Telegram, Slack</li>
-        </ul>
-      </div>
-
-      <div class="console enter enter-2" id="console">
-        <div class="console-bar">
-          <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="console-title">~/studio</span>
-          <span class="console-live"><span class="pulse" aria-hidden="true"></span>online</span>
-        </div>
-        <div class="console-body">
-          <p class="console-line" aria-hidden="true"><span class="prompt">$</span> <span id="typed">new website --for "a sauna club"</span><span class="cursor cursor-sm"></span></p>
-          <p class="console-result" id="result" aria-live="polite"><span class="ok">&#10003;</span> 7 pages, online booking, Lighthouse 99</p>
-          <div class="scenes" id="scenes">
-            <div class="scene is-on" data-scene="0" role="tabpanel" id="scene-0" aria-labelledby="tab-0">
-              <figure class="dev browser b-back" data-depth="10"><div class="bar"><i></i><i></i><i></i><span>lintel.example</span></div><img src="/assets/work/site-lintel.webp" width="1280" height="800" alt="Lintel, a concept website for an estate agent, with a property search over a desert house" /></figure>
-              <figure class="dev browser b-front" data-depth="22"><div class="bar"><i></i><i></i><i></i><span>kiln.example</span></div><img src="/assets/work/site-kiln.webp" width="1280" height="800" alt="Kiln, a concept website for a sauna club with online booking" /></figure>
-              <figure class="dev phone phone-sm" data-depth="34"><img src="/assets/work/site-whisk-m.webp" width="420" height="910" alt="Whisk, a concept matcha store, on a phone" /></figure>
-            </div>
-            <div class="scene" data-scene="1" role="tabpanel" id="scene-1" aria-labelledby="tab-1">
-              <figure class="dev phone p-left" data-depth="12"><img src="/assets/work/app-fringe.webp" width="520" height="1125" alt="Fringe, a concept salon booking app, choosing a time" loading="lazy" /></figure>
-              <figure class="dev phone p-right" data-depth="12"><img src="/assets/work/app-polly.webp" width="520" height="1125" alt="Polly, a concept language tutor app with a voice chat" loading="lazy" /></figure>
-              <figure class="dev phone p-mid" data-depth="26"><img src="/assets/work/app-steep.webp" width="520" height="1125" alt="Steep, a concept cafe ordering app, showing the menu" loading="lazy" /></figure>
-            </div>
-            <div class="scene" data-scene="2" role="tabpanel" id="scene-2" aria-labelledby="tab-2">
-              <figure class="dev chat c-back" data-depth="10"><img src="/assets/work/bot-whenabouts.webp" width="1000" height="987" alt="Whenabouts, a concept Discord bot that finds the best meeting time across time zones" loading="lazy" /></figure>
-              <figure class="dev chat c-front" data-depth="24"><img src="/assets/work/bot-ferry.webp" width="1000" height="898" alt="Ferry, a concept support bot answering on Discord and Telegram" loading="lazy" /></figure>
-            </div>
-          </div>
-        </div>
-        <div class="console-foot"><span class="tabs-label" aria-hidden="true">Pick one</span>
-          <div class="console-tabs" role="tablist" aria-label="Kinds of project">
-          <button type="button" role="tab" id="tab-0" aria-controls="scene-0" aria-selected="true"><span class="n">01</span>Website</button>
-          <button type="button" role="tab" id="tab-1" aria-controls="scene-1" aria-selected="false" tabindex="-1"><span class="n">02</span>App</button>
-          <button type="button" role="tab" id="tab-2" aria-controls="scene-2" aria-selected="false" tabindex="-1"><span class="n">03</span>Bot</button>
-          </div>
-        </div>
+    <section class="wrap hero" id="top">
+      <div class="pile" aria-hidden="true"><span style="--r:-6deg;--y:0px" class="tile t-paper" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 19.5 9 10l4 5.5 2.5-3.5 6 7.5z" fill="currentColor" stroke="none"/><circle cx="17" cy="6.5" r="2.2" fill="currentColor" stroke="none"/></svg></span><span style="--r:4deg;--y:10px" class="tile t-tomato" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l5 5M20 4l-5 5M4 20l5-5M20 20l-5-5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.2" fill="currentColor"/></svg></span><span style="--r:-3deg;--y:-6px" class="tile t-sky" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="6" height="6" rx="1.4"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.4"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.4"/><path d="M14.5 14.5h2.5v2.5M20.5 14.5v6h-3M14.5 20.5h.01"/></svg></span><span style="--r:7deg;--y:4px" class="tile t-grape" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="16.5" cy="16" r="2.6"/></svg></span><span style="--r:3deg;--y:-8px" class="tile t-sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13l3.5-3.5M12 2.5v2.5M9.5 2.5h5"/></svg></span><span style="--r:-8deg;--y:6px" class="tile t-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11h17a8.5 8.5 0 0 1-17 0z"/><path d="M8 7.5c0-1.2 1-1.6 1-2.8M12 7.5c0-1.2 1-1.6 1-2.8M16 7.5c0-1.2 1-1.6 1-2.8"/></svg></span><span style="--r:5deg;--y:-2px" class="tile t-pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="14.5" r="5"/></svg></span><span style="--r:-2deg;--y:12px" class="tile t-lime" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6.5 7.5-6.5 0 4.2-3 6.5-7.5 6.5zM12 14c0-3-2.2-5.3-6.5-5.3 0 3.2 2.2 5.3 6.5 5.3z"/><path d="M7.5 21h9"/></svg></span><span style="--r:6deg;--y:2px" class="tile t-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5S14.6 18.1 12 20.5M12 3.5C9.4 5.9 8.2 8.7 8.2 12s1.2 6.1 3.8 8.5"/></svg></span><span style="--r:-5deg;--y:-6px" class="tile t-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><rect x="8.5" y="8.5" width="7" height="7" rx="2"/></svg></span><span style="--r:2deg;--y:8px" class="tile t-ink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18.5 8 5.5h1L13.5 18.5M5.2 14h6.6"/><path d="M20.5 18.5v-6.2a2.8 2.8 0 0 0-5.3-1.2M20.5 15.5c0 1.9-1.5 3.2-3.2 3.2-1.4 0-2.3-.8-2.3-2 0-1.4 1.3-2.2 3.2-2.2h2.3"/></svg></span><span class="tile ghost" style="--r:-7deg;--y:-4px"></span></div>
+      <p class="hero-kicker"><span class="dot" aria-hidden="true"></span>1 ready, 16 in the workshop</p>
+      <h1>Free little things, made by <span class="squiggle">one person<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8c20-6 30 4 50-2s30-6 48 0 32 6 50-1 30-5 48 1" fill="none" stroke="#ff5a36" stroke-width="3.5" stroke-linecap="round"/></svg></span>.</h1>
+      <p class="lede" data-content-key="m_hero_lede">Apps, tools, toys and wallpapers I make because I think someone might like them. Some are useful, some are silly. All of them are free and open source.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#shelf"><span>Browse the shelf</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn-coffee" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buy me a coffee</span></a>
       </div>
     </section>
 
-    <div class="strip" aria-label="Tools I work with">
-      <div class="strip-track">
-        <ul>
-          <li>Next.js</li><li>React</li><li>TypeScript</li><li>Flutter</li><li>React Native</li><li>Expo</li><li>Supabase</li><li>Firebase</li><li>Stripe</li><li>Discord.js</li><li>Telegram</li><li>Python</li><li>WordPress</li><li>Shopify</li><li>Webflow</li><li>Framer</li><li>Vercel</li>
-        </ul>
-        <ul aria-hidden="true">
-          <li>Next.js</li><li>React</li><li>TypeScript</li><li>Flutter</li><li>React Native</li><li>Expo</li><li>Supabase</li><li>Firebase</li><li>Stripe</li><li>Discord.js</li><li>Telegram</li><li>Python</li><li>WordPress</li><li>Shopify</li><li>Webflow</li><li>Framer</li><li>Vercel</li>
-        </ul>
+    <section class="wrap section" aria-labelledby="featTitle">
+      <div class="section-head"><h2 id="featTitle">Featured</h2><p>One you can use today, one that's on its way.</p></div>
+      <div class="featured">
+        <article class="feature feature-fitlog">
+          <div class="copy">
+            <p class="tag"><span class="dot" aria-hidden="true"></span>Ready now</p>
+            <h3><button type="button" class="card-hit" data-open="fitlog" aria-haspopup="dialog">FitLog</button></h3>
+            <p>The one I use every day. A workout log, a meal and macro tracker and a fasting timer that live in the same place, work offline and install to your home screen.</p>
+          </div>
+          <span class="cta" aria-hidden="true">See it <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <img class="phone" src="/assets/fitlog/1-train.webp" width="720" height="1280" alt="" loading="lazy" />
+        </article>
+        <article class="feature feature-shanshui">
+          <svg class="hills" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 200V120c40-30 60-70 95-60s50 50 85 35 45-70 85-62 55 55 135 40V200z" fill="#cfc6b2"/>
+            <path d="M0 200v-45c50-25 80-10 120-30s60-45 105-20 60 35 100 20 50-20 75-10V200z" fill="#a89d86"/>
+            <path d="M0 200v-20c60-20 110 5 170-8s110-25 160-5 50 15 70 10V200z" fill="#6f6656"/>
+          </svg>
+          <div class="copy">
+            <p class="tag">In the workshop</p>
+            <h3><button type="button" class="card-hit" data-open="shan-shui" aria-haspopup="dialog">Shan Shui</button></h3>
+            <p>An ink landscape that paints itself forever and never repeats.</p>
+          </div>
+          <span class="cta" aria-hidden="true">Read more <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+      </div>
+    </section>
+
+    <div class="shelf-zone">
+    <div class="shelf-bar" id="shelf">
+      <div class="wrap">
+        <label class="search"><span class="sr-only" hidden>Search the shelf</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input type="search" id="q" placeholder="Search the shelf" aria-label="Search the shelf" autocomplete="off" /></label>
+        <div class="chips" role="group" aria-label="Filter"><button type="button" class="chip" aria-pressed="true" data-filter="all">All<span class="n">17</span></button><button type="button" class="chip" aria-pressed="false" data-filter="Apps">Apps<span class="n">1</span></button><button type="button" class="chip" aria-pressed="false" data-filter="Tools">Tools<span class="n">6</span></button><button type="button" class="chip" aria-pressed="false" data-filter="Toys">Toys<span class="n">8</span></button><button type="button" class="chip" aria-pressed="false" data-filter="Wallpapers">Wallpapers<span class="n">2</span></button><button type="button" class="chip" aria-pressed="false" data-filter="live">Ready now<span class="n">1</span></button></div>
       </div>
     </div>
 
-    <section class="wrap facts" aria-label="Facts">
-      <dl class="facts-grid">
-        <div class="fact reveal"><dt>Google speed test, phone</dt><dd><span class="big">99</span><span class="sub">/ 100 / 100 / 100</span></dd><p>Speed, accessibility, good practice and search scores from Google's Lighthouse test, on the Kiln concept site.</p></div>
-        <div class="fact reveal"><dt>One codebase</dt><dd><span class="big">2</span><span class="sub">app stores</span></dd><p>iPhone and Android apps from the same Flutter or React Native project.</p></div>
-        <div class="fact reveal"><dt>Who you talk to</dt><dd><span class="big">1</span><span class="sub">person</span></dd><p>From the first message to launch day, the person you write to is the one doing the work.</p></div>
-        <div class="fact reveal"><dt>Source code</dt><dd><span class="big">100%</span><span class="sub">yours</span></dd><p>Everything runs on your hosting and accounts. You get the files and the logins.</p></div>
-      </dl>
+    <section class="wrap section" aria-label="Everything on the shelf">
+      <div class="grid stagger" id="grid">
+          <article class="card" style="--i:0" data-kind="Apps" data-status="live" data-search="fitlog apps workouts, meals and fasting in one tidy app.">
+            <span class="tile t-grass" aria-hidden="true"><img src="/assets/fitlog-icon.png" alt="" width="56" height="56" /></span>
+            <h3><button type="button" class="card-hit" data-open="fitlog" aria-haspopup="dialog">FitLog</button></h3>
+            <p class="kind">App</p>
+            <p class="blurb">Workouts, meals and fasting in one tidy app.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-live">Open</span></p>
+            <template id="d-fitlog" data-name="FitLog" data-kind="App">
+              <div data-part="tile"><span class="tile t-grass" aria-hidden="true"><img src="/assets/fitlog-icon.png" alt="" width="56" height="56" /></span></div>
+              <p data-part="about">The one I use every day. A workout log, a meal and macro tracker and a fasting timer that live in the same place, work offline and install to your home screen.</p>
+              <ul data-part="points"><li>Log sets, PRs and reusable programs</li><li>Meals, macros, water and fasting windows</li><li>Works offline, export or delete everything any time</li></ul>
+              <div data-part="actions"><a class="btn btn-primary" href="https://fitlog-two-gamma.vercel.app" target="_blank" rel="noopener">Open FitLog</a><span class="note">Free. Opens in a new tab.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:1" data-kind="Wallpapers" data-status="soon" data-search="shan shui wallpapers an ink landscape that paints itself forever and never repeats.">
+            <span class="tile t-paper" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 19.5 9 10l4 5.5 2.5-3.5 6 7.5z" fill="currentColor" stroke="none"/><circle cx="17" cy="6.5" r="2.2" fill="currentColor" stroke="none"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="shan-shui" aria-haspopup="dialog">Shan Shui</button></h3>
+            <p class="kind">Wallpaper</p>
+            <p class="blurb">An ink landscape that paints itself forever and never repeats.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-shan-shui" data-name="Shan Shui" data-kind="Wallpaper">
+              <div data-part="tile"><span class="tile t-paper" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 19.5 9 10l4 5.5 2.5-3.5 6 7.5z" fill="currentColor" stroke="none"/><circle cx="17" cy="6.5" r="2.2" fill="currentColor" stroke="none"/></svg></span></div>
+              <p data-part="about">Procedurally generated Chinese ink-wash mountains, mist and little boats, scrolling on forever. Pick a size and keep it as a wallpaper, or leave it running on a spare screen.</p>
+              <ul data-part="points"><li>Every landscape is new</li><li>Wallpaper export at any resolution</li><li>Slow live mode for a second monitor</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:2" data-kind="Tools" data-status="soon" data-search="squish tools shrink and resize images right in your browser.">
+            <span class="tile t-tomato" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l5 5M20 4l-5 5M4 20l5-5M20 20l-5-5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.2" fill="currentColor"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="squish" aria-haspopup="dialog">Squish</button></h3>
+            <p class="kind">Tool</p>
+            <p class="blurb">Shrink and resize images right in your browser.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-squish" data-name="Squish" data-kind="Tool">
+              <div data-part="tile"><span class="tile t-tomato" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l5 5M20 4l-5 5M4 20l5-5M20 20l-5-5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.2" fill="currentColor"/></svg></span></div>
+              <p data-part="about">Drop in a pile of photos and get them back smaller, in WebP, AVIF or JPEG. Nothing is uploaded; the squishing happens on your own device.</p>
+              <ul data-part="points"><li>Batch drag and drop</li><li>Side-by-side before and after</li><li>Works offline once loaded</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:3" data-kind="Tools" data-status="soon" data-search="beam tools send a file from your laptop to your phone by scanning a code.">
+            <span class="tile t-sky" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="6" height="6" rx="1.4"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.4"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.4"/><path d="M14.5 14.5h2.5v2.5M20.5 14.5v6h-3M14.5 20.5h.01"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="beam" aria-haspopup="dialog">Beam</button></h3>
+            <p class="kind">Tool</p>
+            <p class="blurb">Send a file from your laptop to your phone by scanning a code.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-beam" data-name="Beam" data-kind="Tool">
+              <div data-part="tile"><span class="tile t-sky" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="6" height="6" rx="1.4"/><rect x="14.5" y="3.5" width="6" height="6" rx="1.4"/><rect x="3.5" y="14.5" width="6" height="6" rx="1.4"/><path d="M14.5 14.5h2.5v2.5M20.5 14.5v6h-3M14.5 20.5h.01"/></svg></span></div>
+              <p data-part="about">Open Beam on both devices, scan the code, and drop files or text across. It goes straight from one device to the other, with no account and nothing stored on a server.</p>
+              <ul data-part="points"><li>No sign-up, no app to install</li><li>Peer to peer, encrypted in transit</li><li>Text, links, photos and files</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:4" data-kind="Toys" data-status="soon" data-search="hum toys hum a tune and see the notes you sang.">
+            <span class="tile t-grape" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="16.5" cy="16" r="2.6"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="hum" aria-haspopup="dialog">Hum</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">Hum a tune and see the notes you sang.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-hum" data-name="Hum" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-grape" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.6"/><circle cx="16.5" cy="16" r="2.6"/></svg></span></div>
+              <p data-part="about">Hum or whistle into your mic and Hum writes the melody down as notes you can play back, transpose or copy. Good for catching a tune before it disappears.</p>
+              <ul data-part="points"><li>Pitch detection in the browser</li><li>Play it back on a piano or synth</li><li>Export as MIDI</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:5" data-kind="Toys" data-status="soon" data-search="meeting meter toys watch what this meeting is costing, live.">
+            <span class="tile t-sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13l3.5-3.5M12 2.5v2.5M9.5 2.5h5"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="meeting-meter" aria-haspopup="dialog">Meeting Meter</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">Watch what this meeting is costing, live.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-meeting-meter" data-name="Meeting Meter" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13l3.5-3.5M12 2.5v2.5M9.5 2.5h5"/></svg></span></div>
+              <p data-part="about">Enter how many people are in the room and a rough hourly rate, then watch the bill tick up by the second. Share it on screen if you dare.</p>
+              <ul data-part="points"><li>Big, screen-shareable counter</li><li>Milestones like &quot;that was a sandwich&quot;</li><li>Nothing saved, nothing sent</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:6" data-kind="Tools" data-status="soon" data-search="just the recipe tools paste a recipe link, get ingredients and steps. no life story.">
+            <span class="tile t-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11h17a8.5 8.5 0 0 1-17 0z"/><path d="M8 7.5c0-1.2 1-1.6 1-2.8M12 7.5c0-1.2 1-1.6 1-2.8M16 7.5c0-1.2 1-1.6 1-2.8"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="just-the-recipe" aria-haspopup="dialog">Just the Recipe</button></h3>
+            <p class="kind">Tool</p>
+            <p class="blurb">Paste a recipe link, get ingredients and steps. No life story.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-just-the-recipe" data-name="Just the Recipe" data-kind="Tool">
+              <div data-part="tile"><span class="tile t-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11h17a8.5 8.5 0 0 1-17 0z"/><path d="M8 7.5c0-1.2 1-1.6 1-2.8M12 7.5c0-1.2 1-1.6 1-2.8M16 7.5c0-1.2 1-1.6 1-2.8"/></svg></span></div>
+              <p data-part="about">Recipe sites bury the recipe under ads and anecdotes. Paste the link and get a clean card with the ingredients, the steps and a cook mode that keeps your screen awake.</p>
+              <ul data-part="points"><li>Reads the recipe data most sites already include</li><li>Scale servings up or down</li><li>Cook mode with big text</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:7" data-kind="Tools" data-status="soon" data-search="swatch tools pull a colour palette out of any photo.">
+            <span class="tile t-pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="14.5" r="5"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="swatch" aria-haspopup="dialog">Swatch</button></h3>
+            <p class="kind">Tool</p>
+            <p class="blurb">Pull a colour palette out of any photo.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-swatch" data-name="Swatch" data-kind="Tool">
+              <div data-part="tile"><span class="tile t-pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="5"/><circle cx="15" cy="9" r="5"/><circle cx="12" cy="14.5" r="5"/></svg></span></div>
+              <p data-part="about">Drop a photo and Swatch picks out its main colours, names them and gives you the codes. Copy them as hex, CSS variables or a Tailwind snippet.</p>
+              <ul data-part="points"><li>Five to ten colours per image</li><li>Contrast checks for text</li><li>Copy as hex, CSS or Tailwind</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:8" data-kind="Toys" data-status="soon" data-search="desk plant toys a focus timer with a little plant that grows while you work.">
+            <span class="tile t-lime" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6.5 7.5-6.5 0 4.2-3 6.5-7.5 6.5zM12 14c0-3-2.2-5.3-6.5-5.3 0 3.2 2.2 5.3 6.5 5.3z"/><path d="M7.5 21h9"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="desk-plant" aria-haspopup="dialog">Desk Plant</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">A focus timer with a little plant that grows while you work.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-desk-plant" data-name="Desk Plant" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-lime" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6.5 7.5-6.5 0 4.2-3 6.5-7.5 6.5zM12 14c0-3-2.2-5.3-6.5-5.3 0 3.2 2.2 5.3 6.5 5.3z"/><path d="M7.5 21h9"/></svg></span></div>
+              <p data-part="about">Start a focus session and a pixel plant grows. Switch to another tab and it droops. Keep it up for a week and you have a small, smug garden.</p>
+              <ul data-part="points"><li>Pomodoro or custom sessions</li><li>A garden that remembers your streak</li><li>Gentle chime, no notifications spam</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:9" data-kind="Tools" data-status="soon" data-search="overlap tools find the hours when friends in different time zones are all awake.">
+            <span class="tile t-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5S14.6 18.1 12 20.5M12 3.5C9.4 5.9 8.2 8.7 8.2 12s1.2 6.1 3.8 8.5"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="overlap" aria-haspopup="dialog">Overlap</button></h3>
+            <p class="kind">Tool</p>
+            <p class="blurb">Find the hours when friends in different time zones are all awake.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-overlap" data-name="Overlap" data-kind="Tool">
+              <div data-part="tile"><span class="tile t-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5S14.6 18.1 12 20.5M12 3.5C9.4 5.9 8.2 8.7 8.2 12s1.2 6.1 3.8 8.5"/></svg></span></div>
+              <p data-part="about">Add a few cities or people and Overlap shows a single day strip with the hours that work for everyone. Send the link and everyone sees it in their own time.</p>
+              <ul data-part="points"><li>Daylight saving handled</li><li>Shareable link, no accounts</li><li>Mark sleep and work hours per person</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:10" data-kind="Tools" data-status="soon" data-search="box breath tools a breathing pacer with soft shapes that slowly change.">
+            <span class="tile t-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><rect x="8.5" y="8.5" width="7" height="7" rx="2"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="box-breath" aria-haspopup="dialog">Box Breath</button></h3>
+            <p class="kind">Tool</p>
+            <p class="blurb">A breathing pacer with soft shapes that slowly change.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-box-breath" data-name="Box Breath" data-kind="Tool">
+              <div data-part="tile"><span class="tile t-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><rect x="8.5" y="8.5" width="7" height="7" rx="2"/></svg></span></div>
+              <p data-part="about">In for four, hold for four, out for four. A calm shape guides each breath and slowly morphs so it never feels like staring at a timer.</p>
+              <ul data-part="points"><li>Box, 4-7-8 and custom patterns</li><li>Optional soft sound</li><li>Full screen, no distractions</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:11" data-kind="Toys" data-status="soon" data-search="font fight toys two fonts enter, one leaves. find your favourite.">
+            <span class="tile t-ink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18.5 8 5.5h1L13.5 18.5M5.2 14h6.6"/><path d="M20.5 18.5v-6.2a2.8 2.8 0 0 0-5.3-1.2M20.5 15.5c0 1.9-1.5 3.2-3.2 3.2-1.4 0-2.3-.8-2.3-2 0-1.4 1.3-2.2 3.2-2.2h2.3"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="font-fight" aria-haspopup="dialog">Font Fight</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">Two fonts enter, one leaves. Find your favourite.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-font-fight" data-name="Font Fight" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-ink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18.5 8 5.5h1L13.5 18.5M5.2 14h6.6"/><path d="M20.5 18.5v-6.2a2.8 2.8 0 0 0-5.3-1.2M20.5 15.5c0 1.9-1.5 3.2-3.2 3.2-1.4 0-2.3-.8-2.3-2 0-1.4 1.3-2.2 3.2-2.2h2.3"/></svg></span></div>
+              <p data-part="about">Font Fight shows the same sentence in two typefaces and you pick the better one, bracket style, until a champion is left. Then it tells you where to get it.</p>
+              <ul data-part="points"><li>Free fonts only</li><li>Type your own sample text</li><li>Share your winner</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:12" data-kind="Toys" data-status="soon" data-search="receipt toys turn your to-do list into a shop receipt.">
+            <span class="tile t-slate" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4-2 1.4z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="receipt" aria-haspopup="dialog">Receipt</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">Turn your to-do list into a shop receipt.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-receipt" data-name="Receipt" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-slate" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4-2 1.4z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></svg></span></div>
+              <p data-part="about">Paste what you got done today and Receipt prints it as a little thermal-paper receipt, with a total, a barcode and a thank-you line. Save it as an image or print it for real.</p>
+              <ul data-part="points"><li>Looks like real thermal paper</li><li>Download as PNG</li><li>Daily, weekly or &quot;this year&quot; receipts</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:13" data-kind="Wallpapers" data-status="soon" data-search="sky window wallpapers a live wallpaper of the real sky colour over any city.">
+            <span class="tile t-indigo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M12 3.5v17M3.5 12h17"/><path d="M6.5 8.6c.3-1 1.1-1.6 2-1.6.6 0 1.1.3 1.4.7.2-.1.4-.1.6-.1.8 0 1.4.6 1.4 1.4" stroke-width="1.6"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="sky-window" aria-haspopup="dialog">Sky Window</button></h3>
+            <p class="kind">Wallpaper</p>
+            <p class="blurb">A live wallpaper of the real sky colour over any city.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-sky-window" data-name="Sky Window" data-kind="Wallpaper">
+              <div data-part="tile"><span class="tile t-indigo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M12 3.5v17M3.5 12h17"/><path d="M6.5 8.6c.3-1 1.1-1.6 2-1.6.6 0 1.1.3 1.4.7.2-.1.4-.1.6-.1.8 0 1.4.6 1.4 1.4" stroke-width="1.6"/></svg></span></div>
+              <p data-part="about">Pick a city and Sky Window paints the sky as it looks there right now, from dawn pinks to night blues, drifting slowly through the day.</p>
+              <ul data-part="points"><li>Uses real sun position and weather</li><li>Works as a browser new-tab page</li><li>Wallpaper snapshots any time</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:14" data-kind="Toys" data-status="soon" data-search="six clicks toys get from one wikipedia page to another in as few clicks as you can.">
+            <span class="tile t-rose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5l13 7-5.5 1.5L10 17.5z"/><circle cx="17.5" cy="17.5" r="1.4" fill="currentColor"/><circle cx="20.5" cy="20.5" r=".9" fill="currentColor"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="six-clicks" aria-haspopup="dialog">Six Clicks</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">Get from one Wikipedia page to another in as few clicks as you can.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-six-clicks" data-name="Six Clicks" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-rose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5l13 7-5.5 1.5L10 17.5z"/><circle cx="17.5" cy="17.5" r="1.4" fill="currentColor"/><circle cx="20.5" cy="20.5" r=".9" fill="currentColor"/></svg></span></div>
+              <p data-part="about">You get a start page and a target, say &quot;Toaster&quot; to &quot;Napoleon&quot;, and race there using only the links on each page. Daily puzzle, same for everyone.</p>
+              <ul data-part="points"><li>A new pair every day</li><li>Compare routes with friends</li><li>Practice mode with random pairs</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:15" data-kind="Toys" data-status="soon" data-search="static toys background noise you mix yourself: rain, cafe, fan, train.">
+            <span class="tile t-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12c2.2 0 2.2-5 4.4-5s2.2 10 4.4 10 2.2-10 4.4-10 2.2 5 4.4 5h1.4"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="static" aria-haspopup="dialog">Static</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">Background noise you mix yourself: rain, cafe, fan, train.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-static" data-name="Static" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12c2.2 0 2.2-5 4.4-5s2.2 10 4.4 10 2.2-10 4.4-10 2.2 5 4.4 5h1.4"/></svg></span></div>
+              <p data-part="about">Slide a few sounds together until it feels right, then leave it running while you work or sleep. Mixes save to a link you can share.</p>
+              <ul data-part="points"><li>Mix up to six sounds</li><li>Sleep timer with fade-out</li><li>Works offline</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+          <article class="card" style="--i:16" data-kind="Toys" data-status="soon" data-search="decider toys coin flips, dice and wheels for when you really cannot choose.">
+            <span class="tile t-grape" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg></span>
+            <h3><button type="button" class="card-hit" data-open="coin-flip" aria-haspopup="dialog">Decider</button></h3>
+            <p class="kind">Toy</p>
+            <p class="blurb">Coin flips, dice and wheels for when you really cannot choose.</p>
+            <p class="foot"><span class="price"><s>$9.99</s>Free</span><span class="pill pill-soon">Soon</span></p>
+            <template id="d-coin-flip" data-name="Decider" data-kind="Toy">
+              <div data-part="tile"><span class="tile t-grape" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg></span></div>
+              <p data-part="about">Flip a coin, roll some dice or spin a wheel of your own options. It remembers your wheels, and it has a &quot;best of three&quot; button for sore losers.</p>
+              <ul data-part="points"><li>Coin, dice and custom wheels</li><li>Fair randomness from the browser</li><li>Big buttons for phones</li></ul>
+              <div data-part="actions"><a class="btn btn-ghost" href="https://github.com/departmentofone" target="_blank" rel="noopener">Follow on GitHub</a><span class="note">Still in the workshop. It will be free and open source when it ships.</span></div>
+            </template>
+          </article>
+        <p class="empty" id="empty" hidden>Nothing here matches that. <a href="mailto:departmentofone.app@gmail.com?subject=Idea%20for%20the%20shelf" style="text-decoration:underline">Suggest it?</a></p>
+      </div>
     </section>
+    </div>
 
-    <section class="section services" id="services">
-      <div class="wrap">
-        <header class="section-head reveal">
-          <p class="idx"><span>01</span> Services</p>
-          <h2>What I build.</h2>
-          <p class="section-lede">Three kinds of project, one person on every one of them. Delivery times are typical for the size of the package. The price depends on the scope, so describe yours through the inquiry form.</p>
-        </header>
-
-        <!-- Websites -->
-        <article class="service panel reveal" id="service-website" data-spot>
-          <div class="service-copy">
-            <p class="service-no">01 <span>/ Websites</span></p>
-            <h3>Websites, from one page to a full store.</h3>
-            <p class="service-desc">A custom design for your business, coded by hand or built on WordPress, Shopify, Webflow or Framer when you want to edit it yourself. Checked on phone, tablet and desktop, and speed-tested before it ships.</p>
-            <ul class="ticks">
-              <li>Booking, payments, newsletter signup, a blog or an online store</li>
-              <li>Page titles, descriptions, sitemap and social share images</li>
-              <li>Set up on your own hosting and domain</li>
-            </ul>
-            <p class="tags"><span>HTML / CSS / JS</span><span>React</span><span>Next.js</span><span>WordPress</span><span>Shopify</span></p>
-            <div class="service-cta">
-              <a class="btn btn-primary" href="/contact?service=website"><span>Inquire about a website</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <a class="textlink" href="/contact?service=landing">Only need one page?</a>
-            </div>
-          </div>
-          <div class="service-visual stage" data-stage>
-            <figure class="dev browser sv-web-a" data-depth="10"><div class="bar"><i></i><i></i><i></i><span>parley.example/dashboard</span></div><img src="/assets/work/site-parley-dash.webp" width="1280" height="800" alt="Parley, a concept SaaS dashboard with a calls chart and a call transcript" loading="lazy" /></figure>
-            <figure class="dev browser sv-web-b" data-depth="22"><div class="bar"><i></i><i></i><i></i><span>parley.example</span></div><img src="/assets/work/site-parley.webp" width="1280" height="800" alt="Parley's home page, a concept AI phone receptionist site" loading="lazy" /></figure>
-            <figure class="dev phone phone-sm sv-web-c" data-depth="34"><img src="/assets/work/site-whisk-m.webp" width="420" height="910" alt="Whisk, a concept matcha store, on a phone" loading="lazy" /></figure>
-          </div>
-          <ol class="tiers" aria-label="Website packages">
-            <li><span class="t-name">Starter Site</span><span class="t-scope">Up to 3 custom pages, mobile ready, a contact form and SEO basics.</span><span class="t-time">About 3 days</span></li>
-            <li><span class="t-name">Business Site</span><span class="t-scope">Up to 6 pages with a blog or booking, newsletter signup, payments and help with the copy.</span><span class="t-time">About 6 days</span></li>
-            <li><span class="t-name">Complete Site</span><span class="t-scope">Up to 12 pages, an online store or memberships, an editor for your text, and 30 days of support.</span><span class="t-time">About 10 days</span></li>
-          </ol>
-        </article>
-
-        <!-- Apps -->
-        <article class="service panel reveal is-flip" id="service-app" data-spot>
-          <div class="service-copy">
-            <p class="service-no">02 <span>/ Mobile apps</span></p>
-            <h3>Apps for iPhone and Android, from one codebase.</h3>
-            <p class="service-desc">Built in Flutter or React Native. You get a first version to tap through early, then the rest, then a hand with the App Store and Google Play. FitLog, further down, is my own app and it is live.</p>
-            <ul class="ticks">
-              <li>Accounts and cloud sync on Firebase or Supabase, in your own project</li>
-              <li>Push alerts, payments, maps, ads, an admin panel, AI features</li>
-              <li>Full source code and a plain-English handover guide</li>
-            </ul>
-            <p class="tags"><span>Flutter</span><span>React Native</span><span>Expo</span><span>Firebase</span><span>Supabase</span></p>
-            <div class="service-cta">
-              <a class="btn btn-primary" href="/contact?service=app"><span>Inquire about an app</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-              <a class="textlink" href="/work#fitlog">See FitLog, my live app</a>
-            </div>
-          </div>
-          <div class="service-visual stage" data-stage>
-            <figure class="dev phone p-left" data-depth="12"><img src="/assets/work/app-hearth.webp" width="520" height="1125" alt="Hearth, a concept travel app with a map of stays and nightly prices" loading="lazy" /></figure>
-            <figure class="dev phone p-right" data-depth="12"><img src="/assets/work/app-polly.webp" width="520" height="1125" alt="Polly, a concept language tutor app with a voice chat" loading="lazy" /></figure>
-            <figure class="dev phone p-mid" data-depth="26"><img src="/assets/work/app-fringe.webp" width="520" height="1125" alt="Fringe, a concept salon booking app, choosing a time" loading="lazy" /></figure>
-          </div>
-          <ol class="tiers" aria-label="App packages">
-            <li><span class="t-name">Starter App</span><span class="t-scope">iPhone and Android, up to 5 screens, app icon, splash screen and the source code.</span><span class="t-time">About 5 days</span></li>
-            <li><span class="t-name">Full App</span><span class="t-scope">Up to 12 screens, user login, a Firebase or Supabase backend, push alerts and store upload.</span><span class="t-time">About 14 days</span></li>
-            <li><span class="t-name">Launch App</span><span class="t-scope">Up to 25 screens, an admin panel, payments or AI features, both stores and 30 days of fixes.</span><span class="t-time">About 21 days</span></li>
-          </ol>
-        </article>
-
-        <!-- Bots -->
-        <article class="service panel reveal" id="service-bot" data-spot>
-          <div class="service-copy">
-            <p class="service-no">03 <span>/ Bots</span></p>
-            <h3>Bots that run parts of your community.</h3>
-            <p class="service-desc">Discord and Telegram, from the same code. Tickets, moderation, levels, onboarding, paid roles, answers from your own docs, or whatever your team does by hand today.</p>
-            <ul class="ticks">
-              <li>Slash commands, buttons and forms, with logs and a database where it helps</li>
-              <li>Slack and WhatsApp bots on request</li>
-              <li>Source code, tests and a setup guide, running on hosting you own</li>
-            </ul>
-            <p class="tags"><span>TypeScript</span><span>Python</span><span>Discord</span><span>Telegram</span><span>Stripe</span></p>
-            <div class="service-cta">
-              <a class="btn btn-primary" href="/contact?service=bot"><span>Inquire about a bot</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            </div>
-          </div>
-          <div class="service-visual stage" data-stage>
-            <figure class="dev chat c-back" data-depth="10"><img src="/assets/work/bot-ferry-tickets.webp" width="1000" height="960" alt="Ferry's ticket system on Discord: a button opens a private thread with staff" loading="lazy" /></figure>
-            <figure class="dev chat c-front" data-depth="24"><img src="/assets/work/bot-whenabouts.webp" width="1000" height="987" alt="Whenabouts, a concept Discord bot that finds the best meeting time across time zones" loading="lazy" /></figure>
-          </div>
-          <ol class="tiers" aria-label="Bot packages">
-            <li><span class="t-name">Essential Bot</span><span class="t-scope">One complete system, such as tickets, moderation, levels or verification, with tests and a setup guide.</span><span class="t-time">About 2 days</span></li>
-            <li><span class="t-name">Server Bot</span><span class="t-scope">Up to 4 systems working together, or one fully custom system, with a database, logs and hosting setup.</span><span class="t-time">About 4 days</span></li>
-            <li><span class="t-name">Complete Bot</span><span class="t-scope">Up to 8 systems including 2 custom ones, Discord and Telegram, AI or payments, and 30 days of fixes.</span><span class="t-time">About 7 days</span></li>
-          </ol>
-        </article>
-        <div class="doors">
-          <a class="door panel reveal" href="/work" data-spot><span class="idx"><span>02</span> Selected work</span><span class="door-title">Ten concepts and one live app</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="door panel reveal" href="/process" data-spot><span class="idx"><span>03</span> Process</span><span class="door-title">What the process looks like</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <section class="wrap section" aria-labelledby="tipTitle">
+      <div class="tipjar">
+        <div class="cup" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="#2b2100" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19h24v9a10 10 0 0 1-10 10h-4A10 10 0 0 1 9 28z" fill="#ffd84d"/><path d="M33 22h3a5 5 0 0 1 0 10h-3"/><g class="steam"><path d="M17 8c-1.4 1.8-1.4 3.2 0 5"/><path d="M25 8c-1.4 1.8-1.4 3.2 0 5"/></g></svg></div>
+        <div>
+          <h2 id="tipTitle">Everything here is free.</h2>
+          <p data-content-key="m_tip">If something on the shelf made your day a little better, a coffee keeps the servers on and the next weird idea moving. It's optional and doesn't unlock anything.</p>
         </div>
+        <a class="btn" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buy me a coffee</span></a>
       </div>
     </section>
 
-    <section class="wrap requests" id="requests" aria-labelledby="requestTitle">
-      <div class="desk reveal">
-        <h2 id="requestTitle" data-content-key="s_ideas_title">Got an idea for an app?</h2>
-        <div class="desk-side">
-          <p data-content-key="s_ideas_body">Tell me what it would do and how you'd use it. I read every message, and good ideas go on the list for what I build next.</p>
-          <a class="btn btn-primary" href="/contact?reason=idea"><span>Send an idea</span><svg class="arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <section class="wrap section" id="requests" aria-labelledby="ideaTitle">
+      <div class="ideabox">
+        <div>
+          <h2 id="ideaTitle" data-content-key="s_ideas_title">Got an idea for a weird little app?</h2>
+          <p data-content-key="s_ideas_body">Tell me what it would do. If I'd use it too, it goes on the list.</p>
         </div>
+        <a class="btn btn-ghost" href="mailto:departmentofone.app@gmail.com?subject=Idea%20for%20the%20shelf"><span>Send an idea</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </section>
   </main>
 
+  <dialog class="sheet" id="sheet" aria-labelledby="sheetTitle">
+    <div class="sheet-head">
+      <span id="sheetTile"></span>
+      <div><h2 id="sheetTitle"></h2><p class="kind" id="sheetKind"></p></div>
+      <button type="button" class="close" id="sheetClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="sheet-body">
+      <p class="about" id="sheetAbout"></p>
+      <div><h3>What it does</h3><ul id="sheetPoints" style="margin-top:10px"></ul></div>
+      <div class="sheet-actions" id="sheetActions"></div>
+    </div>
+  </dialog>
+
   <footer class="site">
     <div class="wrap">
       <div class="footer-top">
-        <div class="footer-brand">
+        <div>
+          <a class="wordmark" href="/" aria-label="Department of One, home"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#ff5a36"/><path d="M15 9.2 19.6 7h1.9v18.2h3.3V28H11.8v-2.8h4.6V11.7l-3.1 1.5-1.1-2.5z" fill="#fff"/><g class="eyes" fill="#17171a"><circle cx="17.3" cy="15.4" r="1.25"/><circle cx="20.6" cy="15.4" r="1.25"/></g></svg><span>department of one</span></a>
           <p class="tagline" data-content-key="s_footer_tagline">Made by one person, who also wrote this footer.</p>
-          <ul class="socials" aria-label="Elsewhere">
-            <li><a href="#" data-todo="add the X link" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></li>
-            <li><a href="#" data-todo="add the Instagram link" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg></a></li>
-            <li><a href="https://github.com/departmentofone" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></li>
-            <li><a href="mailto:departmentofone.app@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.8 7 12 13l8.2-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-          </ul>
         </div>
+        <ul class="socials" aria-label="Elsewhere">
+            <li><a href="#" data-todo="add the X link" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></li>
+            <li><a href="#" data-todo="add the Instagram link" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg></a></li>
+            <li><a href="https://github.com/departmentofone" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a></li>
+            <li><a href="mailto:departmentofone.app@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.8 7 12 13l8.2-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+          </ul>
         <nav class="footer-links" aria-label="Footer">
-          <a href="/#services">Services</a>
-          <a href="/work">Work</a>
-          <a href="/process">Process</a>
+          <a href="/#shelf">Shelf</a>
           <a href="/about">About</a>
-          <a href="/contact">Contact</a>
+          <a href="mailto:departmentofone.app@gmail.com">Email</a>
           <a href="/privacy">Privacy</a>
+          <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a>
         </nav>
-        <a class="coffee-btn" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Buy me a coffee</span></a>
       </div>
-      <div class="footer-word" aria-hidden="true"><span>department of one</span><span class="cursor"></span></div>
+      <p class="footer-word" aria-hidden="true">dept. of one</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous" defer></script>
   <script src="/content.js"></script>
   <script src="/script.js" defer></script>
 </body>
