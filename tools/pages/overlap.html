@@ -1,0 +1,64 @@
+    <style>
+      .ov-people { display: grid; gap: 8px; }
+      .person { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(170px, 1.4fr) 92px 92px 40px; gap: 8px; align-items: center; }
+      .person .k-input, .person .k-select { min-height: 40px; padding: 8px 10px; font-size: 0.93rem; }
+      .ov-head { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(170px, 1.4fr) 92px 92px 40px; gap: 8px; font-size: 0.78rem; font-weight: 600; color: var(--muted); padding-inline: 2px; }
+      .timeline { display: grid; gap: 6px; margin-top: 4px; }
+      .tl-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px; align-items: center; }
+      .tl-name { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .tl-name small { display: block; font-weight: 400; color: var(--faint); font-family: var(--font-mono); font-size: 0.72rem; }
+      .cells { display: grid; grid-template-columns: repeat(48, 1fr); height: 34px; border-radius: 8px; overflow: hidden; background: var(--bg-deep); }
+      .cells i { border-right: 1px solid rgba(255, 255, 255, 0.5); }
+      .cells i:nth-child(2n) { border-right-color: rgba(255, 255, 255, 0.9); }
+      .cells i.awake { background: #9fd8c0; }
+      .cells i.work { background: #34c3a0; }
+      .cells.all i.awake { background: var(--accent); }
+      .cells i.now { box-shadow: inset 2px 0 0 var(--text); }
+      .hours { display: grid; grid-template-columns: repeat(24, 1fr); font-family: var(--font-mono); font-size: 0.7rem; color: var(--faint); }
+      .hours span { border-left: 1px solid var(--border-hi); padding-left: 3px; }
+      .windows { display: grid; gap: 8px; }
+      .window { padding: 12px 14px; border-radius: 14px; background: var(--accent-soft); }
+      .window b { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: -0.01em; }
+      .window p { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
+      .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.82rem; color: var(--muted); }
+      .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
+      @media (max-width: 760px) {
+        .ov-head { display: none; }
+        .person { grid-template-columns: 1fr 1fr; padding: 10px; border-radius: 14px; background: var(--surface-2); }
+        .person .tz { grid-column: 1 / -1; }
+        .tl-row { grid-template-columns: 1fr; gap: 4px; }
+        .tl-spacer { display: none; }
+      }
+    </style>
+
+    <div class="tool-head">
+      <h1>Overlap</h1>
+      <p>Add the people you want to reach and the hours they're awake. Overlap shows when you're all up at the same time, in everyone's own time. Share the link and it opens the same way for them.</p>
+    </div>
+
+    <div class="stack">
+      <section class="panel-k stack">
+        <div class="ov-head" aria-hidden="true"><span>Name</span><span>Time zone</span><span>Up from</span><span>Until</span><span></span></div>
+        <div class="ov-people" id="people"></div>
+        <div class="row">
+          <button class="btn btn-ghost btn-sm" id="addBtn" type="button">+ Add someone</button>
+          <span class="spacer" style="flex:1"></span>
+          <label class="row small">Day <input class="k-input" id="day" type="date" style="width:auto;min-height:38px;padding:6px 10px" /></label>
+          <button class="btn btn-primary btn-sm" id="shareBtn" type="button">Copy share link</button>
+        </div>
+        <datalist id="zones"></datalist>
+      </section>
+
+      <section class="panel-k stack">
+        <div class="row" style="justify-content:space-between">
+          <h2 style="font-size:1.25rem" id="viewTitle">Your day</h2>
+          <div class="legend"><span><i style="background:#9fd8c0"></i>Awake</span><span><i style="background:var(--accent)"></i>Everyone's awake</span></div>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section class="panel-k stack">
+        <h2 style="font-size:1.25rem">Best times</h2>
+        <div class="windows" id="windows"></div>
+      </section>
+    </div>

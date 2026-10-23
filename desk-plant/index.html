@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Desk Plant - A focus timer with a little plant that grows while you work</title>
+  <meta name="description" content="Start a focus session and a pixel plant grows. Switch to another tab and it droops. Keep it up for a week and you have a small, smug garden." />
+  <meta name="theme-color" content="#f6f3ec" />
+  <link rel="canonical" href="https://www.departmentofone.net/desk-plant" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Department of One" />
+  <meta property="og:title" content="Desk Plant - A focus timer with a little plant that grows while you work" />
+  <meta property="og:description" content="Start a focus session and a pixel plant grows. Switch to another tab and it droops. Keep it up for a week and you have a small, smug garden." />
+  <meta property="og:url" content="https://www.departmentofone.net/desk-plant" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/kit/kit.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="tool-bar">
+    <div class="wrap">
+      <a class="home" href="/#shelf" aria-label="Back to the shelf"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#ff5a36"/><path d="M15 9.2 19.6 7h1.9v18.2h3.3V28H11.8v-2.8h4.6V11.7l-3.1 1.5-1.1-2.5z" fill="#fff"/><g class="eyes" fill="#17171a"><circle cx="17.3" cy="15.4" r="1.25"/><circle cx="20.6" cy="15.4" r="1.25"/></g></svg><span>Shelf</span></a>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="title"><span class="tile t-lime" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6.5 7.5-6.5 0 4.2-3 6.5-7.5 6.5zM12 14c0-3-2.2-5.3-6.5-5.3 0 3.2 2.2 5.3 6.5 5.3z"/><path d="M7.5 21h9"/></svg></span><span>Desk Plant</span></span>
+      <span class="spacer"></span>
+      <a class="btn btn-coffee btn-sm" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="label-long">Buy me a </span>coffee</span></a>
+    </div>
+  </header>
+
+  <main id="main" class="wrap tool">
+    <style>
+      .dp { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+      .dp-stage { display: grid; justify-items: center; gap: 14px; padding: clamp(20px, 4vw, 36px); border-radius: var(--radius-lg); background: linear-gradient(180deg, #f3f9ec, #e4f1d6); box-shadow: var(--shadow-sm); text-align: center; }
+      .dp-stage svg.plant { width: min(300px, 70vw); height: auto; overflow: visible; }
+      .dp-time { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 9vw, 5.4rem); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; color: #1d3a12; }
+      .dp-status { min-height: 1.5em; color: #3d5a2b; font-weight: 600; }
+      .garden { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px; }
+      .garden figure { margin: 0; display: grid; justify-items: center; gap: 2px; padding: 6px 4px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+      .garden svg { width: 52px; height: 52px; }
+      .garden figcaption { font-family: var(--font-mono); font-size: 0.68rem; color: var(--faint); }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
+      .stats div { padding: 10px 6px; border-radius: 12px; background: var(--surface-2); }
+      .stats b { display: block; font-family: var(--font-display); font-size: 1.4rem; letter-spacing: -0.02em; }
+      .stats span { font-size: 0.78rem; color: var(--muted); }
+      .plant .leaf, .plant .bloom, .plant .stem { transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); transform-box: fill-box; }
+      .plant.is-droopy .top { transform: rotate(14deg); transform-origin: 50% 100%; transition: transform 800ms var(--ease-out); }
+      @media (max-width: 860px) { .dp { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Desk Plant</h1>
+      <p>Start a focus session and a little plant grows while you work. Switch to another tab and it loses a leaf. Finished plants go in your garden.</p>
+    </div>
+
+    <div class="dp">
+      <section class="dp-stage" aria-label="Your plant">
+        <div id="plantBox"></div>
+        <div class="dp-time" id="time">25:00</div>
+        <p class="dp-status" id="status" aria-live="polite">Pick a length and start when you're ready.</p>
+        <div class="row" style="justify-content:center">
+          <div class="seg" role="group" aria-label="Session length" id="lengths">
+            <button type="button" aria-pressed="false" data-min="15">15</button><button type="button" aria-pressed="true" data-min="25">25</button><button type="button" aria-pressed="false" data-min="50">50</button><button type="button" aria-pressed="false" data-min="90">90</button>
+          </div>
+          <button class="btn btn-primary" id="startBtn" type="button">Start focusing</button>
+          <button class="btn btn-ghost" id="giveUp" type="button" hidden>Give up</button>
+        </div>
+      </section>
+      <aside class="panel-k stack">
+        <div class="stats"><div><b id="sToday">0</b><span>min today</span></div><div><b id="sStreak">0</b><span>day streak</span></div><div><b id="sPlants">0</b><span>plants</span></div></div>
+        <div class="row" style="justify-content:space-between"><span class="k-label">Your garden</span><button class="btn btn-ghost btn-sm" id="clearGarden" type="button">Clear</button></div>
+        <div class="garden" id="garden"></div>
+        <p class="small faint">Kept in this browser only.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="k-footer">
+    <div class="wrap">
+      <span>Desk Plant is free and open source, made by <a href="/about">one person</a>.</span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="/kit/kit.js" defer></script>
+  <script src="/desk-plant/app.js" defer></script>
+</body>
+</html>

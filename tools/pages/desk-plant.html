@@ -1,0 +1,44 @@
+    <style>
+      .dp { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: start; }
+      .dp-stage { display: grid; justify-items: center; gap: 14px; padding: clamp(20px, 4vw, 36px); border-radius: var(--radius-lg); background: linear-gradient(180deg, #f3f9ec, #e4f1d6); box-shadow: var(--shadow-sm); text-align: center; }
+      .dp-stage svg.plant { width: min(300px, 70vw); height: auto; overflow: visible; }
+      .dp-time { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 9vw, 5.4rem); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; color: #1d3a12; }
+      .dp-status { min-height: 1.5em; color: #3d5a2b; font-weight: 600; }
+      .garden { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px; }
+      .garden figure { margin: 0; display: grid; justify-items: center; gap: 2px; padding: 6px 4px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+      .garden svg { width: 52px; height: 52px; }
+      .garden figcaption { font-family: var(--font-mono); font-size: 0.68rem; color: var(--faint); }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
+      .stats div { padding: 10px 6px; border-radius: 12px; background: var(--surface-2); }
+      .stats b { display: block; font-family: var(--font-display); font-size: 1.4rem; letter-spacing: -0.02em; }
+      .stats span { font-size: 0.78rem; color: var(--muted); }
+      .plant .leaf, .plant .bloom, .plant .stem { transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); transform-box: fill-box; }
+      .plant.is-droopy .top { transform: rotate(14deg); transform-origin: 50% 100%; transition: transform 800ms var(--ease-out); }
+      @media (max-width: 860px) { .dp { grid-template-columns: 1fr; } }
+    </style>
+
+    <div class="tool-head">
+      <h1>Desk Plant</h1>
+      <p>Start a focus session and a little plant grows while you work. Switch to another tab and it loses a leaf. Finished plants go in your garden.</p>
+    </div>
+
+    <div class="dp">
+      <section class="dp-stage" aria-label="Your plant">
+        <div id="plantBox"></div>
+        <div class="dp-time" id="time">25:00</div>
+        <p class="dp-status" id="status" aria-live="polite">Pick a length and start when you're ready.</p>
+        <div class="row" style="justify-content:center">
+          <div class="seg" role="group" aria-label="Session length" id="lengths">
+            <button type="button" aria-pressed="false" data-min="15">15</button><button type="button" aria-pressed="true" data-min="25">25</button><button type="button" aria-pressed="false" data-min="50">50</button><button type="button" aria-pressed="false" data-min="90">90</button>
+          </div>
+          <button class="btn btn-primary" id="startBtn" type="button">Start focusing</button>
+          <button class="btn btn-ghost" id="giveUp" type="button" hidden>Give up</button>
+        </div>
+      </section>
+      <aside class="panel-k stack">
+        <div class="stats"><div><b id="sToday">0</b><span>min today</span></div><div><b id="sStreak">0</b><span>day streak</span></div><div><b id="sPlants">0</b><span>plants</span></div></div>
+        <div class="row" style="justify-content:space-between"><span class="k-label">Your garden</span><button class="btn btn-ghost btn-sm" id="clearGarden" type="button">Clear</button></div>
+        <div class="garden" id="garden"></div>
+        <p class="small faint">Kept in this browser only.</p>
+      </aside>
+    </div>

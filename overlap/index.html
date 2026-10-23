@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Overlap - Find the hours when friends in different time zones are all awake</title>
+  <meta name="description" content="Add a few cities or people and Overlap shows a single day strip with the hours that work for everyone. Send the link and everyone sees it in their own time." />
+  <meta name="theme-color" content="#f6f3ec" />
+  <link rel="canonical" href="https://www.departmentofone.net/overlap" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Department of One" />
+  <meta property="og:title" content="Overlap - Find the hours when friends in different time zones are all awake" />
+  <meta property="og:description" content="Add a few cities or people and Overlap shows a single day strip with the hours that work for everyone. Send the link and everyone sees it in their own time." />
+  <meta property="og:url" content="https://www.departmentofone.net/overlap" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/kit/kit.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="tool-bar">
+    <div class="wrap">
+      <a class="home" href="/#shelf" aria-label="Back to the shelf"><svg class="mark" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="10" fill="#ff5a36"/><path d="M15 9.2 19.6 7h1.9v18.2h3.3V28H11.8v-2.8h4.6V11.7l-3.1 1.5-1.1-2.5z" fill="#fff"/><g class="eyes" fill="#17171a"><circle cx="17.3" cy="15.4" r="1.25"/><circle cx="20.6" cy="15.4" r="1.25"/></g></svg><span>Shelf</span></a>
+      <span class="sep" aria-hidden="true"></span>
+      <span class="title"><span class="tile t-teal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5S14.6 18.1 12 20.5M12 3.5C9.4 5.9 8.2 8.7 8.2 12s1.2 6.1 3.8 8.5"/></svg></span><span>Overlap</span></span>
+      <span class="spacer"></span>
+      <a class="btn btn-coffee btn-sm" href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9zM16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.7.9-.7 1.6 0 2.5M12 3.5c-.7.9-.7 1.6 0 2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span><span class="label-long">Buy me a </span>coffee</span></a>
+    </div>
+  </header>
+
+  <main id="main" class="wrap tool">
+    <style>
+      .ov-people { display: grid; gap: 8px; }
+      .person { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(170px, 1.4fr) 92px 92px 40px; gap: 8px; align-items: center; }
+      .person .k-input, .person .k-select { min-height: 40px; padding: 8px 10px; font-size: 0.93rem; }
+      .ov-head { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(170px, 1.4fr) 92px 92px 40px; gap: 8px; font-size: 0.78rem; font-weight: 600; color: var(--muted); padding-inline: 2px; }
+      .timeline { display: grid; gap: 6px; margin-top: 4px; }
+      .tl-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px; align-items: center; }
+      .tl-name { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .tl-name small { display: block; font-weight: 400; color: var(--faint); font-family: var(--font-mono); font-size: 0.72rem; }
+      .cells { display: grid; grid-template-columns: repeat(48, 1fr); height: 34px; border-radius: 8px; overflow: hidden; background: var(--bg-deep); }
+      .cells i { border-right: 1px solid rgba(255, 255, 255, 0.5); }
+      .cells i:nth-child(2n) { border-right-color: rgba(255, 255, 255, 0.9); }
+      .cells i.awake { background: #9fd8c0; }
+      .cells i.work { background: #34c3a0; }
+      .cells.all i.awake { background: var(--accent); }
+      .cells i.now { box-shadow: inset 2px 0 0 var(--text); }
+      .hours { display: grid; grid-template-columns: repeat(24, 1fr); font-family: var(--font-mono); font-size: 0.7rem; color: var(--faint); }
+      .hours span { border-left: 1px solid var(--border-hi); padding-left: 3px; }
+      .windows { display: grid; gap: 8px; }
+      .window { padding: 12px 14px; border-radius: 14px; background: var(--accent-soft); }
+      .window b { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: -0.01em; }
+      .window p { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
+      .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.82rem; color: var(--muted); }
+      .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; }
+      @media (max-width: 760px) {
+        .ov-head { display: none; }
+        .person { grid-template-columns: 1fr 1fr; padding: 10px; border-radius: 14px; background: var(--surface-2); }
+        .person .tz { grid-column: 1 / -1; }
+        .tl-row { grid-template-columns: 1fr; gap: 4px; }
+        .tl-spacer { display: none; }
+      }
+    </style>
+
+    <div class="tool-head">
+      <h1>Overlap</h1>
+      <p>Add the people you want to reach and the hours they're awake. Overlap shows when you're all up at the same time, in everyone's own time. Share the link and it opens the same way for them.</p>
+    </div>
+
+    <div class="stack">
+      <section class="panel-k stack">
+        <div class="ov-head" aria-hidden="true"><span>Name</span><span>Time zone</span><span>Up from</span><span>Until</span><span></span></div>
+        <div class="ov-people" id="people"></div>
+        <div class="row">
+          <button class="btn btn-ghost btn-sm" id="addBtn" type="button">+ Add someone</button>
+          <span class="spacer" style="flex:1"></span>
+          <label class="row small">Day <input class="k-input" id="day" type="date" style="width:auto;min-height:38px;padding:6px 10px" /></label>
+          <button class="btn btn-primary btn-sm" id="shareBtn" type="button">Copy share link</button>
+        </div>
+        <datalist id="zones"></datalist>
+      </section>
+
+      <section class="panel-k stack">
+        <div class="row" style="justify-content:space-between">
+          <h2 style="font-size:1.25rem" id="viewTitle">Your day</h2>
+          <div class="legend"><span><i style="background:#9fd8c0"></i>Awake</span><span><i style="background:var(--accent)"></i>Everyone's awake</span></div>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section class="panel-k stack">
+        <h2 style="font-size:1.25rem">Best times</h2>
+        <div class="windows" id="windows"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="k-footer">
+    <div class="wrap">
+      <span>Overlap is free and open source, made by <a href="/about">one person</a>.</span>
+      <span><a href="/#shelf">More on the shelf</a> · <a href="https://buymeacoffee.com/department.of.one" target="_blank" rel="noopener">Buy me a coffee</a> · <a href="/privacy">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="/kit/kit.js" defer></script>
+  <script src="/overlap/app.js" defer></script>
+</body>
+</html>
